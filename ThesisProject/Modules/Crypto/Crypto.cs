@@ -8,7 +8,7 @@ namespace ThesisProject.Modules.Crypto
 {
     internal class Crypto
     {
-        string GetMD5(string value)
+        public static string GetMD5(string value)
         {
             var provider = new System.Security.Cryptography.MD5CryptoServiceProvider();
             var data = Encoding.UTF8.GetBytes(value);
