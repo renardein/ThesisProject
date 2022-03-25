@@ -18,5 +18,9 @@ namespace ThesisProject
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LoginForm());
         }
+        public static class FormDataExchange
+        {
+            public static string CurrentUser { get; set; }
+        }
     }
 }

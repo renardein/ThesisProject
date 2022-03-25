@@ -1,34 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using ThesisProject.Modules.Crypto;
-using ThesisProject.Modules.DatabaseAdapter;
-using ThesisProject.Modules.OpenForm;
-using System.IO;
-
-namespace ThesisProject
+﻿namespace ThesisProject
 {
+    using System;
+    using System.Data;
+    using System.Linq;
+    using System.Windows.Forms;
+    using ThesisProject.Modules.Crypto;
+    using ThesisProject.Modules.DatabaseAdapter;
+    using ThesisProject.Modules.OpenForm;
+
     public partial class LoginForm : Form
     {
-        DatabaseAdapterDataContext db = new DatabaseAdapterDataContext();
-        
+        internal DatabaseAdapterDataContext db = new DatabaseAdapterDataContext();
+
+        internal int wrongLoginAttemptsConunt;
+
         public LoginForm()
         {
             InitializeComponent();
         }
 
         private void LoginForm_Load(object sender, EventArgs e)
-        {     
+        {
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-           
         }
- 
 
         private void exitLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -37,55 +31,87 @@ namespace ThesisProject
 
         private void authButton_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(authLoginBox.Text) && !string.IsNullOrEmpty(authPassBox.Text))
+            if (wrongLoginAttemptsConunt > 3)
             {
-                string pwd_md5 = Crypto.GetMD5(authPassBox.Text);
-                var getUserFromDb = from c in db.User
-                                    where (c.Username == authLoginBox.Text && c.Password == pwd_md5)
-                                    select c;
-                if (getUserFromDb.Count() == 1)
+                if (!string.IsNullOrEmpty(authLoginBox.Text) && !string.IsNullOrEmpty(authPassBox.Text))
                 {
-                        var getRoleFromDb = from p in db.User where p.Username == authLoginBox.Text select p.Role;
-                        string role = getRoleFromDb.First().ToString();
-                        MessageBox.Show("Роль: " + role);
-                    switch (role)
+                    string pwd_md5 = Crypto.GetMD5(authPassBox.Text);
+                    var getUserFromDb = from c in db.User
+                                        where (c.Username == authLoginBox.Text && c.Password == pwd_md5)
+                                        select c;
+                    if (getUserFromDb.Count() == 1)
                     {
-                        case "admin":
-                            {
-                                break;
-                            }
-                        case "user":
-                            {
-                                break;
-                            }
+                        var getRoleFromDb = from p in db.User where p.Username == authLoginBox.Text select p.Role;
+                        string roleFromDb = getRoleFromDb.First().ToString();
+                        MessageBox.Show("Роль: " + roleFromDb);
+                        int selectedRole = authRoleBox.SelectedIndex;
+                        Program.FormDataExchange.CurrentUser = authLoginBox.Text;
+                        switch (roleFromDb)
+                        {
+                            case "admin":
+                                {
+                                    switch (selectedRole)
+                                    {
+                                        case 0:
+                                            {
+                                                OpenForm.AdminForm();
+                                                this.Hide();
+                                                FormClosed += (object s, FormClosedEventArgs ev) => { this.Show(); };
+                                                break;
+                                            }
+                                        case 1:
+                                            {
+                                                OpenForm.MainForm();
+                                                this.Hide();
+                                                FormClosed += (object s, FormClosedEventArgs ev) => { this.Show(); };
+                                                break;
+                                            }
+                                    }
+                                    break;
+                                }
+                            case "user":
+                                {
+                                    switch (selectedRole)
+                                    {
+                                        case 0:
+                                            {
+                                                MessageBox.Show("Нет доступа в данную область");
+                                                break;
+                                            }
+                                        case 1:
+                                            {
+                                                OpenForm.MainForm();
+                                                this.Hide();
+                                                FormClosed += (object s, FormClosedEventArgs ev) => { this.Show(); };
+                                                break;
+                                            }
+                                    }
+                                    break;
+                                }
+                            default:
+                                {
+                                    break;
+                                }
+                        }
+
                     }
+                    else
+                    {
+                        MessageBox.Show("Пользователя не существует");
+                        wrongLoginAttemptsConunt++;
+                    }
+
                 }
                 else
                 {
-                    MessageBox.Show("Пользователя не существует");
+                    MessageBox.Show("Проверьте заполненность полей");
                 }
-
             }
             else
             {
-                MessageBox.Show("Проверьте заполненность полей");
+                MessageBox.Show("Количество недачных попыток: " + wrongLoginAttemptsConunt + ". Выход.");
+                Application.Exit();
             }
-           
         }
-        public static void openForm(int selectedrole)
-            {
-            switch (selectedrole)
-            {
-                case 0:
-                    {
-                        
-                        break;
-                    }
-                case 1:
-                    {
-                        break;
-                    }
-            }
-            }
     }
 }

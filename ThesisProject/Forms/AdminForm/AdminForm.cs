@@ -19,7 +19,14 @@ namespace ThesisProject.Forms.AdminForm
 
         private void AdminForm_Load(object sender, EventArgs e)
         {
+            this.Text +=" ("+Program.FormDataExchange.CurrentUser+") ";
+            currentUserLabel.Text += Program.FormDataExchange.CurrentUser;
+        }
 
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Close();
+           
         }
     }
 }
