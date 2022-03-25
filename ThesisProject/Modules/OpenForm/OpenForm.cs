@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace ThesisProject.Modules.OpenForm
 {
     internal class OpenForm
@@ -13,9 +14,10 @@ namespace ThesisProject.Modules.OpenForm
             Forms.AdminForm.AdminForm af = new Forms.AdminForm.AdminForm();
             af.Show();
         }
-        public static void MainForm()
+        public static void UserForm()
         {
-           
+            Forms.UserForm.UserForm uf = new Forms.UserForm.UserForm();
+            uf.Show();
         }
     }
 }

@@ -22,6 +22,7 @@
         private void LoginForm_Load(object sender, EventArgs e)
         {
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+
         }
 
         private void exitLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -31,7 +32,7 @@
 
         private void authButton_Click(object sender, EventArgs e)
         {
-            if (wrongLoginAttemptsConunt > 3)
+            if (wrongLoginAttemptsConunt < 3)
             {
                 if (!string.IsNullOrEmpty(authLoginBox.Text) && !string.IsNullOrEmpty(authPassBox.Text))
                 {
@@ -56,14 +57,12 @@
                                             {
                                                 OpenForm.AdminForm();
                                                 this.Hide();
-                                                FormClosed += (object s, FormClosedEventArgs ev) => { this.Show(); };
                                                 break;
                                             }
                                         case 1:
                                             {
-                                                OpenForm.MainForm();
+                                                OpenForm.UserForm();
                                                 this.Hide();
-                                                FormClosed += (object s, FormClosedEventArgs ev) => { this.Show(); };
                                                 break;
                                             }
                                     }
@@ -80,9 +79,8 @@
                                             }
                                         case 1:
                                             {
-                                                OpenForm.MainForm();
+                                                OpenForm.UserForm();
                                                 this.Hide();
-                                                FormClosed += (object s, FormClosedEventArgs ev) => { this.Show(); };
                                                 break;
                                             }
                                     }
