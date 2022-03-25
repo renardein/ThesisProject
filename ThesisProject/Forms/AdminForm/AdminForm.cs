@@ -25,6 +25,8 @@ namespace ThesisProject.Forms.AdminForm
         private void AdminForm_Load(object sender, EventArgs e)
         {
             currentUserLabel.Text += Program.FormDataExchange.CurrentUser;
+            usersGrid.DataSource = from p in db.User select new {Пользователь = p.Username, Роль = p.Role };
+            
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -77,6 +79,7 @@ namespace ThesisProject.Forms.AdminForm
             else
                 return false;
         }
+
 
     }
 

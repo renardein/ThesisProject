@@ -44,7 +44,6 @@
                     {
                         var getRoleFromDb = from p in db.User where p.Username == authLoginBox.Text select p.Role;
                         string roleFromDb = getRoleFromDb.First().ToString();
-                        MessageBox.Show("Роль: " + roleFromDb);
                         int selectedRole = authRoleBox.SelectedIndex;
                         Program.FormDataExchange.CurrentUser = authLoginBox.Text;
                         switch (roleFromDb)
