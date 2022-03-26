@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ThesisProject.Modules.DatabaseAdapter;
 using ThesisProject.Modules.Crypto;
@@ -25,7 +20,7 @@ namespace ThesisProject.Forms.AdminForm
         private void AdminForm_Load(object sender, EventArgs e)
         {
             currentUserLabel.Text += Program.FormDataExchange.CurrentUser;
-            usersGrid.DataSource = from p in db.User select new { Пользователь = p.Username, Роль = p.Role };
+            UpdateUsersList();
         }
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -102,13 +97,24 @@ namespace ThesisProject.Forms.AdminForm
         {
             string rmuser = usersGrid.CurrentCell.Value.ToString();
             DialogResult userDeleteResult = MessageBox.Show("Вы уверены что хотите удалить пользователя "+ rmuser+ "?", "Системное сообщение", MessageBoxButtons.YesNo);
-            if (userDeleteResult == DialogResult.Yes)
+
+            try
             {
-                User objUser = db.User.Single(user => user.Username == rmuser);
-                db.User.DeleteOnSubmit(objUser);
-                db.SubmitChanges();
-                UpdateUsersList();
+                if (userDeleteResult == DialogResult.Yes)
+                {
+                    User objUser = db.User.Single(user => user.Username == rmuser);
+                    db.User.DeleteOnSubmit(objUser);
+                    db.SubmitChanges();
+                    UpdateUsersList();
+                }
             }
+            catch (System.InvalidOperationException)
+            {
+                
+
+            }
+            
         }
+
     }
 }

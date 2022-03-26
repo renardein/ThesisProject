@@ -32,10 +32,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rmUserButton = new System.Windows.Forms.Button();
             this.usersGrid = new System.Windows.Forms.DataGridView();
-            this.Пользователь = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Пароль = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Роль = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.regUserRole = new System.Windows.Forms.ComboBox();
             this.addUser = new System.Windows.Forms.Button();
@@ -51,7 +49,8 @@
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.MyContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.rmUserButton = new System.Windows.Forms.Button();
+            this.Пользователь = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Роль = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -95,6 +94,16 @@
             this.groupBox2.Text = "Пользователи";
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
+            // rmUserButton
+            // 
+            this.rmUserButton.Location = new System.Drawing.Point(6, 126);
+            this.rmUserButton.Name = "rmUserButton";
+            this.rmUserButton.Size = new System.Drawing.Size(260, 23);
+            this.rmUserButton.TabIndex = 10;
+            this.rmUserButton.Text = "Удалить";
+            this.rmUserButton.UseVisualStyleBackColor = true;
+            this.rmUserButton.Click += new System.EventHandler(this.rmUserButton_Click);
+            // 
             // usersGrid
             // 
             this.usersGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -103,34 +112,12 @@
             this.usersGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.usersGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Пользователь,
-            this.Пароль,
             this.Роль});
             this.usersGrid.Location = new System.Drawing.Point(6, 19);
             this.usersGrid.Name = "usersGrid";
             this.usersGrid.RowHeadersVisible = false;
             this.usersGrid.Size = new System.Drawing.Size(260, 101);
             this.usersGrid.TabIndex = 1;
-            // 
-            // Пользователь
-            // 
-            this.Пользователь.HeaderText = "usernameCol";
-            this.Пользователь.Name = "Пользователь";
-            this.Пользователь.ReadOnly = true;
-            this.Пользователь.Visible = false;
-            // 
-            // Пароль
-            // 
-            this.Пароль.HeaderText = "passCol";
-            this.Пароль.Name = "Пароль";
-            this.Пароль.ReadOnly = true;
-            this.Пароль.Visible = false;
-            // 
-            // Роль
-            // 
-            this.Роль.HeaderText = "roleCol";
-            this.Роль.Name = "Роль";
-            this.Роль.ReadOnly = true;
-            this.Роль.Visible = false;
             // 
             // groupBox1
             // 
@@ -274,15 +261,17 @@
             this.MyContextMenuStrip.Name = "MyContextMenuStrip";
             this.MyContextMenuStrip.Size = new System.Drawing.Size(61, 4);
             // 
-            // rmUserButton
+            // Пользователь
             // 
-            this.rmUserButton.Location = new System.Drawing.Point(6, 126);
-            this.rmUserButton.Name = "rmUserButton";
-            this.rmUserButton.Size = new System.Drawing.Size(260, 23);
-            this.rmUserButton.TabIndex = 10;
-            this.rmUserButton.Text = "Удалить";
-            this.rmUserButton.UseVisualStyleBackColor = true;
-            this.rmUserButton.Click += new System.EventHandler(this.rmUserButton_Click);
+            this.Пользователь.HeaderText = "usernameCol";
+            this.Пользователь.Name = "Пользователь";
+            this.Пользователь.ReadOnly = true;
+            // 
+            // Роль
+            // 
+            this.Роль.HeaderText = "roleCol";
+            this.Роль.Name = "Роль";
+            this.Роль.ReadOnly = true;
             // 
             // AdminForm
             // 
@@ -324,14 +313,13 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView usersGrid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Пользователь;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Пароль;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Роль;
         private System.Windows.Forms.Label currentUserLabel;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ContextMenuStrip MyContextMenuStrip;
         private System.Windows.Forms.Button rmUserButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Пользователь;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Роль;
     }
 }
