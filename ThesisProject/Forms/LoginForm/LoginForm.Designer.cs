@@ -36,7 +36,6 @@
             this.passLabel = new System.Windows.Forms.Label();
             this.roleLabel = new System.Windows.Forms.Label();
             this.authPassBox = new System.Windows.Forms.TextBox();
-            this.exitLink = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,10 +60,10 @@
             // authButton
             // 
             this.authButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.authButton.Location = new System.Drawing.Point(12, 374);
+            this.authButton.Location = new System.Drawing.Point(12, 386);
             this.authButton.Name = "authButton";
             this.authButton.Size = new System.Drawing.Size(341, 32);
-            this.authButton.TabIndex = 3;
+            this.authButton.TabIndex = 4;
             this.authButton.Text = "Авторизоваться";
             this.authButton.UseVisualStyleBackColor = true;
             this.authButton.Click += new System.EventHandler(this.authButton_Click);
@@ -79,7 +78,7 @@
             this.authRoleBox.Location = new System.Drawing.Point(12, 327);
             this.authRoleBox.Name = "authRoleBox";
             this.authRoleBox.Size = new System.Drawing.Size(341, 32);
-            this.authRoleBox.TabIndex = 4;
+            this.authRoleBox.TabIndex = 3;
             // 
             // userLabel
             // 
@@ -116,26 +115,15 @@
             this.authPassBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.authPassBox.Location = new System.Drawing.Point(12, 267);
             this.authPassBox.Name = "authPassBox";
+            this.authPassBox.PasswordChar = '*';
             this.authPassBox.Size = new System.Drawing.Size(341, 29);
-            this.authPassBox.TabIndex = 8;
-            // 
-            // exitLink
-            // 
-            this.exitLink.Location = new System.Drawing.Point(12, 421);
-            this.exitLink.Name = "exitLink";
-            this.exitLink.Size = new System.Drawing.Size(341, 23);
-            this.exitLink.TabIndex = 9;
-            this.exitLink.TabStop = true;
-            this.exitLink.Text = "Выйти";
-            this.exitLink.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.exitLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.exitLink_LinkClicked);
+            this.authPassBox.TabIndex = 2;
             // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(365, 453);
-            this.Controls.Add(this.exitLink);
+            this.ClientSize = new System.Drawing.Size(365, 444);
             this.Controls.Add(this.authPassBox);
             this.Controls.Add(this.roleLabel);
             this.Controls.Add(this.passLabel);
@@ -144,6 +132,7 @@
             this.Controls.Add(this.authButton);
             this.Controls.Add(this.authLoginBox);
             this.Controls.Add(this.pictureBox1);
+            this.MaximizeBox = false;
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Авторизация";
@@ -164,7 +153,6 @@
         private System.Windows.Forms.Label passLabel;
         private System.Windows.Forms.Label roleLabel;
         private System.Windows.Forms.TextBox authPassBox;
-        private System.Windows.Forms.LinkLabel exitLink;
     }
 }
 

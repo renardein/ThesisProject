@@ -21,7 +21,8 @@
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            authRoleBox.SelectedIndex = 0;
 
         }
 
@@ -109,6 +110,16 @@
                 MessageBox.Show("Количество недачных попыток: " + wrongLoginAttemptsConunt + ". Выход.");
                 Application.Exit();
             }
+        }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            //Обработка нажатия Enter для подтверждения формы
+            if (keyData == (Keys.Enter))
+            {
+                authButton.PerformClick();
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
         }
     }
 }
