@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminForm));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.rmUserButton = new System.Windows.Forms.Button();
             this.usersGrid = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -44,7 +45,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.MyContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.button1 = new System.Windows.Forms.Button();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.currentUserStrip = new System.Windows.Forms.ToolStripSplitButton();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,6 +67,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Пользователи";
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(141, 126);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(125, 23);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "Сменить роль";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // rmUserButton
             // 
@@ -191,16 +201,6 @@
             this.MyContextMenuStrip.Name = "MyContextMenuStrip";
             this.MyContextMenuStrip.Size = new System.Drawing.Size(61, 4);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(141, 126);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(125, 23);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Сменить роль";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -228,7 +228,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(118, 24);
             this.exitToolStripMenuItem.Text = "Выйти";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -248,6 +248,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(516, 229);
             this.Name = "AdminForm";
