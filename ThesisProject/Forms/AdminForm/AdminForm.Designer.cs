@@ -66,7 +66,6 @@
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Пользователи";
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // button1
             // 
@@ -223,7 +222,7 @@
             this.currentUserStrip.Name = "currentUserStrip";
             this.currentUserStrip.Size = new System.Drawing.Size(67, 23);
             this.currentUserStrip.Text = "user";
-            this.currentUserStrip.ButtonClick += new System.EventHandler(this.currentUserStrip_ButtonClick);
+           
             // 
             // exitToolStripMenuItem
             // 

@@ -1,6 +1,6 @@
-﻿using System.Text;
+﻿using System.Linq;
 using System.Security.Cryptography;
-using System.Linq;
+using System.Text;
 
 namespace ThesisProject.Modules.Crypto
 {

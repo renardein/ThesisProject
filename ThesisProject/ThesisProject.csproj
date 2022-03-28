@@ -130,13 +130,10 @@
     <None Include="Resources\ktc_logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\karpegg.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\bloggif_624130c1ad7e1.gif" />
+    <None Include="Resources\karpegg.gif" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />

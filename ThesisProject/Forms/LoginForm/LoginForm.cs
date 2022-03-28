@@ -97,12 +97,14 @@
                     {
                         MessageBox.Show("Пользователя не существует");
                         wrongLoginAttemptsConunt++;
+                        return;
                     }
 
                 }
                 else
                 {
                     MessageBox.Show("Проверьте заполненность полей");
+                    return;
                 }
             }
             else

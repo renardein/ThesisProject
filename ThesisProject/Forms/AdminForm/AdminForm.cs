@@ -2,8 +2,8 @@
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
-using ThesisProject.Modules.DatabaseAdapter;
 using ThesisProject.Modules.Crypto;
+using ThesisProject.Modules.DatabaseAdapter;
 using ThesisProject.Modules.OpenForm;
 
 namespace ThesisProject.Forms.AdminForm
@@ -23,7 +23,7 @@ namespace ThesisProject.Forms.AdminForm
             currentUserStrip.Text = Program.FormDataExchange.CurrentUser;
             UpdateUsersList();
         }
-       
+
 
         private void addUser_Click(object sender, EventArgs e)
         {
@@ -58,15 +58,18 @@ namespace ThesisProject.Forms.AdminForm
                     }
                     else
                         MessageBox.Show("Пароли не совпадают");
+                    return;
                 }
                 else
                 {
                     MessageBox.Show("Пользователь существует");
+                    return;
                 }
             }
             else
             {
                 MessageBox.Show("Проверьте поля");
+                return;
             }
         }
         private bool isUserExists(string username)
@@ -90,15 +93,10 @@ namespace ThesisProject.Forms.AdminForm
             usersGrid.DataSource = from p in db.User select new { Пользователь = p.Username, Роль = p.Role };
         }
 
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         private void rmUserButton_Click(object sender, EventArgs e)
         {
             string rmuser = usersGrid.CurrentCell.Value.ToString();
-            DialogResult userDeleteResult = MessageBox.Show("Вы уверены что хотите удалить пользователя "+ rmuser+ "?", "Системное сообщение", MessageBoxButtons.YesNo);
+            DialogResult userDeleteResult = MessageBox.Show("Вы уверены что хотите удалить пользователя " + rmuser + "?", "Системное сообщение", MessageBoxButtons.YesNo);
 
             try
             {
@@ -115,7 +113,7 @@ namespace ThesisProject.Forms.AdminForm
 
                 MessageBox.Show(err.Message);
             }
-            
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -129,9 +127,9 @@ namespace ThesisProject.Forms.AdminForm
                 {
                     var objUser = (from c in db.User where c.Username == changinguser select c).First();
                     if (objUser.Role == userRole[0])
-                    objUser.Role = userRole[1];
+                        objUser.Role = userRole[1];
                     else
-                    objUser.Role = userRole[0];
+                        objUser.Role = userRole[0];
                     db.SubmitChanges();
                     UpdateUsersList();
                 }
@@ -141,11 +139,6 @@ namespace ThesisProject.Forms.AdminForm
                 MessageBox.Show(err.Message);
 
             }
-        }
-
-        private void currentUserStrip_ButtonClick(object sender, EventArgs e)
-        {
-
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
