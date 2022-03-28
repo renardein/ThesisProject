@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.authLoginBox = new System.Windows.Forms.TextBox();
             this.authButton = new System.Windows.Forms.Button();
             this.authRoleBox = new System.Windows.Forms.ComboBox();
@@ -36,18 +35,9 @@
             this.passLabel = new System.Windows.Forms.Label();
             this.roleLabel = new System.Windows.Forms.Label();
             this.authPassBox = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::ThesisProject.Properties.Resources.ktc_logo;
-            this.pictureBox1.Location = new System.Drawing.Point(109, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(150, 150);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // authLoginBox
             // 
@@ -119,6 +109,16 @@
             this.authPassBox.Size = new System.Drawing.Size(341, 29);
             this.authPassBox.TabIndex = 2;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::ThesisProject.Properties.Resources.ktc_logo;
+            this.pictureBox1.Location = new System.Drawing.Point(109, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(150, 150);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -137,6 +137,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Авторизация";
             this.Load += new System.EventHandler(this.LoginForm_Load);
+            this.VisibleChanged += new System.EventHandler(this.LoginForm_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -121,5 +121,12 @@
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
+
+        private void LoginForm_VisibleChanged(object sender, EventArgs e)
+        {
+            authLoginBox.Text = default;
+            authPassBox.Text = default;
+            authRoleBox.SelectedIndex = default;
+        }
     }
 }

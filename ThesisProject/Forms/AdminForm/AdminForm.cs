@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using ThesisProject.Modules.DatabaseAdapter;
 using ThesisProject.Modules.Crypto;
+using ThesisProject.Modules.OpenForm;
 
 namespace ThesisProject.Forms.AdminForm
 {
@@ -19,20 +20,21 @@ namespace ThesisProject.Forms.AdminForm
 
         private void AdminForm_Load(object sender, EventArgs e)
         {
-            currentUserLabel.Text += Program.FormDataExchange.CurrentUser;
+            currentUserStrip.Text = Program.FormDataExchange.CurrentUser;
             UpdateUsersList();
         }
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            this.Close();
-
-        }
+       
 
         private void addUser_Click(object sender, EventArgs e)
         {
 
             if (!string.IsNullOrEmpty(regUsername.Text) && !string.IsNullOrEmpty(regUsername.Text))
             {
+                if (regUsername.Text == "karpovan" || regUsername.Text == "karpov" || regUsername.Text == "karpik")
+                {
+                    OpenForm.KarpikEgg();
+                    return;
+                }
                 if (!isUserExists(regUsername.Text))
                 {
                     if (regPassword.Text == regPasswordConfirm.Text)
@@ -139,6 +141,16 @@ namespace ThesisProject.Forms.AdminForm
                 MessageBox.Show(err.Message);
 
             }
+        }
+
+        private void currentUserStrip_ButtonClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

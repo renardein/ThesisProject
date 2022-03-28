@@ -53,6 +53,12 @@
     <Compile Include="Forms\AdminForm\AdminForm.Designer.cs">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\KarpikEggForm\KarpikEggForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\KarpikEggForm\KarpikEggForm.Designer.cs">
+      <DependentUpon>KarpikEggForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\LoginForm\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +82,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\AdminForm\AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\KarpikEggForm\KarpikEggForm.resx">
+      <DependentUpon>KarpikEggForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoginForm\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -114,9 +123,14 @@
   <ItemGroup>
     <None Include="Resources\ktc_logo.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\karpegg.png" />
+  </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bloggif_624130c1ad7e1.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

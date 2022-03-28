@@ -17,7 +17,12 @@ namespace ThesisProject.Modules.OpenForm
         public static void UserForm()
         {
             Forms.UserForm.UserForm uf = new Forms.UserForm.UserForm();
-            uf.Show();
+            uf.ShowDialog();
+        }
+        public static void KarpikEgg()
+        {
+            Forms.KarpikEggForm.KarpikEggForm egg = new Forms.KarpikEggForm.KarpikEggForm();
+            egg.Show();
         }
     }
 }
