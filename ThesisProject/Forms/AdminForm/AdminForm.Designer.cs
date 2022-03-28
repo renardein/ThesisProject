@@ -49,8 +49,7 @@
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.MyContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.Пользователь = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Роль = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -84,6 +83,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.rmUserButton);
             this.groupBox2.Controls.Add(this.usersGrid);
             this.groupBox2.Location = new System.Drawing.Point(215, 12);
@@ -98,7 +98,7 @@
             // 
             this.rmUserButton.Location = new System.Drawing.Point(6, 126);
             this.rmUserButton.Name = "rmUserButton";
-            this.rmUserButton.Size = new System.Drawing.Size(260, 23);
+            this.rmUserButton.Size = new System.Drawing.Size(125, 23);
             this.rmUserButton.TabIndex = 10;
             this.rmUserButton.Text = "Удалить";
             this.rmUserButton.UseVisualStyleBackColor = true;
@@ -110,9 +110,6 @@
             this.usersGrid.BackgroundColor = System.Drawing.Color.White;
             this.usersGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.usersGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.usersGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Пользователь,
-            this.Роль});
             this.usersGrid.Location = new System.Drawing.Point(6, 19);
             this.usersGrid.Name = "usersGrid";
             this.usersGrid.RowHeadersVisible = false;
@@ -261,17 +258,15 @@
             this.MyContextMenuStrip.Name = "MyContextMenuStrip";
             this.MyContextMenuStrip.Size = new System.Drawing.Size(61, 4);
             // 
-            // Пользователь
+            // button1
             // 
-            this.Пользователь.HeaderText = "usernameCol";
-            this.Пользователь.Name = "Пользователь";
-            this.Пользователь.ReadOnly = true;
-            // 
-            // Роль
-            // 
-            this.Роль.HeaderText = "roleCol";
-            this.Роль.Name = "Роль";
-            this.Роль.ReadOnly = true;
+            this.button1.Location = new System.Drawing.Point(141, 126);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(125, 23);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "Сменить роль";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // AdminForm
             // 
@@ -319,7 +314,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ContextMenuStrip MyContextMenuStrip;
         private System.Windows.Forms.Button rmUserButton;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Пользователь;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Роль;
+        private System.Windows.Forms.Button button1;
     }
 }

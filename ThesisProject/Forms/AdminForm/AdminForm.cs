@@ -108,13 +108,37 @@ namespace ThesisProject.Forms.AdminForm
                     UpdateUsersList();
                 }
             }
-            catch (System.InvalidOperationException)
+            catch (System.InvalidOperationException err)
             {
-                
 
+                MessageBox.Show(err.Message);
             }
             
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string changinguser = usersGrid.CurrentCell.Value.ToString();
+            DialogResult userDeleteResult = MessageBox.Show("Вы уверены что хотите сменить роль пользователя " + changinguser + "?", "Системное сообщение", MessageBoxButtons.YesNo);
+
+            try
+            {
+                if (userDeleteResult == DialogResult.Yes)
+                {
+                    var objUser = (from c in db.User where c.Username == changinguser select c).First();
+                    if (objUser.Role == userRole[0])
+                    objUser.Role = userRole[1];
+                    else
+                    objUser.Role = userRole[0];
+                    db.SubmitChanges();
+                    UpdateUsersList();
+                }
+            }
+            catch (System.InvalidOperationException err)
+            {
+                MessageBox.Show(err.Message);
+
+            }
+        }
     }
 }
