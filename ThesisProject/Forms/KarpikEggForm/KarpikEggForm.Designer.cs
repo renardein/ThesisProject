@@ -38,7 +38,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::ThesisProject.Properties.Resources.bloggif_624130c1ad7e1;
+            this.pictureBox1.Image = global::ThesisProject.Properties.Resources.karpegg;
             this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(310, 317);

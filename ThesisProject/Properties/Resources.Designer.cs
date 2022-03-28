@@ -63,16 +63,6 @@ namespace ThesisProject.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap bloggif_624130c1ad7e1 {
-            get {
-                object obj = ResourceManager.GetObject("bloggif_624130c1ad7e1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap karpegg {
             get {
                 object obj = ResourceManager.GetObject("karpegg", resourceCulture);
