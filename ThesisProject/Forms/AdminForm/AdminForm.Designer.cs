@@ -49,6 +49,7 @@
             this.currentUserStrip = new System.Windows.Forms.ToolStripSplitButton();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.youLoggedAsLabel = new System.Windows.Forms.ToolStripLabel();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.usersGrid)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -204,7 +205,8 @@
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.currentUserStrip,
-            this.toolStripLabel1});
+            this.toolStripLabel1,
+            this.youLoggedAsLabel});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(500, 26);
@@ -214,20 +216,21 @@
             // currentUserStrip
             // 
             this.currentUserStrip.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.currentUserStrip.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.currentUserStrip.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exitToolStripMenuItem});
             this.currentUserStrip.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.currentUserStrip.Image = ((System.Drawing.Image)(resources.GetObject("currentUserStrip.Image")));
             this.currentUserStrip.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.currentUserStrip.Name = "currentUserStrip";
-            this.currentUserStrip.Size = new System.Drawing.Size(67, 23);
+            this.currentUserStrip.Size = new System.Drawing.Size(51, 23);
             this.currentUserStrip.Text = "user";
-           
             // 
             // exitToolStripMenuItem
             // 
+            this.exitToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(118, 24);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.exitToolStripMenuItem.Text = "Выйти";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -238,6 +241,15 @@
             this.toolStripLabel1.Name = "toolStripLabel1";
             this.toolStripLabel1.Size = new System.Drawing.Size(312, 23);
             this.toolStripLabel1.Text = "КГБПОУ \"Канский технологический колледж\"";
+            // 
+            // youLoggedAsLabel
+            // 
+            this.youLoggedAsLabel.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.youLoggedAsLabel.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.youLoggedAsLabel.Name = "youLoggedAsLabel";
+            this.youLoggedAsLabel.Size = new System.Drawing.Size(100, 23);
+            this.youLoggedAsLabel.Text = "Вы вошли как:";
+            this.youLoggedAsLabel.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             // 
             // AdminForm
             // 
@@ -286,5 +298,6 @@
         private System.Windows.Forms.ToolStripSplitButton currentUserStrip;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        private System.Windows.Forms.ToolStripLabel youLoggedAsLabel;
     }
 }

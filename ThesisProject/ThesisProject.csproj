@@ -50,6 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\AddGroupDialog\AddGroupDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddGroupDialog\AddGroupDialog.Designer.cs">
+      <DependentUpon>AddGroupDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\AdminForm\AdminForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +89,9 @@
     <Compile Include="Modules\OpenForm\OpenForm.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\AddGroupDialog\AddGroupDialog.resx">
+      <DependentUpon>AddGroupDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\AdminForm\AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </EmbeddedResource>

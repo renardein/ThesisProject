@@ -10,7 +10,7 @@
         public static void UserForm()
         {
             Forms.UserForm.UserForm uf = new Forms.UserForm.UserForm();
-            uf.ShowDialog();
+            uf.Show();
         }
         public static void KarpikEgg()
         {

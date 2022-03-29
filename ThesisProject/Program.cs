@@ -18,6 +18,7 @@ namespace ThesisProject
         public static class FormDataExchange
         {
             public static string CurrentUser { get; set; }
+            public static string NewGroupString { get; set; }
         }
     }
 }
