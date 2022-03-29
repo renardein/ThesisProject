@@ -94,5 +94,27 @@ namespace ThesisProject.Forms.UserForm
                 UpdateGroupsList();
             }
         }
+
+        private void deleteGroupButton_Click(object sender, System.EventArgs e)
+        {
+            string rmGroup = groupGrid.CurrentCell.Value.ToString();
+            DialogResult groupDeleteResult = MessageBox.Show("Вы уверены что хотите удалить группу " + rmGroup + "?", "Системное сообщение", MessageBoxButtons.YesNo);
+
+            try
+            {
+                if (groupDeleteResult == DialogResult.Yes)
+                {
+                    Group objgroup = db.Group.Single(group => group.Title == rmGroup);
+                    db.Group.DeleteOnSubmit(objgroup);
+                    db.SubmitChanges();
+                    UpdateGroupsList();
+                }
+            }
+            catch (System.InvalidOperationException err)
+            {
+
+                MessageBox.Show(err.Message);
+            }
+        }
     }
 }
