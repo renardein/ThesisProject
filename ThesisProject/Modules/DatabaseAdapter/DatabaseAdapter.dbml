@@ -79,4 +79,12 @@
       <Association Name="Group_Student" Member="Group" ThisKey="GroupId" OtherKey="GroupId" Type="Group" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.StudentGroup" Member="StudentGroup">
+    <Type Name="StudentGroup">
+      <Column Name="FirstName" Type="System.String" DbType="NChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="MiddleName" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
 </Database>

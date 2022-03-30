@@ -1,7 +1,8 @@
-﻿using System.Windows.Forms;
-using ThesisProject.Modules.DatabaseAdapter;
+﻿using System;
 using System.Data;
 using System.Linq;
+using System.Windows.Forms;
+using ThesisProject.Modules.DatabaseAdapter;
 
 namespace ThesisProject.Forms.UserForm
 {
@@ -12,14 +13,17 @@ namespace ThesisProject.Forms.UserForm
         public UserForm()
         {
             InitializeComponent();
-
         }
 
         private void UserForm_Load(object sender, System.EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "ktkCisDataSet.Group". При необходимости она может быть перемещена или удалена.
+            this.groupTableAdapter.Fill(this.ktkCisDataSet.Group);
             currentUserStrip.Text = Program.FormDataExchange.CurrentUser;
             studentFileOpenDialog.Filter = "Text files(*.txt)|*.txt|All files(*.*)|*.*";
             UpdateGroupsList();
+            UpdateStudentsList();
+
         }
 
         private void UserForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -41,7 +45,7 @@ namespace ThesisProject.Forms.UserForm
             string filename = studentFileOpenDialog.FileName;
             // читаем файл в строку
             string[] groupByLines = System.IO.File.ReadAllLines(filename);
-            
+
             foreach (string s in groupByLines)
             {
                 var addGroup = new Group
@@ -52,7 +56,7 @@ namespace ThesisProject.Forms.UserForm
                 db.SubmitChanges();
                 UpdateGroupsList();
             }
-            
+
         }
 
         private void button1_Click(object sender, System.EventArgs e)
@@ -67,10 +71,6 @@ namespace ThesisProject.Forms.UserForm
             UpdateGroupsList();
 
         }
-        private void UpdateGroupsList()
-        {
-            groupGrid.DataSource = from p in db.Group select new { Гурппа = p.Title };
-        }
 
         private void groupGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -84,14 +84,18 @@ namespace ThesisProject.Forms.UserForm
             DialogResult res = agd.ShowDialog();
             if (res == DialogResult.OK)
             {
-                var addGroup = new Group
-                {
-                    Title = Program.FormDataExchange.NewGroupString
-                };
 
-                db.Group.InsertOnSubmit(addGroup);
-                db.SubmitChanges();
-                UpdateGroupsList();
+                if (!isGroupExists(agd.GroupName))
+                {
+                    var addGroup = new Group
+                    {
+                        Title = agd.GroupName
+                    };
+                    db.Group.InsertOnSubmit(addGroup);
+                    db.SubmitChanges();
+                    UpdateGroupsList();
+                }
+
             }
         }
 
@@ -115,6 +119,88 @@ namespace ThesisProject.Forms.UserForm
 
                 MessageBox.Show(err.Message);
             }
+        }
+        private void UpdateGroupsList()
+        {
+            groupGrid.DataSource = from p in db.Group select new { Гурппа = p.Title };
+        }
+        private void UpdateStudentsList()
+        {
+            studentGrid.DataSource = from p in db.StudentGroup select new { Студент = p.FirstName + p.MiddleName + p.LastName, Группа = p.Title };
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+            studentGrid.DataSource = from p in db.StudentGroup where p.Title == comboFilterByBox.Text select new { Студент = p.FirstName + p.MiddleName + p.LastName, Гурппа = p.Title };
+        }
+        private void addStudentDialogOpen_Click(object sender, System.EventArgs e)
+        {
+            AddStudentDialog.AddStudentDialog asd = new AddStudentDialog.AddStudentDialog();
+            asd.Owner = this;
+            DialogResult res = asd.ShowDialog();
+            if (res == DialogResult.OK)
+            {
+
+                if (!isStudentExists(asd.FirstName, asd.LastName, asd.Group))
+                {
+                    var addStudent = new Student
+                    {
+                        FirstName = asd.FirstName,
+                        MiddleName = asd.MiddleName,
+                        LastName = asd.LastName,
+                        GroupId = getGroupId(asd.Group)
+                    };
+                    db.Student.InsertOnSubmit(addStudent);
+                    db.SubmitChanges();
+                }
+                else
+                    MessageBox.Show("Запись существует");
+                UpdateStudentsList();
+
+            }
+            UpdateGroupsList();
+        }
+        private bool isGroupExists(string groupTitle)
+        {
+            var getGroupFromDb = from c in db.Group
+                                 where c.Title == groupTitle
+                                 select c;
+            if (getGroupFromDb.Count() >= 1)
+                return true;
+            else
+                return false;
+        }
+        private int getGroupId(string groupTitle)
+        {
+            var getGroupIdFromDb = from c in db.Group
+                                   where c.Title == groupTitle
+                                   select c.GroupId;
+            return getGroupIdFromDb.First();
+
+        }
+        private bool isStudentExists(string FirstName, string LastName, string EnteredGroup)
+        {
+            int gid = getGroupId(EnteredGroup);
+            var getGroupFromDb = from st in db.Student
+                                 where (st.FirstName == FirstName) && (st.LastName == LastName) && (st.GroupId == gid)
+                                 select st;
+            if (getGroupFromDb.Count() >= 1)
+                return true;
+            else
+                return false;
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            var getTable = from p in db.Student
+                           select p;
+            foreach (var g in getTable)
+            {
+                db.Student.DeleteOnSubmit(g);
+            }
+            db.SubmitChanges();
+            UpdateStudentsList();
+
         }
     }
 }

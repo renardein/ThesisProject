@@ -47,7 +47,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 49);
+            this.label2.Location = new System.Drawing.Point(13, 52);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(57, 13);
             this.label2.TabIndex = 1;
@@ -56,9 +56,9 @@
             // addGroupButton
             // 
             this.addGroupButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.addGroupButton.Location = new System.Drawing.Point(19, 127);
+            this.addGroupButton.Location = new System.Drawing.Point(16, 87);
             this.addGroupButton.Name = "addGroupButton";
-            this.addGroupButton.Size = new System.Drawing.Size(343, 23);
+            this.addGroupButton.Size = new System.Drawing.Size(339, 23);
             this.addGroupButton.TabIndex = 2;
             this.addGroupButton.Text = "Добавить группу";
             this.addGroupButton.UseVisualStyleBackColor = true;
@@ -66,16 +66,16 @@
             // 
             // addGroupTitleBox
             // 
-            this.addGroupTitleBox.Location = new System.Drawing.Point(80, 49);
+            this.addGroupTitleBox.Location = new System.Drawing.Point(76, 49);
             this.addGroupTitleBox.Name = "addGroupTitleBox";
-            this.addGroupTitleBox.Size = new System.Drawing.Size(275, 20);
+            this.addGroupTitleBox.Size = new System.Drawing.Size(279, 20);
             this.addGroupTitleBox.TabIndex = 3;
             // 
             // AddGroupDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(374, 162);
+            this.ClientSize = new System.Drawing.Size(374, 123);
             this.Controls.Add(this.addGroupTitleBox);
             this.Controls.Add(this.addGroupButton);
             this.Controls.Add(this.label2);

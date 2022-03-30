@@ -47,6 +47,7 @@
             this.authLoginBox.Name = "authLoginBox";
             this.authLoginBox.Size = new System.Drawing.Size(341, 29);
             this.authLoginBox.TabIndex = 1;
+            this.authLoginBox.Text = "user1";
             // 
             // authButton
             // 
@@ -109,6 +110,7 @@
             this.authPassBox.PasswordChar = '*';
             this.authPassBox.Size = new System.Drawing.Size(341, 29);
             this.authPassBox.TabIndex = 2;
+            this.authPassBox.Text = "pass1";
             // 
             // pictureBox1
             // 

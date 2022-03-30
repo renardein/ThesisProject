@@ -13,6 +13,7 @@
         internal DatabaseAdapterDataContext db = new DatabaseAdapterDataContext();
 
         internal int wrongLoginAttemptsConunt;
+        internal string whoami;
 
         public LoginForm()
         {
@@ -46,7 +47,7 @@
                         var getRoleFromDb = from p in db.User where p.Username == authLoginBox.Text select p.Role;
                         string roleFromDb = getRoleFromDb.First().ToString();
                         int selectedRole = authRoleBox.SelectedIndex;
-                        Program.FormDataExchange.CurrentUser = authLoginBox.Text;
+                        whoami = authLoginBox.Text;
                         switch (roleFromDb)
                         {
                             case "admin":

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserForm));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.currentUserStrip = new System.Windows.Forms.ToolStripSplitButton();
@@ -36,6 +37,7 @@
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.examsPage = new System.Windows.Forms.TabPage();
+            this.label3 = new System.Windows.Forms.Label();
             this.studentsPage = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.deleteGroupButton = new System.Windows.Forms.Button();
@@ -44,16 +46,38 @@
             this.importGroupsButton = new System.Windows.Forms.Button();
             this.deleteAllGroups = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.addStudentDialogOpen = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.comboFilterByBox = new System.Windows.Forms.ComboBox();
+            this.groupBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ktkCisDataSet = new ThesisProject.ktkCisDataSet();
+            this.studentGrid = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label6 = new System.Windows.Forms.Label();
             this.studentFileOpenDialog = new System.Windows.Forms.OpenFileDialog();
+            this.groupTableAdapter = new ThesisProject.ktkCisDataSetTableAdapters.GroupTableAdapter();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.button1 = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.examsPage.SuspendLayout();
             this.studentsPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ktkCisDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.studentGrid)).BeginInit();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -108,6 +132,9 @@
             // 
             this.tabControl1.Controls.Add(this.examsPage);
             this.tabControl1.Controls.Add(this.studentsPage);
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 26);
             this.tabControl1.Name = "tabControl1";
@@ -117,6 +144,7 @@
             // 
             // examsPage
             // 
+            this.examsPage.Controls.Add(this.label3);
             this.examsPage.Location = new System.Drawing.Point(4, 22);
             this.examsPage.Name = "examsPage";
             this.examsPage.Padding = new System.Windows.Forms.Padding(3);
@@ -124,6 +152,16 @@
             this.examsPage.TabIndex = 0;
             this.examsPage.Text = "Экзамены";
             this.examsPage.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(3, 3);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(100, 24);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Экзамены";
             // 
             // studentsPage
             // 
@@ -153,9 +191,14 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.button1);
+            this.splitContainer1.Panel2.Controls.Add(this.addStudentDialogOpen);
+            this.splitContainer1.Panel2.Controls.Add(this.label7);
+            this.splitContainer1.Panel2.Controls.Add(this.comboFilterByBox);
+            this.splitContainer1.Panel2.Controls.Add(this.studentGrid);
             this.splitContainer1.Panel2.Controls.Add(this.label2);
             this.splitContainer1.Size = new System.Drawing.Size(786, 392);
-            this.splitContainer1.SplitterDistance = 362;
+            this.splitContainer1.SplitterDistance = 390;
             this.splitContainer1.TabIndex = 0;
             // 
             // deleteGroupButton
@@ -185,7 +228,7 @@
             this.groupGrid.Location = new System.Drawing.Point(7, 66);
             this.groupGrid.Name = "groupGrid";
             this.groupGrid.RowHeadersVisible = false;
-            this.groupGrid.Size = new System.Drawing.Size(352, 292);
+            this.groupGrid.Size = new System.Drawing.Size(382, 292);
             this.groupGrid.TabIndex = 3;
             this.groupGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.groupGrid_CellContentClick);
             // 
@@ -204,7 +247,7 @@
             this.deleteAllGroups.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.deleteAllGroups.Location = new System.Drawing.Point(7, 364);
             this.deleteAllGroups.Name = "deleteAllGroups";
-            this.deleteAllGroups.Size = new System.Drawing.Size(352, 23);
+            this.deleteAllGroups.Size = new System.Drawing.Size(380, 23);
             this.deleteAllGroups.TabIndex = 1;
             this.deleteAllGroups.Text = "Удалить тестовые данные";
             this.deleteAllGroups.UseVisualStyleBackColor = true;
@@ -220,6 +263,56 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Группы";
             // 
+            // addStudentDialogOpen
+            // 
+            this.addStudentDialogOpen.Location = new System.Drawing.Point(7, 37);
+            this.addStudentDialogOpen.Name = "addStudentDialogOpen";
+            this.addStudentDialogOpen.Size = new System.Drawing.Size(75, 23);
+            this.addStudentDialogOpen.TabIndex = 7;
+            this.addStudentDialogOpen.Text = "Добавить";
+            this.addStudentDialogOpen.UseVisualStyleBackColor = true;
+            this.addStudentDialogOpen.Click += new System.EventHandler(this.addStudentDialogOpen_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(242, 42);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(42, 13);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "Группа";
+            // 
+            // comboFilterByBox
+            // 
+            this.comboFilterByBox.DataSource = this.groupBindingSource;
+            this.comboFilterByBox.DisplayMember = "Title";
+            this.comboFilterByBox.FormattingEnabled = true;
+            this.comboFilterByBox.Location = new System.Drawing.Point(290, 39);
+            this.comboFilterByBox.Name = "comboFilterByBox";
+            this.comboFilterByBox.Size = new System.Drawing.Size(94, 21);
+            this.comboFilterByBox.TabIndex = 5;
+            this.comboFilterByBox.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // groupBindingSource
+            // 
+            this.groupBindingSource.DataMember = "Group";
+            this.groupBindingSource.DataSource = this.ktkCisDataSet;
+            // 
+            // ktkCisDataSet
+            // 
+            this.ktkCisDataSet.DataSetName = "ktkCisDataSet";
+            this.ktkCisDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // studentGrid
+            // 
+            this.studentGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.studentGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.studentGrid.Location = new System.Drawing.Point(7, 66);
+            this.studentGrid.Name = "studentGrid";
+            this.studentGrid.RowHeadersVisible = false;
+            this.studentGrid.Size = new System.Drawing.Size(378, 292);
+            this.studentGrid.TabIndex = 4;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -229,6 +322,84 @@
             this.label2.Size = new System.Drawing.Size(99, 24);
             this.label2.TabIndex = 1;
             this.label2.Text = "Студенты";
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.label4);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(792, 398);
+            this.tabPage1.TabIndex = 2;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(3, 3);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(79, 24);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Модули";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.label5);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(792, 398);
+            this.tabPage2.TabIndex = 3;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(3, 3);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(111, 24);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Ведомости";
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.label6);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(792, 398);
+            this.tabPage3.TabIndex = 4;
+            this.tabPage3.Text = "tabPage3";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.Location = new System.Drawing.Point(3, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(98, 24);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Критерии";
+            // 
+            // groupTableAdapter
+            // 
+            this.groupTableAdapter.ClearBeforeFill = true;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.button1.Location = new System.Drawing.Point(7, 364);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(380, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Удалить тестовые данные";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // UserForm
             // 
@@ -246,6 +417,8 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
+            this.examsPage.ResumeLayout(false);
+            this.examsPage.PerformLayout();
             this.studentsPage.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
@@ -254,6 +427,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ktkCisDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.studentGrid)).EndInit();
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -278,5 +460,21 @@
         private System.Windows.Forms.DataGridView groupGrid;
         private System.Windows.Forms.Button addGroupDialogOpen;
         private System.Windows.Forms.Button deleteGroupButton;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DataGridView studentGrid;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox comboFilterByBox;
+        private ktkCisDataSet ktkCisDataSet;
+        private System.Windows.Forms.BindingSource groupBindingSource;
+        private ktkCisDataSetTableAdapters.GroupTableAdapter groupTableAdapter;
+        private System.Windows.Forms.Button addStudentDialogOpen;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.Button button1;
     }
 }
