@@ -24,5 +24,10 @@ namespace ThesisProject.Forms.AddGroupDialog
                 return;
             }
         }
+
+        private void AddGroupDialog_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

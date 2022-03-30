@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace ThesisProject
 {
-    internal static class Program
+    static class Program
     {
         /// <summary>
         /// Главная точка входа для приложения.
@@ -14,10 +14,6 @@ namespace ThesisProject
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LoginForm());
-        }
-        public static class FormDataExchange
-        {
-            public static string CurrentUser { get; set; }
         }
     }
 }

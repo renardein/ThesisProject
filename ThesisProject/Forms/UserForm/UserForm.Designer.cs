@@ -46,11 +46,11 @@
             this.importGroupsButton = new System.Windows.Forms.Button();
             this.deleteAllGroups = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.deleteAllStudents = new System.Windows.Forms.Button();
             this.addStudentDialogOpen = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.comboFilterByBox = new System.Windows.Forms.ComboBox();
-            this.groupBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.ktkCisDataSet = new ThesisProject.ktkCisDataSet();
+            this.comboFilterByGroup = new System.Windows.Forms.ComboBox();
+           
             this.studentGrid = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -60,9 +60,8 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.label6 = new System.Windows.Forms.Label();
             this.studentFileOpenDialog = new System.Windows.Forms.OpenFileDialog();
-            this.groupTableAdapter = new ThesisProject.ktkCisDataSetTableAdapters.GroupTableAdapter();
+            
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
-            this.button1 = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.examsPage.SuspendLayout();
@@ -72,8 +71,7 @@
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ktkCisDataSet)).BeginInit();
+           
             ((System.ComponentModel.ISupportInitialize)(this.studentGrid)).BeginInit();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -191,10 +189,10 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.button1);
+            this.splitContainer1.Panel2.Controls.Add(this.deleteAllStudents);
             this.splitContainer1.Panel2.Controls.Add(this.addStudentDialogOpen);
             this.splitContainer1.Panel2.Controls.Add(this.label7);
-            this.splitContainer1.Panel2.Controls.Add(this.comboFilterByBox);
+            this.splitContainer1.Panel2.Controls.Add(this.comboFilterByGroup);
             this.splitContainer1.Panel2.Controls.Add(this.studentGrid);
             this.splitContainer1.Panel2.Controls.Add(this.label2);
             this.splitContainer1.Size = new System.Drawing.Size(786, 392);
@@ -230,7 +228,6 @@
             this.groupGrid.RowHeadersVisible = false;
             this.groupGrid.Size = new System.Drawing.Size(382, 292);
             this.groupGrid.TabIndex = 3;
-            this.groupGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.groupGrid_CellContentClick);
             // 
             // importGroupsButton
             // 
@@ -263,6 +260,17 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Группы";
             // 
+            // deleteAllStudents
+            // 
+            this.deleteAllStudents.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.deleteAllStudents.Location = new System.Drawing.Point(7, 364);
+            this.deleteAllStudents.Name = "deleteAllStudents";
+            this.deleteAllStudents.Size = new System.Drawing.Size(380, 23);
+            this.deleteAllStudents.TabIndex = 8;
+            this.deleteAllStudents.Text = "Удалить тестовые данные";
+            this.deleteAllStudents.UseVisualStyleBackColor = true;
+            this.deleteAllStudents.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // addStudentDialogOpen
             // 
             this.addStudentDialogOpen.Location = new System.Drawing.Point(7, 37);
@@ -282,26 +290,16 @@
             this.label7.TabIndex = 6;
             this.label7.Text = "Группа";
             // 
-            // comboFilterByBox
+            // comboFilterByGroup
             // 
-            this.comboFilterByBox.DataSource = this.groupBindingSource;
-            this.comboFilterByBox.DisplayMember = "Title";
-            this.comboFilterByBox.FormattingEnabled = true;
-            this.comboFilterByBox.Location = new System.Drawing.Point(290, 39);
-            this.comboFilterByBox.Name = "comboFilterByBox";
-            this.comboFilterByBox.Size = new System.Drawing.Size(94, 21);
-            this.comboFilterByBox.TabIndex = 5;
-            this.comboFilterByBox.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // groupBindingSource
-            // 
-            this.groupBindingSource.DataMember = "Group";
-            this.groupBindingSource.DataSource = this.ktkCisDataSet;
-            // 
-            // ktkCisDataSet
-            // 
-            this.ktkCisDataSet.DataSetName = "ktkCisDataSet";
-            this.ktkCisDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.comboFilterByGroup.DisplayMember = "Title";
+            this.comboFilterByGroup.FormattingEnabled = true;
+            this.comboFilterByGroup.Location = new System.Drawing.Point(290, 39);
+            this.comboFilterByGroup.Name = "comboFilterByGroup";
+            this.comboFilterByGroup.Size = new System.Drawing.Size(94, 21);
+            this.comboFilterByGroup.TabIndex = 5;
+            this.comboFilterByGroup.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+           
             // 
             // studentGrid
             // 
@@ -385,21 +383,7 @@
             this.label6.Size = new System.Drawing.Size(98, 24);
             this.label6.TabIndex = 1;
             this.label6.Text = "Критерии";
-            // 
-            // groupTableAdapter
-            // 
-            this.groupTableAdapter.ClearBeforeFill = true;
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.button1.Location = new System.Drawing.Point(7, 364);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(380, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Удалить тестовые данные";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+          
             // 
             // UserForm
             // 
@@ -426,9 +410,6 @@
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.groupGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ktkCisDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentGrid)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -469,12 +450,9 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridView studentGrid;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox comboFilterByBox;
-        private ktkCisDataSet ktkCisDataSet;
-        private System.Windows.Forms.BindingSource groupBindingSource;
-        private ktkCisDataSetTableAdapters.GroupTableAdapter groupTableAdapter;
+        private System.Windows.Forms.ComboBox comboFilterByGroup;
         private System.Windows.Forms.Button addStudentDialogOpen;
         private System.Drawing.Printing.PrintDocument printDocument1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button deleteAllStudents;
     }
 }

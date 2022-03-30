@@ -3,7 +3,7 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using ThesisProject.Modules.DatabaseAdapter;
-
+using ThesisProject.Modules.TempData;
 namespace ThesisProject.Forms.UserForm
 {
     public partial class UserForm : Form
@@ -17,9 +17,8 @@ namespace ThesisProject.Forms.UserForm
 
         private void UserForm_Load(object sender, System.EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "ktkCisDataSet.Group". При необходимости она может быть перемещена или удалена.
-            this.groupTableAdapter.Fill(this.ktkCisDataSet.Group);
-            currentUserStrip.Text = Program.FormDataExchange.CurrentUser;
+
+            currentUserStrip.Text = TempData.CurrentUser;
             studentFileOpenDialog.Filter = "Text files(*.txt)|*.txt|All files(*.*)|*.*";
             UpdateGroupsList();
             UpdateStudentsList();
@@ -32,10 +31,6 @@ namespace ThesisProject.Forms.UserForm
             ifrm.Show();
         }
 
-        private void выходToolStripMenuItem_Click(object sender, System.EventArgs e)
-        {
-            this.Close();
-        }
 
         private void importGroupsButton_Click(object sender, System.EventArgs e)
         {
@@ -72,10 +67,6 @@ namespace ThesisProject.Forms.UserForm
 
         }
 
-        private void groupGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
 
         private void addGroupDialogOpen_Click(object sender, System.EventArgs e)
         {
@@ -120,18 +111,11 @@ namespace ThesisProject.Forms.UserForm
                 MessageBox.Show(err.Message);
             }
         }
-        private void UpdateGroupsList()
-        {
-            groupGrid.DataSource = from p in db.Group select new { Гурппа = p.Title };
-        }
-        private void UpdateStudentsList()
-        {
-            studentGrid.DataSource = from p in db.StudentGroup select new { Студент = p.FirstName + p.MiddleName + p.LastName, Группа = p.Title };
-        }
+
 
         private void comboBox1_SelectedIndexChanged(object sender, System.EventArgs e)
         {
-            studentGrid.DataSource = from p in db.StudentGroup where p.Title == comboFilterByBox.Text select new { Студент = p.FirstName + p.MiddleName + p.LastName, Гурппа = p.Title };
+            studentGrid.DataSource = from p in db.StudentGroup where p.Title == comboFilterByGroup.Text select new { Студент = p.FirstName + p.MiddleName + p.LastName, Гурппа = p.Title };
         }
         private void addStudentDialogOpen_Click(object sender, System.EventArgs e)
         {
@@ -201,6 +185,22 @@ namespace ThesisProject.Forms.UserForm
             db.SubmitChanges();
             UpdateStudentsList();
 
+        }
+
+        private void UpdateGroupsList()
+        {
+            groupGrid.DataSource = from p in db.Group select new { Группа = p.Title };
+            comboFilterByGroup.DataSource = from p in db.Group select p.Title;
+            TempData.GroupsList = comboFilterByGroup.DataSource;
+        }
+        private void UpdateStudentsList()
+        {
+            studentGrid.DataSource = from p in db.StudentGroup select new { Студент = p.FirstName + p.MiddleName + p.LastName, Группа = p.Title };
+        }
+
+        private void выходToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            this.Close();
         }
     }
 }

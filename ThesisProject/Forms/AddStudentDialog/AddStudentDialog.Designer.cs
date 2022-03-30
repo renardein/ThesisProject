@@ -40,12 +40,7 @@
             this.addStudentGroupBox = new System.Windows.Forms.ComboBox();
             this.groupBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ktkCisDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.ktkCisDataSet = new ThesisProject.ktkCisDataSet();
-            this.groupTableAdapter = new ThesisProject.ktkCisDataSetTableAdapters.GroupTableAdapter();
             this.button1 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.groupBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ktkCisDataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ktkCisDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -130,20 +125,7 @@
             // 
             this.groupBindingSource.DataMember = "Group";
             this.groupBindingSource.DataSource = this.ktkCisDataSetBindingSource;
-            // 
-            // ktkCisDataSetBindingSource
-            // 
-            this.ktkCisDataSetBindingSource.DataSource = this.ktkCisDataSet;
-            this.ktkCisDataSetBindingSource.Position = 0;
-            // 
-            // ktkCisDataSet
-            // 
-            this.ktkCisDataSet.DataSetName = "ktkCisDataSet";
-            this.ktkCisDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // groupTableAdapter
-            // 
-            this.groupTableAdapter.ClearBeforeFill = true;
+           
             // 
             // button1
             // 
@@ -174,9 +156,7 @@
             this.Name = "AddStudentDialog";
             this.Text = "AddStudentDialog";
             this.Load += new System.EventHandler(this.AddStudentDialog_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.groupBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ktkCisDataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ktkCisDataSet)).EndInit();
+         
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -194,9 +174,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox addStudentGroupBox;
         private System.Windows.Forms.BindingSource ktkCisDataSetBindingSource;
-        private ktkCisDataSet ktkCisDataSet;
         private System.Windows.Forms.BindingSource groupBindingSource;
-        private ktkCisDataSetTableAdapters.GroupTableAdapter groupTableAdapter;
         private System.Windows.Forms.Button button1;
     }
 }

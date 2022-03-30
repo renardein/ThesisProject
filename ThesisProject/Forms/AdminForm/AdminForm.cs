@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using ThesisProject.Modules.Crypto;
 using ThesisProject.Modules.DatabaseAdapter;
+using ThesisProject.Modules.TempData;
 using ThesisProject.Modules.OpenForm;
 
 namespace ThesisProject.Forms.AdminForm
@@ -20,7 +21,7 @@ namespace ThesisProject.Forms.AdminForm
 
         private void AdminForm_Load(object sender, EventArgs e)
         {
-            currentUserStrip.Text = Program.FormDataExchange.CurrentUser;
+            currentUserStrip.Text = TempData.CurrentUser;
             UpdateUsersList();
         }
 

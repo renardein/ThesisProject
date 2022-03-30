@@ -1,4 +1,5 @@
-﻿namespace ThesisProject.Modules.OpenForm
+﻿
+namespace ThesisProject.Modules.OpenForm
 {
     internal class OpenForm
     {
@@ -14,8 +15,8 @@
         }
         public static void KarpikEgg()
         {
-            Forms.KarpikEggForm.KarpikEggForm egg = new Forms.KarpikEggForm.KarpikEggForm();
-            egg.Show();
+            Forms.KarpikEggForm.KarpikEggForm eg = new Forms.KarpikEggForm.KarpikEggForm();
+            eg.Show();
         }
     }
 }

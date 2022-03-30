@@ -83,6 +83,7 @@
             this.Name = "AddGroupDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AddGroupDialog";
+            this.Load += new System.EventHandler(this.AddGroupDialog_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
