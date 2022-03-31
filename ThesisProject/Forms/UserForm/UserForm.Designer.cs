@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserForm));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.currentUserStrip = new System.Windows.Forms.ToolStripSplitButton();
@@ -46,11 +45,11 @@
             this.importGroupsButton = new System.Windows.Forms.Button();
             this.deleteAllGroups = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.deleteStudentButton = new System.Windows.Forms.Button();
             this.deleteAllStudents = new System.Windows.Forms.Button();
             this.addStudentDialogOpen = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.comboFilterByGroup = new System.Windows.Forms.ComboBox();
-           
             this.studentGrid = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -60,8 +59,8 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.label6 = new System.Windows.Forms.Label();
             this.studentFileOpenDialog = new System.Windows.Forms.OpenFileDialog();
-            
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.importStudentsButton = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.examsPage.SuspendLayout();
@@ -71,7 +70,6 @@
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupGrid)).BeginInit();
-           
             ((System.ComponentModel.ISupportInitialize)(this.studentGrid)).BeginInit();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -86,7 +84,7 @@
             this.toolStripLabel2});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 26);
+            this.toolStrip1.Size = new System.Drawing.Size(850, 26);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -137,7 +135,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 26);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(800, 424);
+            this.tabControl1.Size = new System.Drawing.Size(850, 424);
             this.tabControl1.TabIndex = 1;
             // 
             // examsPage
@@ -167,7 +165,7 @@
             this.studentsPage.Location = new System.Drawing.Point(4, 22);
             this.studentsPage.Name = "studentsPage";
             this.studentsPage.Padding = new System.Windows.Forms.Padding(3);
-            this.studentsPage.Size = new System.Drawing.Size(792, 398);
+            this.studentsPage.Size = new System.Drawing.Size(842, 398);
             this.studentsPage.TabIndex = 1;
             this.studentsPage.Text = "Студенты";
             this.studentsPage.UseVisualStyleBackColor = true;
@@ -189,21 +187,23 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.importStudentsButton);
+            this.splitContainer1.Panel2.Controls.Add(this.deleteStudentButton);
             this.splitContainer1.Panel2.Controls.Add(this.deleteAllStudents);
             this.splitContainer1.Panel2.Controls.Add(this.addStudentDialogOpen);
             this.splitContainer1.Panel2.Controls.Add(this.label7);
             this.splitContainer1.Panel2.Controls.Add(this.comboFilterByGroup);
             this.splitContainer1.Panel2.Controls.Add(this.studentGrid);
             this.splitContainer1.Panel2.Controls.Add(this.label2);
-            this.splitContainer1.Size = new System.Drawing.Size(786, 392);
-            this.splitContainer1.SplitterDistance = 390;
+            this.splitContainer1.Size = new System.Drawing.Size(836, 392);
+            this.splitContainer1.SplitterDistance = 414;
             this.splitContainer1.TabIndex = 0;
             // 
             // deleteGroupButton
             // 
-            this.deleteGroupButton.Location = new System.Drawing.Point(299, 37);
+            this.deleteGroupButton.Location = new System.Drawing.Point(88, 37);
             this.deleteGroupButton.Name = "deleteGroupButton";
-            this.deleteGroupButton.Size = new System.Drawing.Size(60, 23);
+            this.deleteGroupButton.Size = new System.Drawing.Size(75, 23);
             this.deleteGroupButton.TabIndex = 5;
             this.deleteGroupButton.Text = "Удалить";
             this.deleteGroupButton.UseVisualStyleBackColor = true;
@@ -231,11 +231,11 @@
             // 
             // importGroupsButton
             // 
-            this.importGroupsButton.Location = new System.Drawing.Point(88, 37);
+            this.importGroupsButton.Location = new System.Drawing.Point(169, 37);
             this.importGroupsButton.Name = "importGroupsButton";
-            this.importGroupsButton.Size = new System.Drawing.Size(205, 23);
+            this.importGroupsButton.Size = new System.Drawing.Size(75, 23);
             this.importGroupsButton.TabIndex = 2;
-            this.importGroupsButton.Text = "Импортирвоать группы из файла";
+            this.importGroupsButton.Text = "Импорт";
             this.importGroupsButton.UseVisualStyleBackColor = true;
             this.importGroupsButton.Click += new System.EventHandler(this.importGroupsButton_Click);
             // 
@@ -260,12 +260,21 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Группы";
             // 
+            // deleteStudentButton
+            // 
+            this.deleteStudentButton.Location = new System.Drawing.Point(88, 37);
+            this.deleteStudentButton.Name = "deleteStudentButton";
+            this.deleteStudentButton.Size = new System.Drawing.Size(75, 23);
+            this.deleteStudentButton.TabIndex = 9;
+            this.deleteStudentButton.Text = "Удалить";
+            this.deleteStudentButton.UseVisualStyleBackColor = true;
+            // 
             // deleteAllStudents
             // 
             this.deleteAllStudents.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.deleteAllStudents.Location = new System.Drawing.Point(7, 364);
             this.deleteAllStudents.Name = "deleteAllStudents";
-            this.deleteAllStudents.Size = new System.Drawing.Size(380, 23);
+            this.deleteAllStudents.Size = new System.Drawing.Size(406, 23);
             this.deleteAllStudents.TabIndex = 8;
             this.deleteAllStudents.Text = "Удалить тестовые данные";
             this.deleteAllStudents.UseVisualStyleBackColor = true;
@@ -284,7 +293,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(242, 42);
+            this.label7.Location = new System.Drawing.Point(271, 42);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(42, 13);
             this.label7.TabIndex = 6;
@@ -294,12 +303,11 @@
             // 
             this.comboFilterByGroup.DisplayMember = "Title";
             this.comboFilterByGroup.FormattingEnabled = true;
-            this.comboFilterByGroup.Location = new System.Drawing.Point(290, 39);
+            this.comboFilterByGroup.Location = new System.Drawing.Point(319, 39);
             this.comboFilterByGroup.Name = "comboFilterByGroup";
             this.comboFilterByGroup.Size = new System.Drawing.Size(94, 21);
             this.comboFilterByGroup.TabIndex = 5;
             this.comboFilterByGroup.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-           
             // 
             // studentGrid
             // 
@@ -308,7 +316,7 @@
             this.studentGrid.Location = new System.Drawing.Point(7, 66);
             this.studentGrid.Name = "studentGrid";
             this.studentGrid.RowHeadersVisible = false;
-            this.studentGrid.Size = new System.Drawing.Size(378, 292);
+            this.studentGrid.Size = new System.Drawing.Size(406, 292);
             this.studentGrid.TabIndex = 4;
             // 
             // label2
@@ -383,13 +391,22 @@
             this.label6.Size = new System.Drawing.Size(98, 24);
             this.label6.TabIndex = 1;
             this.label6.Text = "Критерии";
-          
+            // 
+            // importStudentsButton
+            // 
+            this.importStudentsButton.Location = new System.Drawing.Point(169, 37);
+            this.importStudentsButton.Name = "importStudentsButton";
+            this.importStudentsButton.Size = new System.Drawing.Size(75, 23);
+            this.importStudentsButton.TabIndex = 6;
+            this.importStudentsButton.Text = "Импорт";
+            this.importStudentsButton.UseVisualStyleBackColor = true;
+            this.importStudentsButton.Click += new System.EventHandler(this.importStudentsButton_Click);
             // 
             // UserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(850, 450);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.toolStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -410,6 +427,7 @@
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentGrid)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -454,5 +472,7 @@
         private System.Windows.Forms.Button addStudentDialogOpen;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.Button deleteAllStudents;
+        private System.Windows.Forms.Button deleteStudentButton;
+        private System.Windows.Forms.Button importStudentsButton;
     }
 }

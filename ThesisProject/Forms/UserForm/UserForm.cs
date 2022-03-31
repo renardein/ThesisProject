@@ -84,10 +84,9 @@ namespace ThesisProject.Forms.UserForm
                     };
                     db.Group.InsertOnSubmit(addGroup);
                     db.SubmitChanges();
-                    UpdateGroupsList();
                 }
-
             }
+            UpdateGroupsList();
         }
 
         private void deleteGroupButton_Click(object sender, System.EventArgs e)
@@ -107,7 +106,6 @@ namespace ThesisProject.Forms.UserForm
             }
             catch (System.InvalidOperationException err)
             {
-
                 MessageBox.Show(err.Message);
             }
         }
@@ -115,7 +113,10 @@ namespace ThesisProject.Forms.UserForm
 
         private void comboBox1_SelectedIndexChanged(object sender, System.EventArgs e)
         {
-            studentGrid.DataSource = from p in db.StudentGroup where p.Title == comboFilterByGroup.Text select new { Студент = p.FirstName + p.MiddleName + p.LastName, Гурппа = p.Title };
+            if (comboFilterByGroup.SelectedIndex == 0)
+                UpdateStudentsList();
+            else
+                studentGrid.DataSource = from p in db.StudentGroup where p.Title == comboFilterByGroup.Text select new { Студент = p.FirstName + p.MiddleName + p.LastName, Гурппа = p.Title };
         }
         private void addStudentDialogOpen_Click(object sender, System.EventArgs e)
         {
@@ -189,18 +190,77 @@ namespace ThesisProject.Forms.UserForm
 
         private void UpdateGroupsList()
         {
+            comboFilterByGroup.Items.Clear();
             groupGrid.DataSource = from p in db.Group select new { Группа = p.Title };
-            comboFilterByGroup.DataSource = from p in db.Group select p.Title;
-            TempData.GroupsList = comboFilterByGroup.DataSource;
+            comboFilterByGroup.Items.Add("Без фильтра");
+            var getGroupsList = (from p in db.Group select p.Title);
+            TempData.GroupsList = getGroupsList;
+            foreach (var item in getGroupsList)
+            {
+                comboFilterByGroup.Items.Add(item.ToString());
+            }
+
         }
         private void UpdateStudentsList()
         {
             studentGrid.DataSource = from p in db.StudentGroup select new { Студент = p.FirstName + p.MiddleName + p.LastName, Группа = p.Title };
         }
 
+
         private void выходToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
             this.Close();
+        }
+
+        private void importStudentsButton_Click(object sender, EventArgs e)
+        {
+            if (studentFileOpenDialog.ShowDialog() == DialogResult.Cancel)
+                return;
+            // получаем выбранный файл
+            string filename = studentFileOpenDialog.FileName;
+            // читаем файл в строку
+            string[] groupByLines = System.IO.File.ReadAllLines(filename);
+
+            foreach (string s in groupByLines)
+            {
+                string[] words = s.Split(',');
+                string name = words[0];
+                string group = words[1];
+                string[] splitname = name.Split(' ');
+                if (isGroupExists(group))
+                {
+                    var addStudent = new Student
+                    {
+                        FirstName = splitname[1],
+                        MiddleName = splitname[2],
+                        LastName = splitname[0]
+                    };
+                    db.Student.InsertOnSubmit(addStudent);
+                    db.SubmitChanges();
+                    UpdateStudentsList();
+                }
+                else
+                {
+                    var addGroup = new Group
+                    {
+                        Title = group,
+                    };
+                    db.Group.InsertOnSubmit(addGroup);
+                    db.SubmitChanges();
+                    var addStudent = new Student
+                    {
+                        FirstName = splitname[1],
+                        MiddleName = splitname[2],
+                        LastName = splitname[0],
+                        GroupId = getGroupId(group)
+                    };
+                    db.Student.InsertOnSubmit(addStudent);
+                    db.SubmitChanges();
+                    UpdateGroupsList();
+                    UpdateStudentsList();
+                }
+
+            }
         }
     }
 }
