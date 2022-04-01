@@ -12,8 +12,7 @@ namespace ThesisProject.Forms.AdminForm
     public partial class AdminForm : Form
     {
         DatabaseAdapterDataContext db = new DatabaseAdapterDataContext();
-        Tasks tsk = new Tasks();                                                                                
-        string[] userRole = new string[] { "admin", "user" };
+        Tasks tsk = new Tasks();
 
         public AdminForm()
         {
@@ -42,15 +41,8 @@ namespace ThesisProject.Forms.AdminForm
                     if (regPassword.Text == regPasswordConfirm.Text)
                     {
                         string pwd_hash = Crypto.GetMD5(regPassword.Text);
-                        string role = userRole[regUserRole.SelectedIndex];
-                        var newUser = new User
-                        {
-                            Username = regUsername.Text,
-                            Password = pwd_hash,
-                            Role = role
-                        };
-                        db.User.InsertOnSubmit(newUser);
-                        db.SubmitChanges();
+                        int role = regUserRole.SelectedIndex;
+                        tsk.addUser(regUsername.Text, pwd_hash, role);
                         DialogResult result = MessageBox.Show("Пользователь добавлен", "Системное сообщение", MessageBoxButtons.OK);
                         if (result == DialogResult.OK)
                         {
@@ -94,15 +86,12 @@ namespace ThesisProject.Forms.AdminForm
             {
                 if (userDeleteResult == DialogResult.Yes)
                 {
-                    User objUser = db.User.Single(user => user.Username == rmuser);
-                    db.User.DeleteOnSubmit(objUser);
-                    db.SubmitChanges();
+                    tsk.deleteUser(rmuser);
                     UpdateUsersList();
                 }
             }
             catch (System.InvalidOperationException err)
             {
-
                 MessageBox.Show(err.Message);
             }
 
@@ -111,18 +100,13 @@ namespace ThesisProject.Forms.AdminForm
         private void button1_Click(object sender, EventArgs e)
         {
             string changinguser = usersGrid.CurrentCell.Value.ToString();
-            DialogResult userDeleteResult = MessageBox.Show("Вы уверены что хотите сменить роль пользователя " + changinguser + "?", "Системное сообщение", MessageBoxButtons.YesNo);
+            DialogResult userRoleChangeResult = MessageBox.Show("Вы уверены что хотите сменить роль пользователя " + changinguser + "?", "Системное сообщение", MessageBoxButtons.YesNo);
 
             try
             {
-                if (userDeleteResult == DialogResult.Yes)
+                if (userRoleChangeResult == DialogResult.Yes)
                 {
-                    var objUser = (from c in db.User where c.Username == changinguser select c).First();
-                    if (objUser.Role == userRole[0])
-                        objUser.Role = userRole[1];
-                    else
-                        objUser.Role = userRole[0];
-                    db.SubmitChanges();
+                    tsk.changeUserRole(changinguser);
                     UpdateUsersList();
                 }
             }

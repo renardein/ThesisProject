@@ -36,5 +36,36 @@ namespace ThesisProject.Forms.UserForm
             else
                 return false;
         }
+
+        internal void addStudent(string FirstName, string LastName, string MiddleName, string EnteredGroup)
+        {
+            var addStudent = new Student
+            {
+                FirstName = FirstName,
+                MiddleName = LastName,
+                LastName = MiddleName,
+                GroupId = getGroupId(EnteredGroup)
+            };
+            db.Student.InsertOnSubmit(addStudent);
+            db.SubmitChanges();
+        }
+        internal void addGroup(string EnteredGroup)
+        {
+
+            var addGroup = new Group
+            {
+                Title = EnteredGroup,
+            };
+            db.Group.InsertOnSubmit(addGroup);
+            db.SubmitChanges();
+
+        }
+
+        internal void deleteGroup(string gr)
+        {
+            Group objgroup = db.Group.Single(group => group.Title == gr);
+            db.Group.DeleteOnSubmit(objgroup);
+            db.SubmitChanges();
+        }
     }
 }

@@ -11,6 +11,7 @@ namespace ThesisProject.Forms.UserForm
         internal DatabaseAdapterDataContext db = new DatabaseAdapterDataContext();
         internal Tasks tsk = new Tasks();
 
+
         public UserForm()
         {
             InitializeComponent();
@@ -37,19 +38,12 @@ namespace ThesisProject.Forms.UserForm
         {
             if (studentFileOpenDialog.ShowDialog() == DialogResult.Cancel)
                 return;
-            // получаем выбранный файл
             string filename = studentFileOpenDialog.FileName;
-            // читаем файл в строку
             string[] groupByLines = System.IO.File.ReadAllLines(filename);
 
             foreach (string s in groupByLines)
             {
-                var addGroup = new Group
-                {
-                    Title = s
-                };
-                db.Group.InsertOnSubmit(addGroup);
-                db.SubmitChanges();
+                tsk.addGroup(s);
                 UpdateGroupsList();
             }
 
@@ -79,12 +73,7 @@ namespace ThesisProject.Forms.UserForm
 
                 if (!tsk.isGroupExists(agd.GroupName))
                 {
-                    var addGroup = new Group
-                    {
-                        Title = agd.GroupName
-                    };
-                    db.Group.InsertOnSubmit(addGroup);
-                    db.SubmitChanges();
+                    tsk.addGroup(agd.GroupName);
                 }
             }
             UpdateGroupsList();
@@ -99,9 +88,7 @@ namespace ThesisProject.Forms.UserForm
             {
                 if (groupDeleteResult == DialogResult.Yes)
                 {
-                    Group objgroup = db.Group.Single(group => group.Title == rmGroup);
-                    db.Group.DeleteOnSubmit(objgroup);
-                    db.SubmitChanges();
+                    tsk.deleteGroup(rmGroup);
                     UpdateGroupsList();
                 }
             }
@@ -129,24 +116,15 @@ namespace ThesisProject.Forms.UserForm
 
                 if (!tsk.isStudentExists(asd.FirstName, asd.LastName, asd.Group))
                 {
-                    var addStudent = new Student
-                    {
-                        FirstName = asd.FirstName,
-                        MiddleName = asd.MiddleName,
-                        LastName = asd.LastName,
-                        GroupId = tsk.getGroupId(asd.Group)
-                    };
-                    db.Student.InsertOnSubmit(addStudent);
-                    db.SubmitChanges();
+                    tsk.addStudent(asd.FirstName, asd.LastName, asd.MiddleName, asd.Group);
                 }
                 else
                     MessageBox.Show("Запись существует");
-                UpdateStudentsList();
 
             }
-            UpdateGroupsList();
+            UpdateStudentsList();
         }
-   
+
 
         private void button1_Click_1(object sender, EventArgs e)
         {
@@ -197,41 +175,26 @@ namespace ThesisProject.Forms.UserForm
             foreach (string s in groupByLines)
             {
                 string[] words = s.Split(',');
-                string name = words[0];
                 string group = words[1];
-                string[] splitname = name.Split(' ');
-                if (tsk.isGroupExists(group))
+                string[] splitname = words[0].Split(' ');
+                string getMiddleName;
+                if (splitname.Count() == 2)
+                    getMiddleName = null;
+                else
+                    getMiddleName = splitname[2];
+                if (!tsk.isGroupExists(group))
                 {
-                    var addStudent = new Student
-                    {
-                        FirstName = splitname[1],
-                        MiddleName = splitname[2],
-                        LastName = splitname[0]
-                    };
-                    db.Student.InsertOnSubmit(addStudent);
-                    db.SubmitChanges();
-                    UpdateStudentsList();
+                    tsk.addGroup(group);
+                    tsk.addStudent(splitname[1], getMiddleName, splitname[0], group);
                 }
                 else
                 {
-                    var addGroup = new Group
-                    {
-                        Title = group,
-                    };
-                    db.Group.InsertOnSubmit(addGroup);
-                    db.SubmitChanges();
-                    var addStudent = new Student
-                    {
-                        FirstName = splitname[1],
-                        MiddleName = splitname[2],
-                        LastName = splitname[0],
-                        GroupId = tsk.getGroupId(group)
-                    };
-                    db.Student.InsertOnSubmit(addStudent);
-                    db.SubmitChanges();
-                    UpdateGroupsList();
-                    UpdateStudentsList();
+                    tsk.addStudent(splitname[1], getMiddleName, splitname[0], group);
                 }
+
+
+                UpdateGroupsList();
+                UpdateStudentsList();
 
             }
         }
