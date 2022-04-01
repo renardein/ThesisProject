@@ -45,6 +45,7 @@
             this.importGroupsButton = new System.Windows.Forms.Button();
             this.deleteAllGroups = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.importStudentsButton = new System.Windows.Forms.Button();
             this.deleteStudentButton = new System.Windows.Forms.Button();
             this.deleteAllStudents = new System.Windows.Forms.Button();
             this.addStudentDialogOpen = new System.Windows.Forms.Button();
@@ -60,7 +61,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.studentFileOpenDialog = new System.Windows.Forms.OpenFileDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
-            this.importStudentsButton = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.examsPage.SuspendLayout();
@@ -144,7 +144,7 @@
             this.examsPage.Location = new System.Drawing.Point(4, 22);
             this.examsPage.Name = "examsPage";
             this.examsPage.Padding = new System.Windows.Forms.Padding(3);
-            this.examsPage.Size = new System.Drawing.Size(792, 398);
+            this.examsPage.Size = new System.Drawing.Size(842, 398);
             this.examsPage.TabIndex = 0;
             this.examsPage.Text = "Экзамены";
             this.examsPage.UseVisualStyleBackColor = true;
@@ -226,7 +226,7 @@
             this.groupGrid.Location = new System.Drawing.Point(7, 66);
             this.groupGrid.Name = "groupGrid";
             this.groupGrid.RowHeadersVisible = false;
-            this.groupGrid.Size = new System.Drawing.Size(382, 292);
+            this.groupGrid.Size = new System.Drawing.Size(404, 292);
             this.groupGrid.TabIndex = 3;
             // 
             // importGroupsButton
@@ -259,6 +259,16 @@
             this.label1.Size = new System.Drawing.Size(76, 24);
             this.label1.TabIndex = 0;
             this.label1.Text = "Группы";
+            // 
+            // importStudentsButton
+            // 
+            this.importStudentsButton.Location = new System.Drawing.Point(169, 37);
+            this.importStudentsButton.Name = "importStudentsButton";
+            this.importStudentsButton.Size = new System.Drawing.Size(75, 23);
+            this.importStudentsButton.TabIndex = 6;
+            this.importStudentsButton.Text = "Импорт";
+            this.importStudentsButton.UseVisualStyleBackColor = true;
+            this.importStudentsButton.Click += new System.EventHandler(this.importStudentsButton_Click);
             // 
             // deleteStudentButton
             // 
@@ -335,7 +345,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(792, 398);
+            this.tabPage1.Size = new System.Drawing.Size(842, 398);
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -356,7 +366,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(792, 398);
+            this.tabPage2.Size = new System.Drawing.Size(842, 398);
             this.tabPage2.TabIndex = 3;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -377,7 +387,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(792, 398);
+            this.tabPage3.Size = new System.Drawing.Size(842, 398);
             this.tabPage3.TabIndex = 4;
             this.tabPage3.Text = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -391,16 +401,6 @@
             this.label6.Size = new System.Drawing.Size(98, 24);
             this.label6.TabIndex = 1;
             this.label6.Text = "Критерии";
-            // 
-            // importStudentsButton
-            // 
-            this.importStudentsButton.Location = new System.Drawing.Point(169, 37);
-            this.importStudentsButton.Name = "importStudentsButton";
-            this.importStudentsButton.Size = new System.Drawing.Size(75, 23);
-            this.importStudentsButton.TabIndex = 6;
-            this.importStudentsButton.Text = "Импорт";
-            this.importStudentsButton.UseVisualStyleBackColor = true;
-            this.importStudentsButton.Click += new System.EventHandler(this.importStudentsButton_Click);
             // 
             // UserForm
             // 

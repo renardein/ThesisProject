@@ -104,7 +104,7 @@ namespace ThesisProject.Forms.UserForm
             if (comboFilterByGroup.SelectedIndex == 0)
                 UpdateStudentsList();
             else
-                studentGrid.DataSource = from p in db.StudentGroup where p.Title == comboFilterByGroup.Text select new { Студент = p.FirstName + p.MiddleName + p.LastName, Гурппа = p.Title };
+                studentGrid.DataSource = (from p in db.StudentGroup where p.Title == comboFilterByGroup.Text select new {Студент = p.FirstName + p.MiddleName + p.LastName, Группа = p.Title});
         }
         private void addStudentDialogOpen_Click(object sender, System.EventArgs e)
         {
@@ -154,7 +154,7 @@ namespace ThesisProject.Forms.UserForm
         }
         private void UpdateStudentsList()
         {
-            studentGrid.DataSource = from p in db.StudentGroup select new { Студент = p.FirstName + p.MiddleName + p.LastName, Группа = p.Title };
+            studentGrid.DataSource = from p in db.StudentGroup select new { Студент = p.FirstName + (p.MiddleName ?? "") + p.LastName, Группа = p.Title };
         }
 
 
