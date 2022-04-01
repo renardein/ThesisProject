@@ -7,6 +7,11 @@ namespace ThesisProject.Forms.AdminForm
     {
         string[] userRole = new string[] { "admin", "user" };
         DatabaseAdapterDataContext db = new DatabaseAdapterDataContext();
+
+        /// <summary>
+        /// Проверяет наличие пользователя в базе по его имени
+        /// </summary>
+        /// <param name="username">Имя пользователя</param>
         internal bool isUserExists(string username)
         {
             var getUserFromDb = from c in db.User
@@ -18,6 +23,12 @@ namespace ThesisProject.Forms.AdminForm
                 return false;
         }
 
+        /// <summary>
+        /// Добавляет нового пользователя системы
+        /// </summary>
+        /// <param name="username">Имя пользователя</param>
+        /// <param name="pwd_hash">Хеш пароля</param>
+        /// <param name="role">Индекс выбранной роли из ComboBox</param>
         internal void addUser(string username, string pwd_hash, int role)
         {
             var newUser = new User
@@ -30,6 +41,10 @@ namespace ThesisProject.Forms.AdminForm
             db.SubmitChanges();
         }
 
+        /// <summary>
+        /// Изменяет роль пользователя в системе
+        /// </summary>
+        /// <param name="username">Имя пользователя</param>
         internal void changeUserRole(string username)
         {
             var objUser = (from c in db.User where c.Username == username select c).First();
@@ -40,6 +55,10 @@ namespace ThesisProject.Forms.AdminForm
             db.SubmitChanges();
         }
 
+        /// <summary>
+        /// Удаляет пользователя из системы
+        /// </summary>
+        /// <param name="usr">Имя пользователя</param>
         internal void deleteUser(string usr)
         {
             User objUser = db.User.Single(user => user.Username == usr);

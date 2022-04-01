@@ -7,6 +7,10 @@ namespace ThesisProject.Forms.UserForm
     {
         DatabaseAdapterDataContext db = new DatabaseAdapterDataContext();
 
+        /// <summary>
+        /// Проверяет наличие группы в базе
+        /// </summary>
+        /// <param name="groupTitle">Наименование группы</param>
         internal bool isGroupExists(string groupTitle)
         {
             var getGroupFromDb = from c in db.Group
@@ -17,6 +21,11 @@ namespace ThesisProject.Forms.UserForm
             else
                 return false;
         }
+
+        /// <summary>
+        /// Получает ID группы по ее наименованию
+        /// </summary>
+        /// <param name="groupTitle">Наименование группы</param>
         internal int getGroupId(string groupTitle)
         {
             var getGroupIdFromDb = from c in db.Group
@@ -25,6 +34,12 @@ namespace ThesisProject.Forms.UserForm
             return getGroupIdFromDb.First();
 
         }
+        /// <summary>
+        /// Проверяет наличие студента в базе
+        /// </summary>
+        /// <param name="EnteredGroup">Наименование группы</param>
+        /// <param name="FirstName">Имя студента</param>
+        /// <param name="LastName">Фамилия студента</param>
         internal bool isStudentExists(string FirstName, string LastName, string EnteredGroup)
         {
             int gid = getGroupId(EnteredGroup);
@@ -37,6 +52,12 @@ namespace ThesisProject.Forms.UserForm
                 return false;
         }
 
+        /// <summary>
+        /// Добавляет студента в базу
+        /// </summary>
+        /// <param name="EnteredGroup">Наименование группы</param>
+        /// <param name="FirstName">Имя студента</param>
+        /// <param name="LastName">Фамилия студента</param>
         internal void addStudent(string FirstName, string LastName, string MiddleName, string EnteredGroup)
         {
             var addStudent = new Student
@@ -49,6 +70,10 @@ namespace ThesisProject.Forms.UserForm
             db.Student.InsertOnSubmit(addStudent);
             db.SubmitChanges();
         }
+        /// <summary>
+        /// Добавляет группу в базу
+        /// </summary>
+        /// <param name="EnteredGroup">Наименование группы</param>
         internal void addGroup(string EnteredGroup)
         {
 
@@ -61,6 +86,10 @@ namespace ThesisProject.Forms.UserForm
 
         }
 
+        /// <summary>
+        /// Удаляет гуппу из базы
+        /// </summary>
+        /// <param name="gr">Наименование группы</param>
         internal void deleteGroup(string gr)
         {
             Group objgroup = db.Group.Single(group => group.Title == gr);
