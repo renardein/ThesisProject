@@ -37,6 +37,7 @@ namespace ThesisProject.Forms.AdminForm
                 objUser.Role = userRole[1];
             else
                 objUser.Role = userRole[0];
+            db.SubmitChanges();
         }
 
         internal void deleteUser(string usr)

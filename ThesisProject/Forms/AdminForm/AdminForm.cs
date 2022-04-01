@@ -99,14 +99,14 @@ namespace ThesisProject.Forms.AdminForm
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string changinguser = usersGrid.CurrentCell.Value.ToString();
-            DialogResult userRoleChangeResult = MessageBox.Show("Вы уверены что хотите сменить роль пользователя " + changinguser + "?", "Системное сообщение", MessageBoxButtons.YesNo);
+            string changingUser = usersGrid.CurrentCell.Value.ToString();
+            DialogResult userRoleChangeResult = MessageBox.Show("Вы уверены что хотите сменить роль пользователя " + changingUser + "?", "Системное сообщение", MessageBoxButtons.YesNo);
 
             try
             {
                 if (userRoleChangeResult == DialogResult.Yes)
                 {
-                    tsk.changeUserRole(changinguser);
+                    tsk.changeUserRole(changingUser);
                     UpdateUsersList();
                 }
             }
