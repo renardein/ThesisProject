@@ -38,8 +38,7 @@ namespace ThesisProject.Forms.UserForm
         {
             if (studentFileOpenDialog.ShowDialog() == DialogResult.Cancel)
                 return;
-            string filename = studentFileOpenDialog.FileName;
-            string[] groupByLines = System.IO.File.ReadAllLines(filename);
+            string[] groupByLines = System.IO.File.ReadAllLines(studentFileOpenDialog.FileName);
 
             foreach (string s in groupByLines)
             {
@@ -104,7 +103,7 @@ namespace ThesisProject.Forms.UserForm
             if (comboFilterByGroup.SelectedIndex == 0)
                 UpdateStudentsList();
             else
-                studentGrid.DataSource = (from p in db.StudentGroup where p.Title == comboFilterByGroup.Text select new {Студент = p.FirstName + p.MiddleName + p.LastName, Группа = p.Title});
+                studentGrid.DataSource = (from p in db.StudentGroup where p.Title == comboFilterByGroup.Text select new {Студент = p.FirstName + (p.MiddleName ?? "") + p.LastName, Группа = p.Title});
         }
         private void addStudentDialogOpen_Click(object sender, System.EventArgs e)
         {
@@ -167,10 +166,7 @@ namespace ThesisProject.Forms.UserForm
         {
             if (studentFileOpenDialog.ShowDialog() == DialogResult.Cancel)
                 return;
-            // получаем выбранный файл
-            string filename = studentFileOpenDialog.FileName;
-            // читаем файл в строку
-            string[] groupByLines = System.IO.File.ReadAllLines(filename);
+            string[] groupByLines = System.IO.File.ReadAllLines(studentFileOpenDialog.FileName);
 
             foreach (string s in groupByLines)
             {

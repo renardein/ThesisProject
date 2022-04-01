@@ -31,7 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.addGroupButton = new System.Windows.Forms.Button();
-            this.addGroupTitleBox = new System.Windows.Forms.TextBox();
+            this.addGroupTitleBox = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -67,8 +67,9 @@
             // addGroupTitleBox
             // 
             this.addGroupTitleBox.Location = new System.Drawing.Point(76, 49);
+            this.addGroupTitleBox.Mask = "LL 00.00C9";
             this.addGroupTitleBox.Name = "addGroupTitleBox";
-            this.addGroupTitleBox.Size = new System.Drawing.Size(279, 20);
+            this.addGroupTitleBox.Size = new System.Drawing.Size(278, 20);
             this.addGroupTitleBox.TabIndex = 3;
             // 
             // AddGroupDialog
@@ -94,6 +95,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button addGroupButton;
-        private System.Windows.Forms.TextBox addGroupTitleBox;
+        private System.Windows.Forms.MaskedTextBox addGroupTitleBox;
     }
 }
