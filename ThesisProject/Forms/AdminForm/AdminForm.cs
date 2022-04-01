@@ -12,6 +12,7 @@ namespace ThesisProject.Forms.AdminForm
     public partial class AdminForm : Form
     {
         DatabaseAdapterDataContext db = new DatabaseAdapterDataContext();
+        Tasks tsk = new Tasks();                                                                                
         string[] userRole = new string[] { "admin", "user" };
 
         public AdminForm()
@@ -36,7 +37,7 @@ namespace ThesisProject.Forms.AdminForm
                     OpenForm.KarpikEgg();
                     return;
                 }
-                if (!isUserExists(regUsername.Text))
+                if (!tsk.isUserExists(regUsername.Text))
                 {
                     if (regPassword.Text == regPasswordConfirm.Text)
                     {
@@ -72,16 +73,6 @@ namespace ThesisProject.Forms.AdminForm
                 MessageBox.Show("Проверьте поля");
                 return;
             }
-        }
-        private bool isUserExists(string username)
-        {
-            var getUserFromDb = from c in db.User
-                                where c.Username == username
-                                select c;
-            if (getUserFromDb.Count() == 1)
-                return true;
-            else
-                return false;
         }
         private void AdminForm_FormClosed(object sender, FormClosedEventArgs e)
         {

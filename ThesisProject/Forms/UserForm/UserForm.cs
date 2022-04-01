@@ -9,6 +9,7 @@ namespace ThesisProject.Forms.UserForm
     public partial class UserForm : Form
     {
         internal DatabaseAdapterDataContext db = new DatabaseAdapterDataContext();
+        internal Tasks tsk = new Tasks();
 
         public UserForm()
         {
@@ -19,7 +20,7 @@ namespace ThesisProject.Forms.UserForm
         {
 
             currentUserStrip.Text = TempData.CurrentUser;
-            studentFileOpenDialog.Filter = "Text files(*.txt)|*.txt|All files(*.*)|*.*";
+            studentFileOpenDialog.Filter = "Текстовые файлы (*.txt)|*.txt";
             UpdateGroupsList();
             UpdateStudentsList();
 
@@ -76,7 +77,7 @@ namespace ThesisProject.Forms.UserForm
             if (res == DialogResult.OK)
             {
 
-                if (!isGroupExists(agd.GroupName))
+                if (!tsk.isGroupExists(agd.GroupName))
                 {
                     var addGroup = new Group
                     {
@@ -126,14 +127,14 @@ namespace ThesisProject.Forms.UserForm
             if (res == DialogResult.OK)
             {
 
-                if (!isStudentExists(asd.FirstName, asd.LastName, asd.Group))
+                if (!tsk.isStudentExists(asd.FirstName, asd.LastName, asd.Group))
                 {
                     var addStudent = new Student
                     {
                         FirstName = asd.FirstName,
                         MiddleName = asd.MiddleName,
                         LastName = asd.LastName,
-                        GroupId = getGroupId(asd.Group)
+                        GroupId = tsk.getGroupId(asd.Group)
                     };
                     db.Student.InsertOnSubmit(addStudent);
                     db.SubmitChanges();
@@ -145,35 +146,7 @@ namespace ThesisProject.Forms.UserForm
             }
             UpdateGroupsList();
         }
-        private bool isGroupExists(string groupTitle)
-        {
-            var getGroupFromDb = from c in db.Group
-                                 where c.Title == groupTitle
-                                 select c;
-            if (getGroupFromDb.Count() >= 1)
-                return true;
-            else
-                return false;
-        }
-        private int getGroupId(string groupTitle)
-        {
-            var getGroupIdFromDb = from c in db.Group
-                                   where c.Title == groupTitle
-                                   select c.GroupId;
-            return getGroupIdFromDb.First();
-
-        }
-        private bool isStudentExists(string FirstName, string LastName, string EnteredGroup)
-        {
-            int gid = getGroupId(EnteredGroup);
-            var getGroupFromDb = from st in db.Student
-                                 where (st.FirstName == FirstName) && (st.LastName == LastName) && (st.GroupId == gid)
-                                 select st;
-            if (getGroupFromDb.Count() >= 1)
-                return true;
-            else
-                return false;
-        }
+   
 
         private void button1_Click_1(object sender, EventArgs e)
         {
@@ -227,7 +200,7 @@ namespace ThesisProject.Forms.UserForm
                 string name = words[0];
                 string group = words[1];
                 string[] splitname = name.Split(' ');
-                if (isGroupExists(group))
+                if (tsk.isGroupExists(group))
                 {
                     var addStudent = new Student
                     {
@@ -252,7 +225,7 @@ namespace ThesisProject.Forms.UserForm
                         FirstName = splitname[1],
                         MiddleName = splitname[2],
                         LastName = splitname[0],
-                        GroupId = getGroupId(group)
+                        GroupId = tsk.getGroupId(group)
                     };
                     db.Student.InsertOnSubmit(addStudent);
                     db.SubmitChanges();

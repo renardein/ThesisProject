@@ -70,6 +70,7 @@
     <Compile Include="Forms\AdminForm\AdminForm.Designer.cs">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\AdminForm\Tasks.cs" />
     <Compile Include="Forms\KarpikEggForm\KarpikEggForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,6 +83,7 @@
     <Compile Include="Forms\LoginForm\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\UserForm\Tasks.cs" />
     <Compile Include="Forms\UserForm\UserForm.cs">
       <SubType>Form</SubType>
     </Compile>
