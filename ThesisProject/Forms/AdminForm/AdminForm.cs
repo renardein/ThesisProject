@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Data;
-using System.Linq;
 using System.Windows.Forms;
 using ThesisProject.Modules.Crypto;
-using ThesisProject.Modules.DatabaseAdapter;
 using ThesisProject.Modules.OpenForm;
 using ThesisProject.Modules.TempData;
 
@@ -11,7 +8,7 @@ namespace ThesisProject.Forms.AdminForm
 {
     public partial class AdminForm : Form
     {
-        DatabaseAdapterDataContext db = new DatabaseAdapterDataContext();
+
         Tasks tsk = new Tasks();
 
         public AdminForm()
@@ -22,7 +19,7 @@ namespace ThesisProject.Forms.AdminForm
         private void AdminForm_Load(object sender, EventArgs e)
         {
             currentUserStrip.Text = TempData.CurrentUser;
-            UpdateUsersList();
+            usersGrid.DataSource = tsk.UpdateUserList();
         }
 
 
@@ -46,7 +43,7 @@ namespace ThesisProject.Forms.AdminForm
                         DialogResult result = MessageBox.Show("Пользователь добавлен", "Системное сообщение", MessageBoxButtons.OK);
                         if (result == DialogResult.OK)
                         {
-                            UpdateUsersList();
+                            usersGrid.DataSource = tsk.UpdateUserList();
                         }
 
                     }
@@ -72,10 +69,6 @@ namespace ThesisProject.Forms.AdminForm
             Form ifrm = Application.OpenForms[0];
             ifrm.Show();
         }
-        private void UpdateUsersList()
-        {
-            usersGrid.DataSource = from p in db.User select new { Пользователь = p.Username, Роль = p.Role };
-        }
 
         private void rmUserButton_Click(object sender, EventArgs e)
         {
@@ -87,7 +80,7 @@ namespace ThesisProject.Forms.AdminForm
                 if (userDeleteResult == DialogResult.Yes)
                 {
                     tsk.deleteUser(rmuser);
-                    UpdateUsersList();
+                    usersGrid.DataSource = tsk.UpdateUserList();
                 }
             }
             catch (System.InvalidOperationException err)
@@ -107,7 +100,7 @@ namespace ThesisProject.Forms.AdminForm
                 if (userRoleChangeResult == DialogResult.Yes)
                 {
                     tsk.changeUserRole(changingUser);
-                    UpdateUsersList();
+                    usersGrid.DataSource = tsk.UpdateUserList();
                 }
             }
             catch (System.InvalidOperationException err)

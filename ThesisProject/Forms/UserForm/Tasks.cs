@@ -85,7 +85,6 @@ namespace ThesisProject.Forms.UserForm
             db.SubmitChanges();
 
         }
-
         /// <summary>
         /// Удаляет гуппу из базы
         /// </summary>
@@ -96,5 +95,6 @@ namespace ThesisProject.Forms.UserForm
             db.Group.DeleteOnSubmit(objgroup);
             db.SubmitChanges();
         }
+
     }
 }

@@ -66,5 +66,13 @@ namespace ThesisProject.Forms.AdminForm
             db.SubmitChanges();
         }
 
+        /// <summary>
+        /// Получает список пользователей
+        /// </summary>
+        internal object UpdateUserList()
+        {
+            object userList = from p in db.User select new { Пользователь = p.Username, Роль = p.Role };
+            return userList;
+        }
     }
 }
