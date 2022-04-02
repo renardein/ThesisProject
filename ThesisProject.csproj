@@ -52,11 +52,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\UserForm\Actions\ExamAct.cs" />
+    <Compile Include="Forms\UserForm\Actions\GroupAct.cs" />
+    <Compile Include="Forms\UserForm\Actions\ProModuleAct.cs" />
     <Compile Include="Forms\UserForm\AddGroupDialog\AddGroupDialog.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\UserForm\AddGroupDialog\AddGroupDialog.Designer.cs">
       <DependentUpon>AddGroupDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UserForm\AddProModuleDialog\AddProModuleDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UserForm\AddProModuleDialog\AddProModuleDialog.Designer.cs">
+      <DependentUpon>AddProModuleDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\UserForm\AddStudentDialog\AddStudentDialog.cs">
       <SubType>Form</SubType>
@@ -83,7 +92,7 @@
     <Compile Include="Forms\LoginForm\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\UserForm\Actions\Main.cs" />
+    <Compile Include="Forms\UserForm\Actions\StudentAct.cs" />
     <Compile Include="Forms\UserForm\Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +111,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\UserForm\AddGroupDialog\AddGroupDialog.resx">
       <DependentUpon>AddGroupDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserForm\AddProModuleDialog\AddProModuleDialog.resx">
+      <DependentUpon>AddProModuleDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\UserForm\AddStudentDialog\AddStudentDialog.resx">
       <DependentUpon>AddStudentDialog.cs</DependentUpon>

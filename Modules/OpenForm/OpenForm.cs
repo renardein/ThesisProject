@@ -20,12 +20,12 @@ namespace ThesisProject.Modules.OpenForm
             Forms.KarpikEggForm.Main eg = new Forms.KarpikEggForm.Main();
             eg.Show();
         }
-        public static void AddGroupDialog()
+        public static object AddGroupDialog()
         {
             Forms.AddGroupDialog.AddGroupDialog agd = new Forms.AddGroupDialog.AddGroupDialog();
             DialogResult res = agd.ShowDialog();
             object rs = res;
-            return;
+            return rs;
         }
         public static void AddStudeintDialog()
         {

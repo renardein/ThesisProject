@@ -37,7 +37,18 @@
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.examsPage = new System.Windows.Forms.TabPage();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.button1 = new System.Windows.Forms.Button();
+            this.addProModuleDialogOpen = new System.Windows.Forms.Button();
+            this.pmGrid = new System.Windows.Forms.DataGridView();
+            this.button3 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.label7 = new System.Windows.Forms.Label();
             this.studentsPage = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.deleteGroupButton = new System.Windows.Forms.Button();
@@ -57,13 +68,17 @@
             this.label5 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.label6 = new System.Windows.Forms.Label();
-            this.studentFileOpenDialog = new System.Windows.Forms.OpenFileDialog();
-            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
-            this.eventLog1 = new System.Diagnostics.EventLog();
+            this.txtFileOpenDialog = new System.Windows.Forms.OpenFileDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.toolStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.examsPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pmGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.studentsPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -74,7 +89,6 @@
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.eventLog1)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -85,7 +99,7 @@
             this.toolStripLabel2});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(850, 26);
+            this.toolStrip1.Size = new System.Drawing.Size(1181, 26);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -136,29 +150,151 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 26);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(850, 424);
+            this.tabControl1.Size = new System.Drawing.Size(1181, 649);
             this.tabControl1.TabIndex = 1;
             // 
             // examsPage
             // 
-            this.examsPage.Controls.Add(this.label3);
+            this.examsPage.Controls.Add(this.splitContainer2);
             this.examsPage.Location = new System.Drawing.Point(4, 22);
             this.examsPage.Name = "examsPage";
             this.examsPage.Padding = new System.Windows.Forms.Padding(3);
-            this.examsPage.Size = new System.Drawing.Size(842, 398);
+            this.examsPage.Size = new System.Drawing.Size(1173, 623);
             this.examsPage.TabIndex = 0;
             this.examsPage.Text = "Экзамены";
             this.examsPage.UseVisualStyleBackColor = true;
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.Location = new System.Drawing.Point(3, 3);
+            this.splitContainer2.Name = "splitContainer2";
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.button1);
+            this.splitContainer2.Panel1.Controls.Add(this.addProModuleDialogOpen);
+            this.splitContainer2.Panel1.Controls.Add(this.pmGrid);
+            this.splitContainer2.Panel1.Controls.Add(this.button3);
+            this.splitContainer2.Panel1.Controls.Add(this.label3);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.button4);
+            this.splitContainer2.Panel2.Controls.Add(this.button5);
+            this.splitContainer2.Panel2.Controls.Add(this.button6);
+            this.splitContainer2.Panel2.Controls.Add(this.button7);
+            this.splitContainer2.Panel2.Controls.Add(this.dataGridView2);
+            this.splitContainer2.Panel2.Controls.Add(this.label7);
+            this.splitContainer2.Size = new System.Drawing.Size(1167, 617);
+            this.splitContainer2.SplitterDistance = 577;
+            this.splitContainer2.TabIndex = 1;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(88, 37);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Удалить";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // addProModuleDialogOpen
+            // 
+            this.addProModuleDialogOpen.Cursor = System.Windows.Forms.Cursors.Default;
+            this.addProModuleDialogOpen.Location = new System.Drawing.Point(7, 37);
+            this.addProModuleDialogOpen.Name = "addProModuleDialogOpen";
+            this.addProModuleDialogOpen.Size = new System.Drawing.Size(75, 23);
+            this.addProModuleDialogOpen.TabIndex = 4;
+            this.addProModuleDialogOpen.Text = "Добавить";
+            this.addProModuleDialogOpen.UseVisualStyleBackColor = true;
+            this.addProModuleDialogOpen.Click += new System.EventHandler(this.addProModuleDialogOpen_Click);
+            // 
+            // pmGrid
+            // 
+            this.pmGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.pmGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.pmGrid.Location = new System.Drawing.Point(7, 66);
+            this.pmGrid.Name = "pmGrid";
+            this.pmGrid.RowHeadersVisible = false;
+            this.pmGrid.Size = new System.Drawing.Size(567, 546);
+            this.pmGrid.TabIndex = 3;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(169, 37);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 2;
+            this.button3.Text = "Импорт";
+            this.button3.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(3, 3);
+            this.label3.Location = new System.Drawing.Point(0, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(100, 24);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Экзамены";
+            this.label3.Size = new System.Drawing.Size(79, 24);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Модули";
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(169, 37);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 6;
+            this.button4.Text = "Импорт";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(88, 37);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 9;
+            this.button5.Text = "Удалить";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.button6.Location = new System.Drawing.Point(7, 589);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(574, 23);
+            this.button6.TabIndex = 8;
+            this.button6.Text = "Удалить тестовые данные";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(7, 37);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(75, 23);
+            this.button7.TabIndex = 7;
+            this.button7.Text = "Добавить";
+            this.button7.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(7, 66);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.RowHeadersVisible = false;
+            this.dataGridView2.Size = new System.Drawing.Size(574, 517);
+            this.dataGridView2.TabIndex = 4;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label7.Location = new System.Drawing.Point(3, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(99, 24);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "Студенты";
             // 
             // studentsPage
             // 
@@ -166,7 +302,7 @@
             this.studentsPage.Location = new System.Drawing.Point(4, 22);
             this.studentsPage.Name = "studentsPage";
             this.studentsPage.Padding = new System.Windows.Forms.Padding(3);
-            this.studentsPage.Size = new System.Drawing.Size(842, 398);
+            this.studentsPage.Size = new System.Drawing.Size(1173, 623);
             this.studentsPage.TabIndex = 1;
             this.studentsPage.Text = "Студенты";
             this.studentsPage.UseVisualStyleBackColor = true;
@@ -193,8 +329,8 @@
             this.splitContainer1.Panel2.Controls.Add(this.addStudentDialogOpen);
             this.splitContainer1.Panel2.Controls.Add(this.studentGrid);
             this.splitContainer1.Panel2.Controls.Add(this.label2);
-            this.splitContainer1.Size = new System.Drawing.Size(836, 392);
-            this.splitContainer1.SplitterDistance = 414;
+            this.splitContainer1.Size = new System.Drawing.Size(1167, 617);
+            this.splitContainer1.SplitterDistance = 577;
             this.splitContainer1.TabIndex = 0;
             // 
             // deleteGroupButton
@@ -225,7 +361,7 @@
             this.groupGrid.Location = new System.Drawing.Point(7, 66);
             this.groupGrid.Name = "groupGrid";
             this.groupGrid.RowHeadersVisible = false;
-            this.groupGrid.Size = new System.Drawing.Size(404, 321);
+            this.groupGrid.Size = new System.Drawing.Size(567, 546);
             this.groupGrid.TabIndex = 3;
             this.groupGrid.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.groupGrid_CellMouseClick);
             // 
@@ -271,9 +407,9 @@
             // deleteAllGroupsAndStudents
             // 
             this.deleteAllGroupsAndStudents.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.deleteAllGroupsAndStudents.Location = new System.Drawing.Point(7, 364);
+            this.deleteAllGroupsAndStudents.Location = new System.Drawing.Point(7, 589);
             this.deleteAllGroupsAndStudents.Name = "deleteAllGroupsAndStudents";
-            this.deleteAllGroupsAndStudents.Size = new System.Drawing.Size(406, 23);
+            this.deleteAllGroupsAndStudents.Size = new System.Drawing.Size(574, 23);
             this.deleteAllGroupsAndStudents.TabIndex = 8;
             this.deleteAllGroupsAndStudents.Text = "Удалить тестовые данные";
             this.deleteAllGroupsAndStudents.UseVisualStyleBackColor = true;
@@ -296,7 +432,7 @@
             this.studentGrid.Location = new System.Drawing.Point(7, 66);
             this.studentGrid.Name = "studentGrid";
             this.studentGrid.RowHeadersVisible = false;
-            this.studentGrid.Size = new System.Drawing.Size(406, 292);
+            this.studentGrid.Size = new System.Drawing.Size(574, 517);
             this.studentGrid.TabIndex = 4;
             // 
             // label2
@@ -315,7 +451,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(842, 398);
+            this.tabPage1.Size = new System.Drawing.Size(1173, 623);
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -336,7 +472,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(842, 398);
+            this.tabPage2.Size = new System.Drawing.Size(1173, 623);
             this.tabPage2.TabIndex = 3;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -357,7 +493,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(842, 398);
+            this.tabPage3.Size = new System.Drawing.Size(1173, 623);
             this.tabPage3.TabIndex = 4;
             this.tabPage3.Text = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -372,15 +508,11 @@
             this.label6.TabIndex = 1;
             this.label6.Text = "Критерии";
             // 
-            // eventLog1
-            // 
-            this.eventLog1.SynchronizingObject = this;
-            // 
             // UserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(850, 450);
+            this.ClientSize = new System.Drawing.Size(1181, 675);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.toolStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -393,7 +525,14 @@
             this.toolStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.examsPage.ResumeLayout(false);
-            this.examsPage.PerformLayout();
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel1.PerformLayout();
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            this.splitContainer2.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pmGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.studentsPage.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
@@ -409,7 +548,6 @@
             this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.eventLog1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -428,12 +566,11 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.OpenFileDialog studentFileOpenDialog;
+        private System.Windows.Forms.OpenFileDialog txtFileOpenDialog;
         private System.Windows.Forms.Button importGroupsButton;
         private System.Windows.Forms.DataGridView groupGrid;
         private System.Windows.Forms.Button addGroupDialogOpen;
         private System.Windows.Forms.Button deleteGroupButton;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TabPage tabPage2;
@@ -442,11 +579,21 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridView studentGrid;
         private System.Windows.Forms.Button addStudentDialogOpen;
-        private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.Button deleteAllGroupsAndStudents;
         private System.Windows.Forms.Button deleteStudentButton;
         private System.Windows.Forms.Button importStudentsButton;
-        private System.Diagnostics.EventLog eventLog1;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button addProModuleDialogOpen;
+        private System.Windows.Forms.DataGridView pmGrid;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Label label7;
     }
 }

@@ -1,12 +1,17 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
+using ThesisProject.Forms.UserForm.Actions;
 using ThesisProject.Modules.TempData;
+
 namespace ThesisProject.Forms.UserForm
 {
     public partial class UserForm : Form
     {
-        internal Main act = new Main();
+        internal GroupAct ga = new GroupAct();
+        internal StudentAct sa = new StudentAct();
+        internal ProModuleAct pa = new ProModuleAct();
+
         public UserForm()
         {
             InitializeComponent();
@@ -16,9 +21,10 @@ namespace ThesisProject.Forms.UserForm
         {
 
             currentUserStrip.Text = TempData.CurrentUser;
-            studentFileOpenDialog.Filter = "Текстовые файлы (*.txt)|*.txt";
+            txtFileOpenDialog.Filter = "Текстовые файлы (*.txt)|*.txt";
             UpdateGroupsList();
             UpdateStudentsList();
+            UpdatePmList();
 
         }
 
@@ -31,13 +37,13 @@ namespace ThesisProject.Forms.UserForm
 
         private void importGroupsButton_Click(object sender, System.EventArgs e)
         {
-            if (studentFileOpenDialog.ShowDialog() == DialogResult.Cancel)
+            if (txtFileOpenDialog.ShowDialog() == DialogResult.Cancel)
                 return;
-            string[] groupByLines = System.IO.File.ReadAllLines(studentFileOpenDialog.FileName);
+            string[] groupByLines = System.IO.File.ReadAllLines(txtFileOpenDialog.FileName);
 
             foreach (string s in groupByLines)
             {
-                act.addGroup(s);
+                ga.addGroup(s);
                 UpdateGroupsList();
             }
 
@@ -53,9 +59,9 @@ namespace ThesisProject.Forms.UserForm
             if (res == DialogResult.OK)
             {
 
-                if (!act.isGroupExists(agd.GroupName))
+                if (!ga.isGroupExists(agd.GroupName))
                 {
-                    act.addGroup(agd.GroupName);
+                    ga.addGroup(agd.GroupName);
                 }
             }
             UpdateGroupsList();
@@ -70,7 +76,7 @@ namespace ThesisProject.Forms.UserForm
             {
                 if (groupDeleteResult == DialogResult.Yes)
                 {
-                    act.deleteGroup(rmGroup);
+                    ga.deleteGroup(rmGroup);
                     UpdateGroupsList();
                 }
             }
@@ -90,9 +96,9 @@ namespace ThesisProject.Forms.UserForm
             if (res == DialogResult.OK)
             {
 
-                if (!act.isStudentExists(asd.FirstName, asd.LastName, asd.Group))
+                if (!sa.isStudentExists(asd.FirstName, asd.LastName, asd.Group))
                 {
-                    act.addStudent(asd.FirstName, asd.LastName, asd.MiddleName, asd.Group);
+                    sa.addStudent(asd.FirstName, asd.LastName, asd.MiddleName, asd.Group);
                 }
                 else
                     MessageBox.Show("Запись существует");
@@ -104,13 +110,20 @@ namespace ThesisProject.Forms.UserForm
 
         private void UpdateGroupsList()
         {
-            TempData.GroupsList = act.GetGroups();
-            groupGrid.DataSource = act.GetGroups();
+            TempData.GroupsList = ga.GetGroups();
+            groupGrid.DataSource = ga.GetGroups();
 
         }
         private void UpdateStudentsList()
         {
-            studentGrid.DataSource = act.GetStudents();
+            studentGrid.DataSource = sa.GetStudents();
+        }
+
+        private void UpdatePmList()
+        {
+
+            pmGrid.DataSource = pa.GetProModules();
+
         }
 
 
@@ -121,9 +134,9 @@ namespace ThesisProject.Forms.UserForm
 
         private void importStudentsButton_Click(object sender, EventArgs e)
         {
-            if (studentFileOpenDialog.ShowDialog() == DialogResult.Cancel)
+            if (txtFileOpenDialog.ShowDialog() == DialogResult.Cancel)
                 return;
-            string[] groupByLines = System.IO.File.ReadAllLines(studentFileOpenDialog.FileName);
+            string[] groupByLines = System.IO.File.ReadAllLines(txtFileOpenDialog.FileName);
 
             foreach (string s in groupByLines)
             {
@@ -135,14 +148,14 @@ namespace ThesisProject.Forms.UserForm
                     getMiddleName = null;
                 else
                     getMiddleName = splitname[2];
-                if (!act.isGroupExists(group))
+                if (!ga.isGroupExists(group))
                 {
-                    act.addGroup(group);
-                    act.addStudent(splitname[1], getMiddleName, splitname[0], group);
+                    ga.addGroup(group);
+                    sa.addStudent(splitname[1], getMiddleName, splitname[0], group);
                 }
                 else
                 {
-                    act.addStudent(splitname[1], getMiddleName, splitname[0], group);
+                    sa.addStudent(splitname[1], getMiddleName, splitname[0], group);
                 }
                 UpdateGroupsList();
                 UpdateStudentsList();
@@ -151,15 +164,32 @@ namespace ThesisProject.Forms.UserForm
 
         private void deleteAllGroupsAndStudents_Click(object sender, EventArgs e)
         {
-            act.deleteAllStudentsAndGroups();
+            sa.deleteAllStudentsAndGroups();
+            UpdateGroupsList();
+            UpdateStudentsList();
         }
 
         private void groupGrid_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
 
-            studentGrid.DataSource = act.SortStudentsByGroup(groupGrid.CurrentCell.Value.ToString()); ;
+            studentGrid.DataSource = sa.SortStudentsByGroup(groupGrid.CurrentCell.Value.ToString()); ;
         }
 
 
+        private void addProModuleDialogOpen_Click(object sender, EventArgs e)
+        {
+            AddProModuleDialog.AddProModuleDialog apmd = new AddProModuleDialog.AddProModuleDialog();
+            apmd.Owner = this;
+            DialogResult res = apmd.ShowDialog();
+            if (res == DialogResult.OK)
+            {
+
+                if (!pa.isModuleExists(apmd.PmName))
+                {
+                    pa.addProModule(apmd.PmName);
+                }
+            }
+            UpdatePmList();
+        }
     }
 }
