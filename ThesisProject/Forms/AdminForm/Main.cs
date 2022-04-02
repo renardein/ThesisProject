@@ -1,78 +1,117 @@
-﻿using System.Linq;
-using ThesisProject.Modules.DatabaseAdapter;
+﻿using System;
+using System.Windows.Forms;
+using ThesisProject.Modules.Crypto;
+using ThesisProject.Modules.OpenForm;
+using ThesisProject.Modules.TempData;
+
 
 namespace ThesisProject.Forms.AdminForm
 {
-    internal class Main
+    public partial class AdminForm : Form
     {
-        string[] userRole = new string[] { "admin", "user" };
-        DatabaseAdapterDataContext db = new DatabaseAdapterDataContext();
-
-        /// <summary>
-        /// Проверяет наличие пользователя в базе по его имени
-        /// </summary>
-        /// <param name="username">Имя пользователя</param>
-        internal bool isUserExists(string username)
+        Main act = new Main();
+        public AdminForm()
         {
-            var getUserFromDb = from c in db.User
-                                where c.Username == username
-                                select c;
-            if (getUserFromDb.Count() == 1)
-                return true;
-            else
-                return false;
+            InitializeComponent();
         }
 
-        /// <summary>
-        /// Добавляет нового пользователя системы
-        /// </summary>
-        /// <param name="username">Имя пользователя</param>
-        /// <param name="pwd_hash">Хеш пароля</param>
-        /// <param name="role">Индекс выбранной роли из ComboBox</param>
-        internal void addUser(string username, string pwd_hash, int role)
+        private void AdminForm_Load(object sender, EventArgs e)
         {
-            var newUser = new User
+            currentUserStrip.Text = TempData.CurrentUser;
+            usersGrid.DataSource = act.UpdateUserList();
+        }
+
+
+        private void addUser_Click(object sender, EventArgs e)
+        {
+
+            if (!string.IsNullOrEmpty(regUsername.Text) && !string.IsNullOrEmpty(regUsername.Text))
             {
-                Username = username,
-                Password = pwd_hash,
-                Role = userRole[role]
-            };
-            db.User.InsertOnSubmit(newUser);
-            db.SubmitChanges();
-        }
+                if (regUsername.Text == "karpovan" || regUsername.Text == "karpov" || regUsername.Text == "karpik")
+                {
+                    OpenForm.KarpikEgg();
+                    return;
+                }
+                if (!act.isUserExists(regUsername.Text))
+                {
+                    if (regPassword.Text == regPasswordConfirm.Text)
+                    {
+                        string pwd_hash = Crypto.GetMD5(regPassword.Text);
+                        int role = regUserRole.SelectedIndex;
+                        act.addUser(regUsername.Text, pwd_hash, role);
+                        DialogResult result = MessageBox.Show("Пользователь добавлен", "Системное сообщение", MessageBoxButtons.OK);
+                        if (result == DialogResult.OK)
+                        {
+                            usersGrid.DataSource = act.UpdateUserList();
+                        }
 
-        /// <summary>
-        /// Изменяет роль пользователя в системе
-        /// </summary>
-        /// <param name="username">Имя пользователя</param>
-        internal void changeUserRole(string username)
-        {
-            var objUser = (from c in db.User where c.Username == username select c).First();
-            if (objUser.Role == userRole[0])
-                objUser.Role = userRole[1];
+                    }
+                    else
+                        MessageBox.Show("Пароли не совпадают");
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show("Пользователь существует");
+                    return;
+                }
+            }
             else
-                objUser.Role = userRole[0];
-            db.SubmitChanges();
+            {
+                MessageBox.Show("Проверьте поля");
+                return;
+            }
+        }
+        private void AdminForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            // вызываем главную форму приложения, которая открыла текущую форму Form2, главная форма всегда = 0
+            Form ifrm = Application.OpenForms[0];
+            ifrm.Show();
         }
 
-        /// <summary>
-        /// Удаляет пользователя из системы
-        /// </summary>
-        /// <param name="usr">Имя пользователя</param>
-        internal void deleteUser(string usr)
+        private void rmUserButton_Click(object sender, EventArgs e)
         {
-            User objUser = db.User.Single(user => user.Username == usr);
-            db.User.DeleteOnSubmit(objUser);
-            db.SubmitChanges();
+            string rmuser = usersGrid.CurrentCell.Value.ToString();
+            DialogResult userDeleteResult = MessageBox.Show("Вы уверены что хотите удалить пользователя " + rmuser + "?", "Системное сообщение", MessageBoxButtons.YesNo);
+
+            try
+            {
+                if (userDeleteResult == DialogResult.Yes)
+                {
+                    act.deleteUser(rmuser);
+                    usersGrid.DataSource = act.UpdateUserList();
+                }
+            }
+            catch (System.InvalidOperationException err)
+            {
+                MessageBox.Show(err.Message);
+            }
+
         }
 
-        /// <summary>
-        /// Получает список пользователей
-        /// </summary>
-        internal object UpdateUserList()
+        private void button1_Click(object sender, EventArgs e)
         {
-            object userList = from p in db.User select new { Пользователь = p.Username, Роль = p.Role };
-            return userList;
+            string changingUser = usersGrid.CurrentCell.Value.ToString();
+            DialogResult userRoleChangeResult = MessageBox.Show("Вы уверены что хотите сменить роль пользователя " + changingUser + "?", "Системное сообщение", MessageBoxButtons.YesNo);
+
+            try
+            {
+                if (userRoleChangeResult == DialogResult.Yes)
+                {
+                    act.changeUserRole(changingUser);
+                    usersGrid.DataSource = act.UpdateUserList();
+                }
+            }
+            catch (System.InvalidOperationException err)
+            {
+                MessageBox.Show(err.Message);
+
+            }
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

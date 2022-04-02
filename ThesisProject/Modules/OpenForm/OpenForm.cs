@@ -17,7 +17,7 @@ namespace ThesisProject.Modules.OpenForm
         }
         public static void KarpikEgg()
         {
-            Forms.KarpikEggForm.KarpikEggForm eg = new Forms.KarpikEggForm.KarpikEggForm();
+            Forms.KarpikEggForm.Main eg = new Forms.KarpikEggForm.Main();
             eg.Show();
         }
         public static void AddGroupDialog()
@@ -29,7 +29,7 @@ namespace ThesisProject.Modules.OpenForm
         }
         public static void AddStudeintDialog()
         {
-            Forms.KarpikEggForm.KarpikEggForm eg = new Forms.KarpikEggForm.KarpikEggForm();
+            Forms.KarpikEggForm.Main eg = new Forms.KarpikEggForm.Main();
             eg.Show();
         }
     }

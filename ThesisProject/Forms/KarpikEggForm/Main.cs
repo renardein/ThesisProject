@@ -3,9 +3,9 @@ using System.Windows.Forms;
 
 namespace ThesisProject.Forms.KarpikEggForm
 {
-    public partial class KarpikEggForm : Form
+    public partial class Main : Form
     {
-        public KarpikEggForm()
+        public Main()
         {
             InitializeComponent();
         }

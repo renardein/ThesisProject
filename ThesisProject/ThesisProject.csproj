@@ -52,43 +52,43 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\AddGroupDialog\AddGroupDialog.cs">
+    <Compile Include="Forms\UserForm\AddGroupDialog\AddGroupDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AddGroupDialog\AddGroupDialog.Designer.cs">
+    <Compile Include="Forms\UserForm\AddGroupDialog\AddGroupDialog.Designer.cs">
       <DependentUpon>AddGroupDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AddStudentDialog\AddStudentDialog.cs">
+    <Compile Include="Forms\UserForm\AddStudentDialog\AddStudentDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AddStudentDialog\AddStudentDialog.Designer.cs">
+    <Compile Include="Forms\UserForm\AddStudentDialog\AddStudentDialog.Designer.cs">
       <DependentUpon>AddStudentDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AdminForm\AdminForm.cs">
+    <Compile Include="Forms\AdminForm\Main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AdminForm\AdminForm.Designer.cs">
-      <DependentUpon>AdminForm.cs</DependentUpon>
+    <Compile Include="Forms\AdminForm\Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AdminForm\Main.cs" />
-    <Compile Include="Forms\KarpikEggForm\KarpikEggForm.cs">
+    <Compile Include="Forms\AdminForm\Actions\Main.cs" />
+    <Compile Include="Forms\KarpikEggForm\Main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\KarpikEggForm\KarpikEggForm.Designer.cs">
-      <DependentUpon>KarpikEggForm.cs</DependentUpon>
+    <Compile Include="Forms\KarpikEggForm\Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\LoginForm\LoginForm.cs">
+    <Compile Include="Forms\LoginForm\Main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\LoginForm\LoginForm.Designer.cs">
-      <DependentUpon>LoginForm.cs</DependentUpon>
+    <Compile Include="Forms\LoginForm\Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\UserForm\Actions\Main.cs" />
-    <Compile Include="Forms\UserForm\UserForm.cs">
+    <Compile Include="Forms\UserForm\Main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\UserForm\UserForm.Designer.cs">
-      <DependentUpon>UserForm.cs</DependentUpon>
+    <Compile Include="Forms\UserForm\Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
     </Compile>
     <Compile Include="Modules\Crypto\Crypto.cs" />
     <Compile Include="Modules\DatabaseAdapter\DatabaseAdapter.designer.cs">
@@ -100,23 +100,23 @@
     <Compile Include="Modules\TempData\TempData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\AddGroupDialog\AddGroupDialog.resx">
+    <EmbeddedResource Include="Forms\UserForm\AddGroupDialog\AddGroupDialog.resx">
       <DependentUpon>AddGroupDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AddStudentDialog\AddStudentDialog.resx">
+    <EmbeddedResource Include="Forms\UserForm\AddStudentDialog\AddStudentDialog.resx">
       <DependentUpon>AddStudentDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AdminForm\AdminForm.resx">
-      <DependentUpon>AdminForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\AdminForm\Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\KarpikEggForm\KarpikEggForm.resx">
-      <DependentUpon>KarpikEggForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\KarpikEggForm\Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\LoginForm\LoginForm.resx">
-      <DependentUpon>LoginForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\LoginForm\Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\UserForm\UserForm.resx">
-      <DependentUpon>UserForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\UserForm\Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -162,8 +162,6 @@
   <ItemGroup>
     <Content Include="icon.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Forms\AdminForm\Actions\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
