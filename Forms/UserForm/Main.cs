@@ -43,10 +43,13 @@ namespace ThesisProject.Forms.UserForm
 
             foreach (string s in groupByLines)
             {
-                ga.addGroup(s);
-                UpdateGroupsList();
+                if (!ga.isGroupExists(s))
+                    ga.addGroup(s);
+                else
+                    return;
+                
             }
-
+            UpdateGroupsList();
         }
 
 
@@ -189,6 +192,46 @@ namespace ThesisProject.Forms.UserForm
                     pa.addProModule(apmd.PmName);
                 }
             }
+            UpdatePmList();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void deletePmButton_Click(object sender, EventArgs e)
+        {
+            string rmPm = pmGrid.CurrentCell.Value.ToString();
+            DialogResult pmDeleteResult = MessageBox.Show("Вы уверены что хотите удалить модуль " + rmPm + "?", "Системное сообщение", MessageBoxButtons.YesNo);
+
+            try
+            {
+                if (pmDeleteResult == DialogResult.Yes)
+                {
+                    pa.deleteProModule(rmPm);
+                    UpdatePmList();
+                }
+            }
+            catch (System.InvalidOperationException err)
+            {
+                MessageBox.Show(err.Message);
+            }
+        }
+
+        private void importPmButton_Click(object sender, EventArgs e)
+        {
+            if (txtFileOpenDialog.ShowDialog() == DialogResult.Cancel)
+                return;
+            string[] pmByLines = System.IO.File.ReadAllLines(txtFileOpenDialog.FileName);
+
+            foreach (string s in pmByLines)
+            {
+                if (!pa.isModuleExists(s))
+                    pa.addProModule(s);
+                else
+                    return;
+            };
             UpdatePmList();
         }
     }

@@ -38,16 +38,16 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.examsPage = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.button1 = new System.Windows.Forms.Button();
+            this.deletePmButton = new System.Windows.Forms.Button();
             this.addProModuleDialogOpen = new System.Windows.Forms.Button();
             this.pmGrid = new System.Windows.Forms.DataGridView();
-            this.button3 = new System.Windows.Forms.Button();
+            this.importPmButton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.examGrid = new System.Windows.Forms.DataGridView();
             this.label7 = new System.Windows.Forms.Label();
             this.studentsPage = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -78,7 +78,7 @@
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pmGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.examGrid)).BeginInit();
             this.studentsPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -172,10 +172,10 @@
             // 
             // splitContainer2.Panel1
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.button1);
+            this.splitContainer2.Panel1.Controls.Add(this.deletePmButton);
             this.splitContainer2.Panel1.Controls.Add(this.addProModuleDialogOpen);
             this.splitContainer2.Panel1.Controls.Add(this.pmGrid);
-            this.splitContainer2.Panel1.Controls.Add(this.button3);
+            this.splitContainer2.Panel1.Controls.Add(this.importPmButton);
             this.splitContainer2.Panel1.Controls.Add(this.label3);
             // 
             // splitContainer2.Panel2
@@ -184,20 +184,21 @@
             this.splitContainer2.Panel2.Controls.Add(this.button5);
             this.splitContainer2.Panel2.Controls.Add(this.button6);
             this.splitContainer2.Panel2.Controls.Add(this.button7);
-            this.splitContainer2.Panel2.Controls.Add(this.dataGridView2);
+            this.splitContainer2.Panel2.Controls.Add(this.examGrid);
             this.splitContainer2.Panel2.Controls.Add(this.label7);
             this.splitContainer2.Size = new System.Drawing.Size(1167, 617);
             this.splitContainer2.SplitterDistance = 577;
             this.splitContainer2.TabIndex = 1;
             // 
-            // button1
+            // deletePmButton
             // 
-            this.button1.Location = new System.Drawing.Point(88, 37);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Удалить";
-            this.button1.UseVisualStyleBackColor = true;
+            this.deletePmButton.Location = new System.Drawing.Point(88, 37);
+            this.deletePmButton.Name = "deletePmButton";
+            this.deletePmButton.Size = new System.Drawing.Size(75, 23);
+            this.deletePmButton.TabIndex = 5;
+            this.deletePmButton.Text = "Удалить";
+            this.deletePmButton.UseVisualStyleBackColor = true;
+            this.deletePmButton.Click += new System.EventHandler(this.deletePmButton_Click);
             // 
             // addProModuleDialogOpen
             // 
@@ -220,14 +221,15 @@
             this.pmGrid.Size = new System.Drawing.Size(567, 546);
             this.pmGrid.TabIndex = 3;
             // 
-            // button3
+            // importPmButton
             // 
-            this.button3.Location = new System.Drawing.Point(169, 37);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Импорт";
-            this.button3.UseVisualStyleBackColor = true;
+            this.importPmButton.Location = new System.Drawing.Point(169, 37);
+            this.importPmButton.Name = "importPmButton";
+            this.importPmButton.Size = new System.Drawing.Size(75, 23);
+            this.importPmButton.TabIndex = 2;
+            this.importPmButton.Text = "Импорт";
+            this.importPmButton.UseVisualStyleBackColor = true;
+            this.importPmButton.Click += new System.EventHandler(this.importPmButton_Click);
             // 
             // label3
             // 
@@ -256,6 +258,7 @@
             this.button5.TabIndex = 9;
             this.button5.Text = "Удалить";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button6
             // 
@@ -276,15 +279,15 @@
             this.button7.Text = "Добавить";
             this.button7.UseVisualStyleBackColor = true;
             // 
-            // dataGridView2
+            // examGrid
             // 
-            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(7, 66);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersVisible = false;
-            this.dataGridView2.Size = new System.Drawing.Size(574, 517);
-            this.dataGridView2.TabIndex = 4;
+            this.examGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.examGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.examGrid.Location = new System.Drawing.Point(7, 66);
+            this.examGrid.Name = "examGrid";
+            this.examGrid.RowHeadersVisible = false;
+            this.examGrid.Size = new System.Drawing.Size(574, 517);
+            this.examGrid.TabIndex = 4;
             // 
             // label7
             // 
@@ -292,9 +295,9 @@
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label7.Location = new System.Drawing.Point(3, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(99, 24);
+            this.label7.Size = new System.Drawing.Size(100, 24);
             this.label7.TabIndex = 1;
-            this.label7.Text = "Студенты";
+            this.label7.Text = "Экзамены";
             // 
             // studentsPage
             // 
@@ -532,7 +535,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pmGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.examGrid)).EndInit();
             this.studentsPage.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
@@ -584,16 +587,16 @@
         private System.Windows.Forms.Button importStudentsButton;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.SplitContainer splitContainer2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button deletePmButton;
         private System.Windows.Forms.Button addProModuleDialogOpen;
         private System.Windows.Forms.DataGridView pmGrid;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button importPmButton;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView examGrid;
         private System.Windows.Forms.Label label7;
     }
 }
