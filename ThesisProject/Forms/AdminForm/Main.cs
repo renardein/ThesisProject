@@ -3,7 +3,7 @@ using ThesisProject.Modules.DatabaseAdapter;
 
 namespace ThesisProject.Forms.AdminForm
 {
-    internal class Tasks
+    internal class Main
     {
         string[] userRole = new string[] { "admin", "user" };
         DatabaseAdapterDataContext db = new DatabaseAdapterDataContext();

@@ -29,6 +29,7 @@ namespace ThesisProject.Forms.AddStudentDialog
         private void AddStudentDialog_Load(object sender, EventArgs e)
         {
             addStudentGroupBox.DataSource = Modules.TempData.TempData.GroupsList;
+            addStudentGroupBox.DisplayMember = "Группа";
         }
 
 

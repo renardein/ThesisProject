@@ -1,17 +1,12 @@
 ﻿using System;
-using System.Data;
 using System.Linq;
 using System.Windows.Forms;
-using ThesisProject.Modules.DatabaseAdapter;
 using ThesisProject.Modules.TempData;
 namespace ThesisProject.Forms.UserForm
 {
     public partial class UserForm : Form
     {
-        internal DatabaseAdapterDataContext db = new DatabaseAdapterDataContext();
-        internal Tasks tsk = new Tasks();
-
-
+        internal Main act = new Main();
         public UserForm()
         {
             InitializeComponent();
@@ -42,24 +37,12 @@ namespace ThesisProject.Forms.UserForm
 
             foreach (string s in groupByLines)
             {
-                tsk.addGroup(s);
+                act.addGroup(s);
                 UpdateGroupsList();
             }
 
         }
 
-        private void button1_Click(object sender, System.EventArgs e)
-        {
-            var getTable = from p in db.Group
-                           select p;
-            foreach (var g in getTable)
-            {
-                db.Group.DeleteOnSubmit(g);
-            }
-            db.SubmitChanges();
-            UpdateGroupsList();
-
-        }
 
 
         private void addGroupDialogOpen_Click(object sender, System.EventArgs e)
@@ -70,9 +53,9 @@ namespace ThesisProject.Forms.UserForm
             if (res == DialogResult.OK)
             {
 
-                if (!tsk.isGroupExists(agd.GroupName))
+                if (!act.isGroupExists(agd.GroupName))
                 {
-                    tsk.addGroup(agd.GroupName);
+                    act.addGroup(agd.GroupName);
                 }
             }
             UpdateGroupsList();
@@ -87,7 +70,7 @@ namespace ThesisProject.Forms.UserForm
             {
                 if (groupDeleteResult == DialogResult.Yes)
                 {
-                    tsk.deleteGroup(rmGroup);
+                    act.deleteGroup(rmGroup);
                     UpdateGroupsList();
                 }
             }
@@ -98,13 +81,7 @@ namespace ThesisProject.Forms.UserForm
         }
 
 
-        private void comboBox1_SelectedIndexChanged(object sender, System.EventArgs e)
-        {
-            if (comboFilterByGroup.SelectedIndex == 0)
-                UpdateStudentsList();
-            else
-                studentGrid.DataSource = (from p in db.StudentGroup where p.Title == comboFilterByGroup.Text select new {Студент = p.FirstName + (p.MiddleName ?? "") + p.LastName, Группа = p.Title});
-        }
+
         private void addStudentDialogOpen_Click(object sender, System.EventArgs e)
         {
             AddStudentDialog.AddStudentDialog asd = new AddStudentDialog.AddStudentDialog();
@@ -113,9 +90,9 @@ namespace ThesisProject.Forms.UserForm
             if (res == DialogResult.OK)
             {
 
-                if (!tsk.isStudentExists(asd.FirstName, asd.LastName, asd.Group))
+                if (!act.isStudentExists(asd.FirstName, asd.LastName, asd.Group))
                 {
-                    tsk.addStudent(asd.FirstName, asd.LastName, asd.MiddleName, asd.Group);
+                    act.addStudent(asd.FirstName, asd.LastName, asd.MiddleName, asd.Group);
                 }
                 else
                     MessageBox.Show("Запись существует");
@@ -125,35 +102,15 @@ namespace ThesisProject.Forms.UserForm
         }
 
 
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            var getTable = from p in db.Student
-                           select p;
-            foreach (var g in getTable)
-            {
-                db.Student.DeleteOnSubmit(g);
-            }
-            db.SubmitChanges();
-            UpdateStudentsList();
-
-        }
-
         private void UpdateGroupsList()
         {
-            comboFilterByGroup.Items.Clear();
-            groupGrid.DataSource = from p in db.Group select new { Группа = p.Title };
-            comboFilterByGroup.Items.Add("Без фильтра");
-            var getGroupsList = (from p in db.Group select p.Title);
-            TempData.GroupsList = getGroupsList;
-            foreach (var item in getGroupsList)
-            {
-                comboFilterByGroup.Items.Add(item.ToString());
-            }
+            TempData.GroupsList = act.GetGroups();
+            groupGrid.DataSource = act.GetGroups();
 
         }
         private void UpdateStudentsList()
         {
-            studentGrid.DataSource = from p in db.StudentGroup select new { Студент = p.FirstName + (p.MiddleName ?? "") + p.LastName, Группа = p.Title };
+            studentGrid.DataSource = act.GetStudents();
         }
 
 
@@ -178,21 +135,31 @@ namespace ThesisProject.Forms.UserForm
                     getMiddleName = null;
                 else
                     getMiddleName = splitname[2];
-                if (!tsk.isGroupExists(group))
+                if (!act.isGroupExists(group))
                 {
-                    tsk.addGroup(group);
-                    tsk.addStudent(splitname[1], getMiddleName, splitname[0], group);
+                    act.addGroup(group);
+                    act.addStudent(splitname[1], getMiddleName, splitname[0], group);
                 }
                 else
                 {
-                    tsk.addStudent(splitname[1], getMiddleName, splitname[0], group);
+                    act.addStudent(splitname[1], getMiddleName, splitname[0], group);
                 }
-
-
                 UpdateGroupsList();
                 UpdateStudentsList();
-
             }
         }
+
+        private void deleteAllGroupsAndStudents_Click(object sender, EventArgs e)
+        {
+            act.deleteAllStudentsAndGroups();
+        }
+
+        private void groupGrid_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+
+            studentGrid.DataSource = act.SortStudentsByGroup(groupGrid.CurrentCell.Value.ToString()); ;
+        }
+
+
     }
 }

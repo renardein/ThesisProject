@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserForm));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.currentUserStrip = new System.Windows.Forms.ToolStripSplitButton();
@@ -43,14 +44,11 @@
             this.addGroupDialogOpen = new System.Windows.Forms.Button();
             this.groupGrid = new System.Windows.Forms.DataGridView();
             this.importGroupsButton = new System.Windows.Forms.Button();
-            this.deleteAllGroups = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.importStudentsButton = new System.Windows.Forms.Button();
             this.deleteStudentButton = new System.Windows.Forms.Button();
-            this.deleteAllStudents = new System.Windows.Forms.Button();
+            this.deleteAllGroupsAndStudents = new System.Windows.Forms.Button();
             this.addStudentDialogOpen = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.comboFilterByGroup = new System.Windows.Forms.ComboBox();
             this.studentGrid = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -61,6 +59,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.studentFileOpenDialog = new System.Windows.Forms.OpenFileDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.eventLog1 = new System.Diagnostics.EventLog();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.toolStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.examsPage.SuspendLayout();
@@ -74,6 +74,7 @@
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.eventLog1)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -182,17 +183,14 @@
             this.splitContainer1.Panel1.Controls.Add(this.addGroupDialogOpen);
             this.splitContainer1.Panel1.Controls.Add(this.groupGrid);
             this.splitContainer1.Panel1.Controls.Add(this.importGroupsButton);
-            this.splitContainer1.Panel1.Controls.Add(this.deleteAllGroups);
             this.splitContainer1.Panel1.Controls.Add(this.label1);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.importStudentsButton);
             this.splitContainer1.Panel2.Controls.Add(this.deleteStudentButton);
-            this.splitContainer1.Panel2.Controls.Add(this.deleteAllStudents);
+            this.splitContainer1.Panel2.Controls.Add(this.deleteAllGroupsAndStudents);
             this.splitContainer1.Panel2.Controls.Add(this.addStudentDialogOpen);
-            this.splitContainer1.Panel2.Controls.Add(this.label7);
-            this.splitContainer1.Panel2.Controls.Add(this.comboFilterByGroup);
             this.splitContainer1.Panel2.Controls.Add(this.studentGrid);
             this.splitContainer1.Panel2.Controls.Add(this.label2);
             this.splitContainer1.Size = new System.Drawing.Size(836, 392);
@@ -226,8 +224,10 @@
             this.groupGrid.Location = new System.Drawing.Point(7, 66);
             this.groupGrid.Name = "groupGrid";
             this.groupGrid.RowHeadersVisible = false;
-            this.groupGrid.Size = new System.Drawing.Size(404, 292);
+            this.groupGrid.Size = new System.Drawing.Size(404, 321);
             this.groupGrid.TabIndex = 3;
+            this.groupGrid.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.groupGrid_CellMouseClick);
+
             // 
             // importGroupsButton
             // 
@@ -238,17 +238,6 @@
             this.importGroupsButton.Text = "Импорт";
             this.importGroupsButton.UseVisualStyleBackColor = true;
             this.importGroupsButton.Click += new System.EventHandler(this.importGroupsButton_Click);
-            // 
-            // deleteAllGroups
-            // 
-            this.deleteAllGroups.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.deleteAllGroups.Location = new System.Drawing.Point(7, 364);
-            this.deleteAllGroups.Name = "deleteAllGroups";
-            this.deleteAllGroups.Size = new System.Drawing.Size(380, 23);
-            this.deleteAllGroups.TabIndex = 1;
-            this.deleteAllGroups.Text = "Удалить тестовые данные";
-            this.deleteAllGroups.UseVisualStyleBackColor = true;
-            this.deleteAllGroups.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
@@ -279,16 +268,16 @@
             this.deleteStudentButton.Text = "Удалить";
             this.deleteStudentButton.UseVisualStyleBackColor = true;
             // 
-            // deleteAllStudents
+            // deleteAllGroupsAndStudents
             // 
-            this.deleteAllStudents.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.deleteAllStudents.Location = new System.Drawing.Point(7, 364);
-            this.deleteAllStudents.Name = "deleteAllStudents";
-            this.deleteAllStudents.Size = new System.Drawing.Size(406, 23);
-            this.deleteAllStudents.TabIndex = 8;
-            this.deleteAllStudents.Text = "Удалить тестовые данные";
-            this.deleteAllStudents.UseVisualStyleBackColor = true;
-            this.deleteAllStudents.Click += new System.EventHandler(this.button1_Click_1);
+            this.deleteAllGroupsAndStudents.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.deleteAllGroupsAndStudents.Location = new System.Drawing.Point(7, 364);
+            this.deleteAllGroupsAndStudents.Name = "deleteAllGroupsAndStudents";
+            this.deleteAllGroupsAndStudents.Size = new System.Drawing.Size(406, 23);
+            this.deleteAllGroupsAndStudents.TabIndex = 8;
+            this.deleteAllGroupsAndStudents.Text = "Удалить тестовые данные";
+            this.deleteAllGroupsAndStudents.UseVisualStyleBackColor = true;
+            this.deleteAllGroupsAndStudents.Click += new System.EventHandler(this.deleteAllGroupsAndStudents_Click);
             // 
             // addStudentDialogOpen
             // 
@@ -299,25 +288,6 @@
             this.addStudentDialogOpen.Text = "Добавить";
             this.addStudentDialogOpen.UseVisualStyleBackColor = true;
             this.addStudentDialogOpen.Click += new System.EventHandler(this.addStudentDialogOpen_Click);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(271, 42);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(42, 13);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "Группа";
-            // 
-            // comboFilterByGroup
-            // 
-            this.comboFilterByGroup.DisplayMember = "Title";
-            this.comboFilterByGroup.FormattingEnabled = true;
-            this.comboFilterByGroup.Location = new System.Drawing.Point(319, 39);
-            this.comboFilterByGroup.Name = "comboFilterByGroup";
-            this.comboFilterByGroup.Size = new System.Drawing.Size(94, 21);
-            this.comboFilterByGroup.TabIndex = 5;
-            this.comboFilterByGroup.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // studentGrid
             // 
@@ -402,6 +372,10 @@
             this.label6.TabIndex = 1;
             this.label6.Text = "Критерии";
             // 
+            // eventLog1
+            // 
+            this.eventLog1.SynchronizingObject = this;
+            // 
             // UserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -435,6 +409,7 @@
             this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.eventLog1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -455,7 +430,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.OpenFileDialog studentFileOpenDialog;
         private System.Windows.Forms.Button importGroupsButton;
-        private System.Windows.Forms.Button deleteAllGroups;
         private System.Windows.Forms.DataGridView groupGrid;
         private System.Windows.Forms.Button addGroupDialogOpen;
         private System.Windows.Forms.Button deleteGroupButton;
@@ -467,12 +441,12 @@
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridView studentGrid;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox comboFilterByGroup;
         private System.Windows.Forms.Button addStudentDialogOpen;
         private System.Drawing.Printing.PrintDocument printDocument1;
-        private System.Windows.Forms.Button deleteAllStudents;
+        private System.Windows.Forms.Button deleteAllGroupsAndStudents;
         private System.Windows.Forms.Button deleteStudentButton;
         private System.Windows.Forms.Button importStudentsButton;
+        private System.Diagnostics.EventLog eventLog1;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
