@@ -97,6 +97,9 @@ namespace ThesisProject.Forms.UserForm
             db.SubmitChanges();
         }
 
+        /// <summary>
+        /// Удаляет записи из таблиц Groups и Students
+        /// </summary>
         internal void deleteAllStudentsAndGroups()
         {
             var getTableStudents = from p in db.Student
@@ -113,15 +116,25 @@ namespace ThesisProject.Forms.UserForm
             }
             db.SubmitChanges();
         }
+        /// <summary>
+        /// Получает список групп из базы
+        /// </summary>
         internal object GetGroups()
         {
             var gr = from p in db.Group select new { Группа = p.Title };
             return gr;
         }
+        /// <summary>
+        /// Получает список студентов из базы
+        /// </summary>
         internal object GetStudents()
         {
             return from p in db.StudentGroup select new { Студент = p.FirstName + (p.MiddleName ?? "") + p.LastName, Группа = p.Title };
         }
+        /// <summary>
+        /// Получает сортированный по группе список студентов из базы
+        /// </summary>
+        /// <param name="gr">Наименование группы</param>
         internal object SortStudentsByGroup(string gr)
         {
             return (from p in db.StudentGroup where p.Title == gr select new { Студент = p.FirstName + (p.MiddleName ?? "") + p.LastName, Группа = p.Title });
