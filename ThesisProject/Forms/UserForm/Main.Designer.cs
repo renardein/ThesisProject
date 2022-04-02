@@ -209,6 +209,7 @@
             // 
             // addGroupDialogOpen
             // 
+            this.addGroupDialogOpen.Cursor = System.Windows.Forms.Cursors.Default;
             this.addGroupDialogOpen.Location = new System.Drawing.Point(7, 37);
             this.addGroupDialogOpen.Name = "addGroupDialogOpen";
             this.addGroupDialogOpen.Size = new System.Drawing.Size(75, 23);
@@ -227,7 +228,6 @@
             this.groupGrid.Size = new System.Drawing.Size(404, 321);
             this.groupGrid.TabIndex = 3;
             this.groupGrid.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.groupGrid_CellMouseClick);
-
             // 
             // importGroupsButton
             // 
