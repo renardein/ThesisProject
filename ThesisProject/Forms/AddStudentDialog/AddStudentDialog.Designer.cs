@@ -41,6 +41,8 @@
             this.groupBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ktkCisDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.button1 = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.groupBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ktkCisDataSetBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -123,9 +125,7 @@
             // 
             // groupBindingSource
             // 
-            this.groupBindingSource.DataMember = "Group";
             this.groupBindingSource.DataSource = this.ktkCisDataSetBindingSource;
-           
             // 
             // button1
             // 
@@ -156,7 +156,8 @@
             this.Name = "AddStudentDialog";
             this.Text = "AddStudentDialog";
             this.Load += new System.EventHandler(this.AddStudentDialog_Load);
-         
+            ((System.ComponentModel.ISupportInitialize)(this.groupBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ktkCisDataSetBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

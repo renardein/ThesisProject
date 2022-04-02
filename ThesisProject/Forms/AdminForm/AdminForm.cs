@@ -4,13 +4,12 @@ using ThesisProject.Modules.Crypto;
 using ThesisProject.Modules.OpenForm;
 using ThesisProject.Modules.TempData;
 
+
 namespace ThesisProject.Forms.AdminForm
 {
     public partial class AdminForm : Form
     {
-
-        Tasks tsk = new Tasks();
-
+        Main act = new Main();
         public AdminForm()
         {
             InitializeComponent();
@@ -19,7 +18,7 @@ namespace ThesisProject.Forms.AdminForm
         private void AdminForm_Load(object sender, EventArgs e)
         {
             currentUserStrip.Text = TempData.CurrentUser;
-            usersGrid.DataSource = tsk.UpdateUserList();
+            usersGrid.DataSource = act.UpdateUserList();
         }
 
 
@@ -33,17 +32,17 @@ namespace ThesisProject.Forms.AdminForm
                     OpenForm.KarpikEgg();
                     return;
                 }
-                if (!tsk.isUserExists(regUsername.Text))
+                if (!act.isUserExists(regUsername.Text))
                 {
                     if (regPassword.Text == regPasswordConfirm.Text)
                     {
                         string pwd_hash = Crypto.GetMD5(regPassword.Text);
                         int role = regUserRole.SelectedIndex;
-                        tsk.addUser(regUsername.Text, pwd_hash, role);
+                        act.addUser(regUsername.Text, pwd_hash, role);
                         DialogResult result = MessageBox.Show("Пользователь добавлен", "Системное сообщение", MessageBoxButtons.OK);
                         if (result == DialogResult.OK)
                         {
-                            usersGrid.DataSource = tsk.UpdateUserList();
+                            usersGrid.DataSource = act.UpdateUserList();
                         }
 
                     }
@@ -79,8 +78,8 @@ namespace ThesisProject.Forms.AdminForm
             {
                 if (userDeleteResult == DialogResult.Yes)
                 {
-                    tsk.deleteUser(rmuser);
-                    usersGrid.DataSource = tsk.UpdateUserList();
+                    act.deleteUser(rmuser);
+                    usersGrid.DataSource = act.UpdateUserList();
                 }
             }
             catch (System.InvalidOperationException err)
@@ -99,8 +98,8 @@ namespace ThesisProject.Forms.AdminForm
             {
                 if (userRoleChangeResult == DialogResult.Yes)
                 {
-                    tsk.changeUserRole(changingUser);
-                    usersGrid.DataSource = tsk.UpdateUserList();
+                    act.changeUserRole(changingUser);
+                    usersGrid.DataSource = act.UpdateUserList();
                 }
             }
             catch (System.InvalidOperationException err)
