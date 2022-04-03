@@ -11,6 +11,7 @@ namespace ThesisProject.Forms.UserForm
         internal GroupAct ga = new GroupAct();
         internal StudentAct sa = new StudentAct();
         internal ProModuleAct pa = new ProModuleAct();
+        internal ExamAct ea = new ExamAct();
 
         public UserForm()
         {
@@ -47,7 +48,7 @@ namespace ThesisProject.Forms.UserForm
                     ga.addGroup(s);
                 else
                     return;
-                
+
             }
             UpdateGroupsList();
         }
@@ -109,26 +110,6 @@ namespace ThesisProject.Forms.UserForm
             }
             UpdateStudentsList();
         }
-
-
-        private void UpdateGroupsList()
-        {
-            TempData.GroupsList = ga.GetGroups();
-            groupGrid.DataSource = ga.GetGroups();
-
-        }
-        private void UpdateStudentsList()
-        {
-            studentGrid.DataSource = sa.GetStudents();
-        }
-
-        private void UpdatePmList()
-        {
-
-            pmGrid.DataSource = pa.GetProModules();
-
-        }
-
 
         private void выходToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
@@ -195,11 +176,6 @@ namespace ThesisProject.Forms.UserForm
             UpdatePmList();
         }
 
-        private void button5_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void deletePmButton_Click(object sender, EventArgs e)
         {
             string rmPm = pmGrid.CurrentCell.Value.ToString();
@@ -233,6 +209,39 @@ namespace ThesisProject.Forms.UserForm
                     return;
             };
             UpdatePmList();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            AddExamDialog.AddExamDialog aed = new AddExamDialog.AddExamDialog();
+            aed.Owner = this;
+            DialogResult res = aed.ShowDialog();
+            if (res == DialogResult.OK)
+            {
+
+
+            }
+            UpdateExamList();
+        }
+
+        private void UpdateGroupsList()
+        {
+            TempData.GroupsList = ga.GetGroups();
+            groupGrid.DataSource = ga.GetGroups();
+
+        }
+        private void UpdateStudentsList()
+        {
+            studentGrid.DataSource = sa.GetStudents();
+        }
+
+        private void UpdatePmList()
+        {
+            pmGrid.DataSource = pa.GetProModules();
+        }
+        private void UpdateExamList()
+        {
+
         }
     }
 }

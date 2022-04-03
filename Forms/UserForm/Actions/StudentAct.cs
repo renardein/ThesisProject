@@ -8,7 +8,7 @@ namespace ThesisProject.Forms.UserForm
     {
         DatabaseAdapterDataContext db = new DatabaseAdapterDataContext();
 
-       Actions.GroupAct ga = new Actions.GroupAct();
+        Actions.GroupAct ga = new Actions.GroupAct();
 
         /// <summary>
         /// Получает список студентов из базы

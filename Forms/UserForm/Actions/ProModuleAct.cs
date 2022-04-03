@@ -19,7 +19,7 @@ namespace ThesisProject.Forms.UserForm.Actions
         /// Проверяет наличие ПМ в базе
         /// </summary>
         /// <param name="pmTitle">Наименование ПМ</param>
-        internal bool isModuleExists (string pmTitle)
+        internal bool isModuleExists(string pmTitle)
         {
             var getPmFromDb = from pm in db.ProModule where pm.Title == pmTitle select pm;
             if (getPmFromDb.Count() >= 1)
@@ -49,7 +49,7 @@ namespace ThesisProject.Forms.UserForm.Actions
         internal int getProModuleId(string pmTitle)
         {
             var getModuleIdFromDb = from c in db.ProModule
-                                   where c.Title == pmTitle
+                                    where c.Title == pmTitle
                                     select c.ModuleId;
             return getModuleIdFromDb.First();
 

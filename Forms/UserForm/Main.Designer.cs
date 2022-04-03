@@ -43,9 +43,7 @@
             this.pmGrid = new System.Windows.Forms.DataGridView();
             this.importPmButton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.examGrid = new System.Windows.Forms.DataGridView();
             this.label7 = new System.Windows.Forms.Label();
@@ -58,18 +56,19 @@
             this.label1 = new System.Windows.Forms.Label();
             this.importStudentsButton = new System.Windows.Forms.Button();
             this.deleteStudentButton = new System.Windows.Forms.Button();
-            this.deleteAllGroupsAndStudents = new System.Windows.Forms.Button();
             this.addStudentDialogOpen = new System.Windows.Forms.Button();
             this.studentGrid = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.marksPage = new System.Windows.Forms.TabPage();
             this.label4 = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.reportsPage = new System.Windows.Forms.TabPage();
             this.label5 = new System.Windows.Forms.Label();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.label6 = new System.Windows.Forms.Label();
             this.txtFileOpenDialog = new System.Windows.Forms.OpenFileDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.aboutPage = new System.Windows.Forms.TabPage();
+            this.debugPage = new System.Windows.Forms.TabPage();
+            this.button6 = new System.Windows.Forms.Button();
+            this.deleteAllGroupsAndStudents = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.examsPage.SuspendLayout();
@@ -86,9 +85,9 @@
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentGrid)).BeginInit();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.tabPage3.SuspendLayout();
+            this.marksPage.SuspendLayout();
+            this.reportsPage.SuspendLayout();
+            this.debugPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -141,11 +140,12 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.examsPage);
             this.tabControl1.Controls.Add(this.studentsPage);
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.examsPage);
+            this.tabControl1.Controls.Add(this.marksPage);
+            this.tabControl1.Controls.Add(this.reportsPage);
+            this.tabControl1.Controls.Add(this.aboutPage);
+            this.tabControl1.Controls.Add(this.debugPage);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 26);
             this.tabControl1.Name = "tabControl1";
@@ -180,7 +180,6 @@
             // 
             // splitContainer2.Panel2
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.button4);
             this.splitContainer2.Panel2.Controls.Add(this.button5);
             this.splitContainer2.Panel2.Controls.Add(this.button6);
             this.splitContainer2.Panel2.Controls.Add(this.button7);
@@ -241,15 +240,6 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Модули";
             // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(169, 37);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 6;
-            this.button4.Text = "Импорт";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
             // button5
             // 
             this.button5.Location = new System.Drawing.Point(88, 37);
@@ -258,17 +248,6 @@
             this.button5.TabIndex = 9;
             this.button5.Text = "Удалить";
             this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // button6
-            // 
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.button6.Location = new System.Drawing.Point(7, 589);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(574, 23);
-            this.button6.TabIndex = 8;
-            this.button6.Text = "Удалить тестовые данные";
-            this.button6.UseVisualStyleBackColor = true;
             // 
             // button7
             // 
@@ -278,6 +257,7 @@
             this.button7.TabIndex = 7;
             this.button7.Text = "Добавить";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // examGrid
             // 
@@ -328,7 +308,6 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.importStudentsButton);
             this.splitContainer1.Panel2.Controls.Add(this.deleteStudentButton);
-            this.splitContainer1.Panel2.Controls.Add(this.deleteAllGroupsAndStudents);
             this.splitContainer1.Panel2.Controls.Add(this.addStudentDialogOpen);
             this.splitContainer1.Panel2.Controls.Add(this.studentGrid);
             this.splitContainer1.Panel2.Controls.Add(this.label2);
@@ -407,17 +386,6 @@
             this.deleteStudentButton.Text = "Удалить";
             this.deleteStudentButton.UseVisualStyleBackColor = true;
             // 
-            // deleteAllGroupsAndStudents
-            // 
-            this.deleteAllGroupsAndStudents.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.deleteAllGroupsAndStudents.Location = new System.Drawing.Point(7, 589);
-            this.deleteAllGroupsAndStudents.Name = "deleteAllGroupsAndStudents";
-            this.deleteAllGroupsAndStudents.Size = new System.Drawing.Size(574, 23);
-            this.deleteAllGroupsAndStudents.TabIndex = 8;
-            this.deleteAllGroupsAndStudents.Text = "Удалить тестовые данные";
-            this.deleteAllGroupsAndStudents.UseVisualStyleBackColor = true;
-            this.deleteAllGroupsAndStudents.Click += new System.EventHandler(this.deleteAllGroupsAndStudents_Click);
-            // 
             // addStudentDialogOpen
             // 
             this.addStudentDialogOpen.Location = new System.Drawing.Point(7, 37);
@@ -448,16 +416,16 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Студенты";
             // 
-            // tabPage1
+            // marksPage
             // 
-            this.tabPage1.Controls.Add(this.label4);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1173, 623);
-            this.tabPage1.TabIndex = 2;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.marksPage.Controls.Add(this.label4);
+            this.marksPage.Location = new System.Drawing.Point(4, 22);
+            this.marksPage.Name = "marksPage";
+            this.marksPage.Padding = new System.Windows.Forms.Padding(3);
+            this.marksPage.Size = new System.Drawing.Size(1173, 623);
+            this.marksPage.TabIndex = 2;
+            this.marksPage.Text = "Оценки";
+            this.marksPage.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
@@ -469,47 +437,67 @@
             this.label4.TabIndex = 1;
             this.label4.Text = "Модули";
             // 
-            // tabPage2
+            // reportsPage
             // 
-            this.tabPage2.Controls.Add(this.label5);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1173, 623);
-            this.tabPage2.TabIndex = 3;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.reportsPage.Controls.Add(this.label5);
+            this.reportsPage.Location = new System.Drawing.Point(4, 22);
+            this.reportsPage.Name = "reportsPage";
+            this.reportsPage.Padding = new System.Windows.Forms.Padding(3);
+            this.reportsPage.Size = new System.Drawing.Size(1173, 623);
+            this.reportsPage.TabIndex = 3;
+            this.reportsPage.Text = "Отчеты";
+            this.reportsPage.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(3, 3);
+            this.label5.Location = new System.Drawing.Point(6, 3);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(111, 24);
             this.label5.TabIndex = 1;
             this.label5.Text = "Ведомости";
             // 
-            // tabPage3
+            // aboutPage
             // 
-            this.tabPage3.Controls.Add(this.label6);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1173, 623);
-            this.tabPage3.TabIndex = 4;
-            this.tabPage3.Text = "tabPage3";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.aboutPage.Location = new System.Drawing.Point(4, 22);
+            this.aboutPage.Name = "aboutPage";
+            this.aboutPage.Padding = new System.Windows.Forms.Padding(3);
+            this.aboutPage.Size = new System.Drawing.Size(1173, 623);
+            this.aboutPage.TabIndex = 4;
+            this.aboutPage.Text = "О программе";
+            this.aboutPage.UseVisualStyleBackColor = true;
             // 
-            // label6
+            // debugPage
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(3, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(98, 24);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "Критерии";
+            this.debugPage.Controls.Add(this.deleteAllGroupsAndStudents);
+            this.debugPage.Location = new System.Drawing.Point(4, 22);
+            this.debugPage.Name = "debugPage";
+            this.debugPage.Padding = new System.Windows.Forms.Padding(3);
+            this.debugPage.Size = new System.Drawing.Size(1173, 623);
+            this.debugPage.TabIndex = 5;
+            this.debugPage.Text = "Отладка";
+            this.debugPage.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.button6.Location = new System.Drawing.Point(7, 589);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(574, 23);
+            this.button6.TabIndex = 8;
+            this.button6.Text = "Удалить тестовые данные";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // deleteAllGroupsAndStudents
+            // 
+            this.deleteAllGroupsAndStudents.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.deleteAllGroupsAndStudents.Location = new System.Drawing.Point(355, 202);
+            this.deleteAllGroupsAndStudents.Name = "deleteAllGroupsAndStudents";
+            this.deleteAllGroupsAndStudents.Size = new System.Drawing.Size(393, 23);
+            this.deleteAllGroupsAndStudents.TabIndex = 10;
+            this.deleteAllGroupsAndStudents.Text = "Удалить тестовые данные из таблиц Group и Student";
+            this.deleteAllGroupsAndStudents.UseVisualStyleBackColor = true;
             // 
             // UserForm
             // 
@@ -545,12 +533,11 @@
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentGrid)).EndInit();
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
+            this.marksPage.ResumeLayout(false);
+            this.marksPage.PerformLayout();
+            this.reportsPage.ResumeLayout(false);
+            this.reportsPage.PerformLayout();
+            this.debugPage.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -574,15 +561,12 @@
         private System.Windows.Forms.DataGridView groupGrid;
         private System.Windows.Forms.Button addGroupDialogOpen;
         private System.Windows.Forms.Button deleteGroupButton;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage marksPage;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage reportsPage;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridView studentGrid;
         private System.Windows.Forms.Button addStudentDialogOpen;
-        private System.Windows.Forms.Button deleteAllGroupsAndStudents;
         private System.Windows.Forms.Button deleteStudentButton;
         private System.Windows.Forms.Button importStudentsButton;
         private System.Windows.Forms.ToolTip toolTip1;
@@ -592,11 +576,13 @@
         private System.Windows.Forms.DataGridView pmGrid;
         private System.Windows.Forms.Button importPmButton;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.DataGridView examGrid;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TabPage aboutPage;
+        private System.Windows.Forms.TabPage debugPage;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button deleteAllGroupsAndStudents;
     }
 }
