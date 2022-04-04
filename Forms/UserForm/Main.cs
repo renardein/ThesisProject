@@ -12,6 +12,8 @@ namespace ThesisProject.Forms.UserForm
         internal StudentAct sa = new StudentAct();
         internal ProModuleAct pa = new ProModuleAct();
         internal ExamAct ea = new ExamAct();
+        internal ReportingAct ReportingAct = new ReportingAct();
+        internal MarkingAct ma = new MarkingAct();
 
         public UserForm()
         {

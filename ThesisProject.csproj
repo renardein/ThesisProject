@@ -70,7 +70,9 @@
   <ItemGroup>
     <Compile Include="Forms\UserForm\Actions\ExamAct.cs" />
     <Compile Include="Forms\UserForm\Actions\GroupAct.cs" />
+    <Compile Include="Forms\UserForm\Actions\MarkingAct.cs" />
     <Compile Include="Forms\UserForm\Actions\ProModuleAct.cs" />
+    <Compile Include="Forms\UserForm\Actions\ReportingAct.cs" />
     <Compile Include="Forms\UserForm\AddExamDialog\AddExamDialog.cs">
       <SubType>Form</SubType>
     </Compile>
