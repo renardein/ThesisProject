@@ -117,7 +117,7 @@
             this.addStudentGroupBox.DataSource = this.groupBindingSource;
             this.addStudentGroupBox.DisplayMember = "Title";
             this.addStudentGroupBox.FormattingEnabled = true;
-            this.addStudentGroupBox.Location = new System.Drawing.Point(76, 131);
+            this.addStudentGroupBox.Location = new System.Drawing.Point(76, 129);
             this.addStudentGroupBox.Name = "addStudentGroupBox";
             this.addStudentGroupBox.Size = new System.Drawing.Size(286, 21);
             this.addStudentGroupBox.TabIndex = 9;

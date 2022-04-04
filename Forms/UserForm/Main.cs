@@ -243,5 +243,26 @@ namespace ThesisProject.Forms.UserForm
         {
 
         }
+
+        private void deleteStudentButton_Click(object sender, EventArgs e)
+        {
+            string name = this.studentGrid.CurrentRow.Cells[0].Value.ToString();
+            string group = this.studentGrid.CurrentRow.Cells[1].Value.ToString();
+            DialogResult studentDeleteResult = MessageBox.Show("Вы уверены что хотите удалить cтудента " + name + "?", "Системное сообщение", MessageBoxButtons.YesNo);
+
+            try
+            {
+                if (studentDeleteResult == DialogResult.Yes)
+                {
+
+                    sa.deleteStudent(name, group);
+                }
+            }
+            catch (System.InvalidOperationException err)
+            {
+                MessageBox.Show(err.Message);
+            }
+            UpdateStudentsList();
+        }
     }
 }

@@ -1,13 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ktkCis" Class="DatabaseAdapterDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=term4;Initial Catalog=ktkCis;Integrated Security=True" SettingsObjectName="ThesisProject.Properties.Settings" SettingsPropertyName="ktkCisConnectionString1" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.StudentGroup" Member="StudentGroup">
-    <Type Name="StudentGroup">
-      <Column Name="FirstName" Type="System.String" DbType="NChar(15) NOT NULL" CanBeNull="false" />
-      <Column Name="MiddleName" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
-      <Column Name="LastName" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
-      <Column Name="Title" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
   <Table Name="dbo.[User]" Member="User">
     <Type Name="User">
       <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -84,6 +76,12 @@
       <Association Name="Exam_ExamMark" Member="ExamMark" ThisKey="ExamId" OtherKey="ExamId" Type="ExamMark" />
       <Association Name="Exam_ExamExaminer" Member="ExamExaminer" ThisKey="ExamId" OtherKey="ExamId" Type="ExamExaminer" />
       <Association Name="ProModule_Exam" Member="ProModule" ThisKey="ModuleId" OtherKey="ModuleId" Type="ProModule" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.StudentGroup" Member="StudentGroup">
+    <Type Name="StudentGroup">
+      <Column Name="Student" Type="System.String" DbType="NVarChar(117)" CanBeNull="true" />
+      <Column Name="[Group]" Member="Group" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
 </Database>

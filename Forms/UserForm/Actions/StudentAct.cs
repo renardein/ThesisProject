@@ -15,7 +15,7 @@ namespace ThesisProject.Forms.UserForm
         /// </summary>
         internal object GetStudents()
         {
-            return from p in db.StudentGroup select new { Студент = p.FirstName + (p.MiddleName ?? "") + p.LastName, Группа = p.Title };
+            return from p in db.StudentGroup select new { Студент = p.Student, Группа = p.Group };
         }
         /// <summary>
         /// Получает сортированный по группе список студентов из базы
@@ -23,7 +23,7 @@ namespace ThesisProject.Forms.UserForm
         /// <param name="gr">Наименование группы</param>
         internal object SortStudentsByGroup(string gr)
         {
-            return (from p in db.StudentGroup where p.Title == gr select new { Студент = p.FirstName + (p.MiddleName ?? "") + p.LastName, Группа = p.Title });
+            return (from p in db.StudentGroup where p.Student == gr select new { Студент = p.Student, Группа = p.Group });
         }
 
 
@@ -56,8 +56,8 @@ namespace ThesisProject.Forms.UserForm
             var addStudent = new Student
             {
                 FirstName = FirstName,
-                MiddleName = LastName,
-                LastName = MiddleName,
+                MiddleName = MiddleName,
+                LastName = LastName,
                 GroupId = ga.getGroupId(EnteredGroup)
             };
             db.Student.InsertOnSubmit(addStudent);
@@ -84,7 +84,25 @@ namespace ThesisProject.Forms.UserForm
             db.SubmitChanges();
         }
 
+        /// <summary>
+        /// Добавляет студента в базу
+        /// </summary>
+        /// <param name="name">Имя студента</param>
+        /// <param name="gr">Группа</param>
 
+        internal void deleteStudent(string name, string gr)
+        {
+            string[] splitname = name.Split(' ');
+            var getTableStudents = from s in db.Student
+                                   where (s.FirstName == splitname[0]) && (s.MiddleName == splitname[1]) && (s.LastName == splitname[2]) && (s.GroupId == ga.getGroupId(gr))
+                                   select s;
 
+            foreach (var s in getTableStudents)
+            {
+                db.Student.DeleteOnSubmit(s);
+            }
+            db.SubmitChanges();
+
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Windows.Forms;
 using ThesisProject.Modules.DatabaseAdapter;
 
 namespace ThesisProject.Forms.UserForm.Actions
@@ -57,9 +58,17 @@ namespace ThesisProject.Forms.UserForm.Actions
         /// <param name="gr">Наименование группы</param>
         internal void deleteGroup(string gr)
         {
-            Group objGroup = db.Group.Single(group => group.Title == gr);
-            db.Group.DeleteOnSubmit(objGroup);
-            db.SubmitChanges();
+            try
+            {
+                Group objGroup = db.Group.Single(group => group.Title == gr);
+                db.Group.DeleteOnSubmit(objGroup);
+                db.SubmitChanges();
+            }
+            catch (System.Data.SqlClient.SqlException)
+            {
+                MessageBox.Show("Невозможно удалить группу, содержащую записи");
+                return;
+            }
         }
 
         /// <summary>
