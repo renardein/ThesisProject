@@ -155,8 +155,9 @@ namespace ThesisProject.Forms.UserForm
 
         private void groupGrid_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            string gr = this.studentGrid.CurrentRow.Cells[1].Value.ToString();
 
-            studentGrid.DataSource = sa.SortStudentsByGroup(groupGrid.CurrentCell.Value.ToString()); ;
+            studentGrid.DataSource = sa.SortStudentsByGroup(gr); 
         }
 
 

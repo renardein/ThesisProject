@@ -62,6 +62,7 @@
             // 
             // authRoleBox
             // 
+            this.authRoleBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.authRoleBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.authRoleBox.FormattingEnabled = true;
             this.authRoleBox.Items.AddRange(new object[] {

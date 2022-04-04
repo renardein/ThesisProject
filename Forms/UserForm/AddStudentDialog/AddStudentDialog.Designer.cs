@@ -116,6 +116,7 @@
             // 
             this.addStudentGroupBox.DataSource = this.groupBindingSource;
             this.addStudentGroupBox.DisplayMember = "Title";
+            this.addStudentGroupBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.addStudentGroupBox.FormattingEnabled = true;
             this.addStudentGroupBox.Location = new System.Drawing.Point(76, 129);
             this.addStudentGroupBox.Name = "addStudentGroupBox";

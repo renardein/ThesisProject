@@ -23,7 +23,7 @@ namespace ThesisProject.Forms.UserForm
         /// <param name="gr">Наименование группы</param>
         internal object SortStudentsByGroup(string gr)
         {
-            return (from p in db.StudentGroup where p.Student == gr select new { Студент = p.Student, Группа = p.Group });
+            return (from p in db.StudentGroup where p.Group == gr select new { Студент = p.Student, Группа = p.Group });
         }
 
 
