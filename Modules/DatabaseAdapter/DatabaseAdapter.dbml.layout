@@ -70,7 +70,7 @@
         <classShapeMoniker Id="0faf99af-af28-46df-ab8f-20a604412a57" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 8.96875); (6.46875 : 8.96875); (6.46875 : 5.0112939453125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.5 : 8.96875); (6.46875 : 8.96875); (6.46875 : 5.0112939453125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DatabaseAdapterDataContext/Mark/Mark_ExamMark" />
       <nodes>
         <classShapeMoniker Id="c4958ab3-0133-49f1-a8e8-134ab9db4beb" />

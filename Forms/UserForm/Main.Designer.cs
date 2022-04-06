@@ -62,15 +62,14 @@
             this.marksPage = new System.Windows.Forms.TabPage();
             this.reportsPage = new System.Windows.Forms.TabPage();
             this.aboutPage = new System.Windows.Forms.TabPage();
-            this.debugPage = new System.Windows.Forms.TabPage();
-            this.deleteAllGroupsAndStudents = new System.Windows.Forms.Button();
-            this.txtFileOpenDialog = new System.Windows.Forms.OpenFileDialog();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.label5 = new System.Windows.Forms.Label();
+            this.debugPage = new System.Windows.Forms.TabPage();
+            this.txtFileOpenDialog = new System.Windows.Forms.OpenFileDialog();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.toolStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.studentsPage.SuspendLayout();
@@ -88,7 +87,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pmGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.examGrid)).BeginInit();
             this.aboutPage.SuspendLayout();
-            this.debugPage.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -451,27 +449,6 @@
             this.aboutPage.Text = "О программе";
             this.aboutPage.UseVisualStyleBackColor = true;
             // 
-            // debugPage
-            // 
-            this.debugPage.Controls.Add(this.deleteAllGroupsAndStudents);
-            this.debugPage.Location = new System.Drawing.Point(4, 22);
-            this.debugPage.Name = "debugPage";
-            this.debugPage.Padding = new System.Windows.Forms.Padding(3);
-            this.debugPage.Size = new System.Drawing.Size(1173, 623);
-            this.debugPage.TabIndex = 5;
-            this.debugPage.Text = "Отладка";
-            this.debugPage.UseVisualStyleBackColor = true;
-            // 
-            // deleteAllGroupsAndStudents
-            // 
-            this.deleteAllGroupsAndStudents.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.deleteAllGroupsAndStudents.Location = new System.Drawing.Point(8, 15);
-            this.deleteAllGroupsAndStudents.Name = "deleteAllGroupsAndStudents";
-            this.deleteAllGroupsAndStudents.Size = new System.Drawing.Size(393, 23);
-            this.deleteAllGroupsAndStudents.TabIndex = 10;
-            this.deleteAllGroupsAndStudents.Text = "Удалить тестовые данные из таблиц Group и Student";
-            this.deleteAllGroupsAndStudents.UseVisualStyleBackColor = true;
-            // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -485,6 +462,30 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1170, 620);
             this.panel1.TabIndex = 0;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(567, 367);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(100, 20);
+            this.label5.TabIndex = 3;
+            this.label5.Text = "(Ethosa лох)";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.linkLabel1.Location = new System.Drawing.Point(504, 367);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(60, 20);
+            this.linkLabel1.TabIndex = 2;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "GitHub";
+            this.linkLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // pictureBox1
             // 
@@ -508,29 +509,15 @@
     "ls";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // linkLabel1
+            // debugPage
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.linkLabel1.Location = new System.Drawing.Point(504, 367);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(60, 20);
-            this.linkLabel1.TabIndex = 2;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "GitHub";
-            this.linkLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(567, 367);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(100, 20);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "(Ethosa лох)";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.debugPage.Location = new System.Drawing.Point(4, 22);
+            this.debugPage.Name = "debugPage";
+            this.debugPage.Padding = new System.Windows.Forms.Padding(3);
+            this.debugPage.Size = new System.Drawing.Size(1173, 623);
+            this.debugPage.TabIndex = 5;
+            this.debugPage.Text = "Отладка";
+            this.debugPage.UseVisualStyleBackColor = true;
             // 
             // UserForm
             // 
@@ -567,7 +554,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pmGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.examGrid)).EndInit();
             this.aboutPage.ResumeLayout(false);
-            this.debugPage.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -613,7 +599,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TabPage aboutPage;
         private System.Windows.Forms.TabPage debugPage;
-        private System.Windows.Forms.Button deleteAllGroupsAndStudents;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox pictureBox1;

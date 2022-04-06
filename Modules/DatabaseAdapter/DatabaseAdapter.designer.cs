@@ -60,7 +60,7 @@ namespace ThesisProject.Modules.DatabaseAdapter
     #endregion
 		
 		public DatabaseAdapterDataContext() : 
-				base(global::ThesisProject.Properties.Settings.Default.ktkCisConnectionString1, mappingSource)
+				base(global::ThesisProject.Properties.Settings.Default.ktkCisConnectionString, mappingSource)
 		{
 			OnCreated();
 		}

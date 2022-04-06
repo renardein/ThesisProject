@@ -26,20 +26,10 @@ namespace ThesisProject.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=localhost;Initial Catalog=ktkCis;Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=term4;Initial Catalog=ktkCis;Integrated Security=True")]
         public string ktkCisConnectionString {
             get {
                 return ((string)(this["ktkCisConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=term4;Initial Catalog=ktkCis;Integrated Security=True")]
-        public string ktkCisConnectionString1 {
-            get {
-                return ((string)(this["ktkCisConnectionString1"]));
             }
         }
     }

@@ -32,15 +32,16 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.addStudentLastBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.criteriaFilenameBox = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.examDatetime = new System.Windows.Forms.DateTimePicker();
             this.addExamGroupBox = new System.Windows.Forms.ComboBox();
+            this.openCriteriaFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.addExamProModuleBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // button1
@@ -57,7 +58,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 134);
+            this.label5.Location = new System.Drawing.Point(13, 132);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(55, 13);
             this.label5.TabIndex = 18;
@@ -66,7 +67,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 105);
+            this.label4.Location = new System.Drawing.Point(13, 106);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(33, 13);
             this.label4.TabIndex = 16;
@@ -80,13 +81,6 @@
             this.label3.Size = new System.Drawing.Size(42, 13);
             this.label3.TabIndex = 14;
             this.label3.Text = "Группа";
-            // 
-            // addStudentLastBox
-            // 
-            this.addStudentLastBox.Location = new System.Drawing.Point(76, 51);
-            this.addStudentLastBox.Name = "addStudentLastBox";
-            this.addStudentLastBox.Size = new System.Drawing.Size(286, 20);
-            this.addStudentLastBox.TabIndex = 13;
             // 
             // label2
             // 
@@ -110,7 +104,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(13, 160);
+            this.label6.Location = new System.Drawing.Point(13, 158);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(57, 26);
             this.label6.TabIndex = 21;
@@ -124,12 +118,12 @@
             this.textBox1.Size = new System.Drawing.Size(286, 78);
             this.textBox1.TabIndex = 22;
             // 
-            // textBox2
+            // criteriaFilenameBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(74, 131);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(205, 20);
-            this.textBox2.TabIndex = 23;
+            this.criteriaFilenameBox.Location = new System.Drawing.Point(76, 131);
+            this.criteriaFilenameBox.Name = "criteriaFilenameBox";
+            this.criteriaFilenameBox.Size = new System.Drawing.Size(205, 20);
+            this.criteriaFilenameBox.TabIndex = 23;
             // 
             // button2
             // 
@@ -139,39 +133,59 @@
             this.button2.TabIndex = 24;
             this.button2.Text = "Обзор";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // dateTimePicker1
+            // examDatetime
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(76, 105);
-            this.dateTimePicker1.MaxDate = new System.DateTime(2099, 12, 31, 0, 0, 0, 0);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(286, 20);
-            this.dateTimePicker1.TabIndex = 25;
+            this.examDatetime.CustomFormat = "dd.MM.yyyy HH:mm";
+            this.examDatetime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.examDatetime.Location = new System.Drawing.Point(76, 105);
+            this.examDatetime.MaxDate = new System.DateTime(2050, 12, 31, 0, 0, 0, 0);
+            this.examDatetime.MinDate = new System.DateTime(2020, 1, 1, 0, 0, 0, 0);
+            this.examDatetime.Name = "examDatetime";
+            this.examDatetime.Size = new System.Drawing.Size(286, 20);
+            this.examDatetime.TabIndex = 25;
+            this.examDatetime.Value = new System.DateTime(2022, 4, 6, 18, 1, 0, 0);
+            this.examDatetime.ValueChanged += new System.EventHandler(this.examDatetime_ValueChanged);
             // 
             // addExamGroupBox
             // 
+            this.addExamGroupBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.addExamGroupBox.FormattingEnabled = true;
             this.addExamGroupBox.Location = new System.Drawing.Point(76, 78);
             this.addExamGroupBox.Name = "addExamGroupBox";
             this.addExamGroupBox.Size = new System.Drawing.Size(286, 21);
             this.addExamGroupBox.TabIndex = 26;
             // 
+            // openCriteriaFileDialog
+            // 
+            this.openCriteriaFileDialog.FileName = "openCriteriaFileDialog";
+            // 
+            // addExamProModuleBox
+            // 
+            this.addExamProModuleBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.addExamProModuleBox.FormattingEnabled = true;
+            this.addExamProModuleBox.Location = new System.Drawing.Point(77, 51);
+            this.addExamProModuleBox.Name = "addExamProModuleBox";
+            this.addExamProModuleBox.Size = new System.Drawing.Size(286, 21);
+            this.addExamProModuleBox.TabIndex = 27;
+            // 
             // AddExamDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(375, 275);
+            this.Controls.Add(this.addExamProModuleBox);
             this.Controls.Add(this.addExamGroupBox);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.examDatetime);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.criteriaFilenameBox);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.addStudentLastBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "AddExamDialog";
@@ -191,14 +205,15 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox addStudentLastBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox criteriaFilenameBox;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker examDatetime;
         private System.Windows.Forms.ComboBox addExamGroupBox;
+        private System.Windows.Forms.OpenFileDialog openCriteriaFileDialog;
+        private System.Windows.Forms.ComboBox addExamProModuleBox;
     }
 }

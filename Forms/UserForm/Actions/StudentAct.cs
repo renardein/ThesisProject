@@ -65,26 +65,6 @@ namespace ThesisProject.Forms.UserForm
         }
 
         /// <summary>
-        /// Удаляет записи из таблиц Groups и Students
-        /// </summary>
-        internal void deleteAllStudentsAndGroups()
-        {
-            var getTableStudents = from p in db.Student
-                                   select p;
-            var getTableGroups = from p in db.Group
-                                 select p;
-            foreach (var s in getTableStudents)
-            {
-                db.Student.DeleteOnSubmit(s);
-            }
-            foreach (var g in getTableGroups)
-            {
-                db.Group.DeleteOnSubmit(g);
-            }
-            db.SubmitChanges();
-        }
-
-        /// <summary>
         /// Добавляет студента в базу
         /// </summary>
         /// <param name="name">Имя студента</param>

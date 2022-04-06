@@ -148,18 +148,11 @@ namespace ThesisProject.Forms.UserForm
             }
         }
 
-        private void deleteAllGroupsAndStudents_Click(object sender, EventArgs e)
-        {
-            sa.deleteAllStudentsAndGroups();
-            UpdateGroupsList();
-            UpdateStudentsList();
-        }
-
         private void groupGrid_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             string gr = this.studentGrid.CurrentRow.Cells[1].Value.ToString();
 
-            studentGrid.DataSource = sa.SortStudentsByGroup(gr); 
+            studentGrid.DataSource = sa.SortStudentsByGroup(gr);
         }
 
 
@@ -227,25 +220,6 @@ namespace ThesisProject.Forms.UserForm
             UpdateExamList();
         }
 
-        private void UpdateGroupsList()
-        {
-            TempData.GroupsList = ga.GetGroups();
-            groupGrid.DataSource = ga.GetGroups();
-
-        }
-        private void UpdateStudentsList()
-        {
-            studentGrid.DataSource = sa.GetStudents();
-        }
-
-        private void UpdatePmList()
-        {
-            pmGrid.DataSource = pa.GetProModules();
-        }
-        private void UpdateExamList()
-        {
-
-        }
 
         private void deleteStudentButton_Click(object sender, EventArgs e)
         {
@@ -272,5 +246,28 @@ namespace ThesisProject.Forms.UserForm
         {
             System.Diagnostics.Process.Start("https://github.com/renardein/ThesisProject");
         }
+
+        private void UpdateGroupsList()
+        {
+            TempData.GroupsList = ga.GetGroups();
+            groupGrid.DataSource = ga.GetGroups();
+
+        }
+        private void UpdateStudentsList()
+        {
+            studentGrid.DataSource = sa.GetStudents();
+        }
+
+        private void UpdatePmList()
+        {
+            TempData.ProModulesList = pa.GetProModules();
+            pmGrid.DataSource = pa.GetProModules();
+        }
+        private void UpdateExamList()
+        {
+
+        }
+
+
     }
 }

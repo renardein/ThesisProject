@@ -5,6 +5,6 @@
 
         public static string CurrentUser { get; set; }
         public static object GroupsList { get; set; }
-
+        public static object ProModulesList { get; set; }
     }
 }
