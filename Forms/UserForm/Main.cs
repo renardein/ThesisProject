@@ -225,7 +225,7 @@ namespace ThesisProject.Forms.UserForm
         {
             string name = this.studentGrid.CurrentRow.Cells[0].Value.ToString();
             string group = this.studentGrid.CurrentRow.Cells[1].Value.ToString();
-            DialogResult studentDeleteResult = MessageBox.Show("Вы уверены что хотите удалить cтудента " + name + "?", "Системное сообщение", MessageBoxButtons.YesNo);
+            DialogResult studentDeleteResult = MessageBox.Show("Вы уверены что хотите удалить cтудента " + name + " из группы " + group + "?", "Системное сообщение", MessageBoxButtons.YesNo);
 
             try
             {
@@ -265,7 +265,7 @@ namespace ThesisProject.Forms.UserForm
         }
         private void UpdateExamList()
         {
-
+           
         }
 
 

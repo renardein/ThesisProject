@@ -16,10 +16,10 @@ namespace ThesisProject.Forms.UserForm.AddExamDialog
 
         private void AddExamDialog_Load(object sender, EventArgs e)
         {
-            addExamGroupBox.DataSource = Modules.TempData.TempData.GroupsList;
-            addExamGroupBox.DisplayMember = "Группа";
             addExamProModuleBox.DataSource = Modules.TempData.TempData.ProModulesList;
+            addExamGroupBox.DataSource = Modules.TempData.TempData.GroupsList;
             addExamProModuleBox.DisplayMember = "Модуль";
+            addExamGroupBox.DisplayMember = "Группа";
 
         }
 
