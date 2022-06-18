@@ -35,7 +35,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.examinerBox = new System.Windows.Forms.TextBox();
             this.criteriaFilenameBox = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.examDatetime = new System.Windows.Forms.DateTimePicker();
@@ -110,13 +110,13 @@
             this.label6.TabIndex = 21;
             this.label6.Text = "Состав\r\nкомиссии";
             // 
-            // textBox1
+            // examinerBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(76, 157);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(286, 78);
-            this.textBox1.TabIndex = 22;
+            this.examinerBox.Location = new System.Drawing.Point(76, 157);
+            this.examinerBox.Multiline = true;
+            this.examinerBox.Name = "examinerBox";
+            this.examinerBox.Size = new System.Drawing.Size(286, 78);
+            this.examinerBox.TabIndex = 22;
             // 
             // criteriaFilenameBox
             // 
@@ -180,7 +180,7 @@
             this.Controls.Add(this.examDatetime);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.criteriaFilenameBox);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.examinerBox);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label5);
@@ -208,7 +208,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox examinerBox;
         private System.Windows.Forms.TextBox criteriaFilenameBox;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DateTimePicker examDatetime;

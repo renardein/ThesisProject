@@ -22,12 +22,13 @@ namespace ThesisProject.Forms.UserForm
 
         private void UserForm_Load(object sender, System.EventArgs e)
         {
-
+            this.examGrid.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             currentUserStrip.Text = TempData.CurrentUser;
             txtFileOpenDialog.Filter = "Текстовые файлы (*.txt)|*.txt";
             UpdateGroupsList();
             UpdateStudentsList();
             UpdatePmList();
+            UpdateExamList();
 
         }
 
@@ -214,7 +215,7 @@ namespace ThesisProject.Forms.UserForm
             DialogResult res = aed.ShowDialog();
             if (res == DialogResult.OK)
             {
-
+                ea.addExam(aed.Group, aed.Module, aed.DateTime, aed.Examiner);
 
             }
             UpdateExamList();
@@ -265,9 +266,12 @@ namespace ThesisProject.Forms.UserForm
         }
         private void UpdateExamList()
         {
-           
+           examGrid.DataSource = ea.UpdateExams();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }
