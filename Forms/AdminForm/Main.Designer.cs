@@ -143,6 +143,7 @@
             // 
             this.regPasswordConfirm.Location = new System.Drawing.Point(55, 72);
             this.regPasswordConfirm.Name = "regPasswordConfirm";
+            this.regPasswordConfirm.PasswordChar = '*';
             this.regPasswordConfirm.Size = new System.Drawing.Size(139, 20);
             this.regPasswordConfirm.TabIndex = 6;
             // 
@@ -150,6 +151,7 @@
             // 
             this.regPassword.Location = new System.Drawing.Point(55, 46);
             this.regPassword.Name = "regPassword";
+            this.regPassword.PasswordChar = '*';
             this.regPassword.Size = new System.Drawing.Size(139, 20);
             this.regPassword.TabIndex = 5;
             // 
@@ -230,7 +232,7 @@
             // 
             this.exitToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(118, 24);
             this.exitToolStripMenuItem.Text = "Выйти";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 

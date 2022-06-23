@@ -32,5 +32,16 @@ namespace ThesisProject.Properties {
                 return ((string)(this["ktkCisConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=term4;Initial Catalog=ktkCis;Persist Security Info=True;User ID=cisus" +
+            "er;Password=ICantBreathe")]
+        public string ktkCisConnectionString1 {
+            get {
+                return ((string)(this["ktkCisConnectionString1"]));
+            }
+        }
     }
 }

@@ -27,10 +27,7 @@ namespace ThesisProject.Modules.OpenForm
             object rs = res;
             return rs;
         }
-        public static void AddStudeintDialog()
-        {
-            Forms.KarpikEggForm.Main eg = new Forms.KarpikEggForm.Main();
-            eg.Show();
-        }
+
+
     }
 }

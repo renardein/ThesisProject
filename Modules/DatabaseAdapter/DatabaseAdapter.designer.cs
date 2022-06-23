@@ -30,31 +30,40 @@ namespace ThesisProject.Modules.DatabaseAdapter
 		
     #region Определения метода расширяемости
     partial void OnCreated();
+    partial void InsertCriteria(Criteria instance);
+    partial void UpdateCriteria(Criteria instance);
+    partial void DeleteCriteria(Criteria instance);
     partial void InsertUser(User instance);
     partial void UpdateUser(User instance);
     partial void DeleteUser(User instance);
-    partial void InsertProModule(ProModule instance);
-    partial void UpdateProModule(ProModule instance);
-    partial void DeleteProModule(ProModule instance);
-    partial void InsertStudent(Student instance);
-    partial void UpdateStudent(Student instance);
-    partial void DeleteStudent(Student instance);
+    partial void InsertCriteriaMark(CriteriaMark instance);
+    partial void UpdateCriteriaMark(CriteriaMark instance);
+    partial void DeleteCriteriaMark(CriteriaMark instance);
     partial void InsertExam(Exam instance);
     partial void UpdateExam(Exam instance);
     partial void DeleteExam(Exam instance);
-    partial void InsertExamMark(ExamMark instance);
-    partial void UpdateExamMark(ExamMark instance);
-    partial void DeleteExamMark(ExamMark instance);
+    partial void InsertExamStatistics(ExamStatistics instance);
+    partial void UpdateExamStatistics(ExamStatistics instance);
+    partial void DeleteExamStatistics(ExamStatistics instance);
     partial void InsertGroup(Group instance);
     partial void UpdateGroup(Group instance);
     partial void DeleteGroup(Group instance);
     partial void InsertMark(Mark instance);
     partial void UpdateMark(Mark instance);
     partial void DeleteMark(Mark instance);
+    partial void InsertProModule(ProModule instance);
+    partial void UpdateProModule(ProModule instance);
+    partial void DeleteProModule(ProModule instance);
+    partial void InsertReport(Report instance);
+    partial void UpdateReport(Report instance);
+    partial void DeleteReport(Report instance);
+    partial void InsertStudent(Student instance);
+    partial void UpdateStudent(Student instance);
+    partial void DeleteStudent(Student instance);
     #endregion
 		
 		public DatabaseAdapterDataContext() : 
-				base(global::ThesisProject.Properties.Settings.Default.ktkCisConnectionString, mappingSource)
+				base(global::ThesisProject.Properties.Settings.Default.ktkCisConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
@@ -83,19 +92,11 @@ namespace ThesisProject.Modules.DatabaseAdapter
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<ExamView> ExamView
+		public System.Data.Linq.Table<Criteria> Criteria
 		{
 			get
 			{
-				return this.GetTable<ExamView>();
-			}
-		}
-		
-		public System.Data.Linq.Table<StudentGroup> StudentGroup
-		{
-			get
-			{
-				return this.GetTable<StudentGroup>();
+				return this.GetTable<Criteria>();
 			}
 		}
 		
@@ -107,19 +108,11 @@ namespace ThesisProject.Modules.DatabaseAdapter
 			}
 		}
 		
-		public System.Data.Linq.Table<ProModule> ProModule
+		public System.Data.Linq.Table<CriteriaMark> CriteriaMark
 		{
 			get
 			{
-				return this.GetTable<ProModule>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Student> Student
-		{
-			get
-			{
-				return this.GetTable<Student>();
+				return this.GetTable<CriteriaMark>();
 			}
 		}
 		
@@ -131,11 +124,11 @@ namespace ThesisProject.Modules.DatabaseAdapter
 			}
 		}
 		
-		public System.Data.Linq.Table<ExamMark> ExamMark
+		public System.Data.Linq.Table<ExamStatistics> ExamStatistics
 		{
 			get
 			{
-				return this.GetTable<ExamMark>();
+				return this.GetTable<ExamStatistics>();
 			}
 		}
 		
@@ -154,131 +147,272 @@ namespace ThesisProject.Modules.DatabaseAdapter
 				return this.GetTable<Mark>();
 			}
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ExamView")]
-	public partial class ExamView
-	{
 		
-		private string _Группа;
-		
-		private string _Модуль;
-		
-		private string _Состав_комиссии;
-		
-		private System.DateTime _Дата;
-		
-		public ExamView()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Группа", DbType="NVarChar(20) NOT NULL", CanBeNull=false)]
-		public string Группа
+		public System.Data.Linq.Table<ProModule> ProModule
 		{
 			get
 			{
-				return this._Группа;
-			}
-			set
-			{
-				if ((this._Группа != value))
-				{
-					this._Группа = value;
-				}
+				return this.GetTable<ProModule>();
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Модуль", DbType="NChar(10) NOT NULL", CanBeNull=false)]
-		public string Модуль
+		public System.Data.Linq.Table<Report> Report
 		{
 			get
 			{
-				return this._Модуль;
-			}
-			set
-			{
-				if ((this._Модуль != value))
-				{
-					this._Модуль = value;
-				}
+				return this.GetTable<Report>();
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Состав комиссии]", Storage="_Состав_комиссии", DbType="Text", UpdateCheck=UpdateCheck.Never)]
-		public string Состав_комиссии
+		public System.Data.Linq.Table<Student> Student
 		{
 			get
 			{
-				return this._Состав_комиссии;
-			}
-			set
-			{
-				if ((this._Состав_комиссии != value))
-				{
-					this._Состав_комиссии = value;
-				}
+				return this.GetTable<Student>();
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Дата", DbType="DateTime NOT NULL")]
-		public System.DateTime Дата
+		public System.Data.Linq.Table<ExamView> ExamView
 		{
 			get
 			{
-				return this._Дата;
+				return this.GetTable<ExamView>();
 			}
-			set
+		}
+		
+		public System.Data.Linq.Table<StudentGroup> StudentGroup
+		{
+			get
 			{
-				if ((this._Дата != value))
-				{
-					this._Дата = value;
-				}
+				return this.GetTable<StudentGroup>();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.StudentGroup")]
-	public partial class StudentGroup
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Criteria")]
+	public partial class Criteria : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
-		private string _Student;
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private string _Group;
+		private int _CriteriaId;
 		
-		public StudentGroup()
+		private System.Nullable<int> _ExamId;
+		
+		private string _CriteriaBody;
+		
+		private System.Nullable<decimal> _MaxMark;
+		
+		private System.Nullable<decimal> _Step;
+		
+		private EntitySet<CriteriaMark> _CriteriaMark;
+		
+		private EntityRef<Exam> _Exam;
+		
+    #region Определения метода расширяемости
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnCriteriaIdChanging(int value);
+    partial void OnCriteriaIdChanged();
+    partial void OnExamIdChanging(System.Nullable<int> value);
+    partial void OnExamIdChanged();
+    partial void OnCriteriaBodyChanging(string value);
+    partial void OnCriteriaBodyChanged();
+    partial void OnMaxMarkChanging(System.Nullable<decimal> value);
+    partial void OnMaxMarkChanged();
+    partial void OnStepChanging(System.Nullable<decimal> value);
+    partial void OnStepChanged();
+    #endregion
+		
+		public Criteria()
 		{
+			this._CriteriaMark = new EntitySet<CriteriaMark>(new Action<CriteriaMark>(this.attach_CriteriaMark), new Action<CriteriaMark>(this.detach_CriteriaMark));
+			this._Exam = default(EntityRef<Exam>);
+			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Student", DbType="NVarChar(117)")]
-		public string Student
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CriteriaId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int CriteriaId
 		{
 			get
 			{
-				return this._Student;
+				return this._CriteriaId;
 			}
 			set
 			{
-				if ((this._Student != value))
+				if ((this._CriteriaId != value))
 				{
-					this._Student = value;
+					this.OnCriteriaIdChanging(value);
+					this.SendPropertyChanging();
+					this._CriteriaId = value;
+					this.SendPropertyChanged("CriteriaId");
+					this.OnCriteriaIdChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Group]", Storage="_Group", DbType="NVarChar(20) NOT NULL", CanBeNull=false)]
-		public string Group
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ExamId", DbType="Int")]
+		public System.Nullable<int> ExamId
 		{
 			get
 			{
-				return this._Group;
+				return this._ExamId;
 			}
 			set
 			{
-				if ((this._Group != value))
+				if ((this._ExamId != value))
 				{
-					this._Group = value;
+					if (this._Exam.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnExamIdChanging(value);
+					this.SendPropertyChanging();
+					this._ExamId = value;
+					this.SendPropertyChanged("ExamId");
+					this.OnExamIdChanged();
 				}
 			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CriteriaBody", DbType="NVarChar(200)")]
+		public string CriteriaBody
+		{
+			get
+			{
+				return this._CriteriaBody;
+			}
+			set
+			{
+				if ((this._CriteriaBody != value))
+				{
+					this.OnCriteriaBodyChanging(value);
+					this.SendPropertyChanging();
+					this._CriteriaBody = value;
+					this.SendPropertyChanged("CriteriaBody");
+					this.OnCriteriaBodyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaxMark", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> MaxMark
+		{
+			get
+			{
+				return this._MaxMark;
+			}
+			set
+			{
+				if ((this._MaxMark != value))
+				{
+					this.OnMaxMarkChanging(value);
+					this.SendPropertyChanging();
+					this._MaxMark = value;
+					this.SendPropertyChanged("MaxMark");
+					this.OnMaxMarkChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Step", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> Step
+		{
+			get
+			{
+				return this._Step;
+			}
+			set
+			{
+				if ((this._Step != value))
+				{
+					this.OnStepChanging(value);
+					this.SendPropertyChanging();
+					this._Step = value;
+					this.SendPropertyChanged("Step");
+					this.OnStepChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Criteria_CriteriaMark", Storage="_CriteriaMark", ThisKey="CriteriaId", OtherKey="CriteriaId")]
+		public EntitySet<CriteriaMark> CriteriaMark
+		{
+			get
+			{
+				return this._CriteriaMark;
+			}
+			set
+			{
+				this._CriteriaMark.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Exam_Criteria", Storage="_Exam", ThisKey="ExamId", OtherKey="ExamId", IsForeignKey=true)]
+		public Exam Exam
+		{
+			get
+			{
+				return this._Exam.Entity;
+			}
+			set
+			{
+				Exam previousValue = this._Exam.Entity;
+				if (((previousValue != value) 
+							|| (this._Exam.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Exam.Entity = null;
+						previousValue.Criteria.Remove(this);
+					}
+					this._Exam.Entity = value;
+					if ((value != null))
+					{
+						value.Criteria.Add(this);
+						this._ExamId = value.ExamId;
+					}
+					else
+					{
+						this._ExamId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Exam");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_CriteriaMark(CriteriaMark entity)
+		{
+			this.SendPropertyChanging();
+			entity.Criteria = this;
+		}
+		
+		private void detach_CriteriaMark(CriteriaMark entity)
+		{
+			this.SendPropertyChanging();
+			entity.Criteria = null;
 		}
 	}
 	
@@ -416,165 +550,88 @@ namespace ThesisProject.Modules.DatabaseAdapter
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ProModule")]
-	public partial class ProModule : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CriteriaMark")]
+	public partial class CriteriaMark : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _ModuleId;
+		private int _CriteriaMarkId;
 		
-		private string _Title;
+		private int _CriteriaId;
 		
-		private EntitySet<Exam> _Exam;
+		private string _StudentId;
+		
+		private decimal _Mark;
+		
+		private EntityRef<Criteria> _Criteria;
 		
     #region Определения метода расширяемости
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnModuleIdChanging(int value);
-    partial void OnModuleIdChanged();
-    partial void OnTitleChanging(string value);
-    partial void OnTitleChanged();
-    #endregion
-		
-		public ProModule()
-		{
-			this._Exam = new EntitySet<Exam>(new Action<Exam>(this.attach_Exam), new Action<Exam>(this.detach_Exam));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModuleId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ModuleId
-		{
-			get
-			{
-				return this._ModuleId;
-			}
-			set
-			{
-				if ((this._ModuleId != value))
-				{
-					this.OnModuleIdChanging(value);
-					this.SendPropertyChanging();
-					this._ModuleId = value;
-					this.SendPropertyChanged("ModuleId");
-					this.OnModuleIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Title", DbType="NChar(10) NOT NULL", CanBeNull=false)]
-		public string Title
-		{
-			get
-			{
-				return this._Title;
-			}
-			set
-			{
-				if ((this._Title != value))
-				{
-					this.OnTitleChanging(value);
-					this.SendPropertyChanging();
-					this._Title = value;
-					this.SendPropertyChanged("Title");
-					this.OnTitleChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ProModule_Exam", Storage="_Exam", ThisKey="ModuleId", OtherKey="ModuleId")]
-		public EntitySet<Exam> Exam
-		{
-			get
-			{
-				return this._Exam;
-			}
-			set
-			{
-				this._Exam.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Exam(Exam entity)
-		{
-			this.SendPropertyChanging();
-			entity.ProModule = this;
-		}
-		
-		private void detach_Exam(Exam entity)
-		{
-			this.SendPropertyChanging();
-			entity.ProModule = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Student")]
-	public partial class Student : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _StudentId;
-		
-		private string _FirstName;
-		
-		private string _MiddleName;
-		
-		private string _LastName;
-		
-		private int _GroupId;
-		
-		private EntitySet<Mark> _Mark;
-		
-		private EntityRef<Group> _Group;
-		
-    #region Определения метода расширяемости
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnStudentIdChanging(int value);
+    partial void OnCriteriaMarkIdChanging(int value);
+    partial void OnCriteriaMarkIdChanged();
+    partial void OnCriteriaIdChanging(int value);
+    partial void OnCriteriaIdChanged();
+    partial void OnStudentIdChanging(string value);
     partial void OnStudentIdChanged();
-    partial void OnFirstNameChanging(string value);
-    partial void OnFirstNameChanged();
-    partial void OnMiddleNameChanging(string value);
-    partial void OnMiddleNameChanged();
-    partial void OnLastNameChanging(string value);
-    partial void OnLastNameChanged();
-    partial void OnGroupIdChanging(int value);
-    partial void OnGroupIdChanged();
+    partial void OnMarkChanging(decimal value);
+    partial void OnMarkChanged();
     #endregion
 		
-		public Student()
+		public CriteriaMark()
 		{
-			this._Mark = new EntitySet<Mark>(new Action<Mark>(this.attach_Mark), new Action<Mark>(this.detach_Mark));
-			this._Group = default(EntityRef<Group>);
+			this._Criteria = default(EntityRef<Criteria>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StudentId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int StudentId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CriteriaMarkId", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int CriteriaMarkId
+		{
+			get
+			{
+				return this._CriteriaMarkId;
+			}
+			set
+			{
+				if ((this._CriteriaMarkId != value))
+				{
+					this.OnCriteriaMarkIdChanging(value);
+					this.SendPropertyChanging();
+					this._CriteriaMarkId = value;
+					this.SendPropertyChanged("CriteriaMarkId");
+					this.OnCriteriaMarkIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CriteriaId", DbType="Int NOT NULL")]
+		public int CriteriaId
+		{
+			get
+			{
+				return this._CriteriaId;
+			}
+			set
+			{
+				if ((this._CriteriaId != value))
+				{
+					if (this._Criteria.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnCriteriaIdChanging(value);
+					this.SendPropertyChanging();
+					this._CriteriaId = value;
+					this.SendPropertyChanged("CriteriaId");
+					this.OnCriteriaIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StudentId", DbType="NChar(10) NOT NULL", CanBeNull=false)]
+		public string StudentId
 		{
 			get
 			{
@@ -593,92 +650,8 @@ namespace ThesisProject.Modules.DatabaseAdapter
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string FirstName
-		{
-			get
-			{
-				return this._FirstName;
-			}
-			set
-			{
-				if ((this._FirstName != value))
-				{
-					this.OnFirstNameChanging(value);
-					this.SendPropertyChanging();
-					this._FirstName = value;
-					this.SendPropertyChanged("FirstName");
-					this.OnFirstNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MiddleName", DbType="NVarChar(50)")]
-		public string MiddleName
-		{
-			get
-			{
-				return this._MiddleName;
-			}
-			set
-			{
-				if ((this._MiddleName != value))
-				{
-					this.OnMiddleNameChanging(value);
-					this.SendPropertyChanging();
-					this._MiddleName = value;
-					this.SendPropertyChanged("MiddleName");
-					this.OnMiddleNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastName", DbType="NVarChar(15) NOT NULL", CanBeNull=false)]
-		public string LastName
-		{
-			get
-			{
-				return this._LastName;
-			}
-			set
-			{
-				if ((this._LastName != value))
-				{
-					this.OnLastNameChanging(value);
-					this.SendPropertyChanging();
-					this._LastName = value;
-					this.SendPropertyChanged("LastName");
-					this.OnLastNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GroupId", DbType="Int NOT NULL")]
-		public int GroupId
-		{
-			get
-			{
-				return this._GroupId;
-			}
-			set
-			{
-				if ((this._GroupId != value))
-				{
-					if (this._Group.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnGroupIdChanging(value);
-					this.SendPropertyChanging();
-					this._GroupId = value;
-					this.SendPropertyChanged("GroupId");
-					this.OnGroupIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Student_Mark", Storage="_Mark", ThisKey="StudentId", OtherKey="StudentId")]
-		public EntitySet<Mark> Mark
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mark", DbType="Decimal(2,0) NOT NULL")]
+		public decimal Mark
 		{
 			get
 			{
@@ -686,40 +659,47 @@ namespace ThesisProject.Modules.DatabaseAdapter
 			}
 			set
 			{
-				this._Mark.Assign(value);
+				if ((this._Mark != value))
+				{
+					this.OnMarkChanging(value);
+					this.SendPropertyChanging();
+					this._Mark = value;
+					this.SendPropertyChanged("Mark");
+					this.OnMarkChanged();
+				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Group_Student", Storage="_Group", ThisKey="GroupId", OtherKey="GroupId", IsForeignKey=true)]
-		public Group Group
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Criteria_CriteriaMark", Storage="_Criteria", ThisKey="CriteriaId", OtherKey="CriteriaId", IsForeignKey=true)]
+		public Criteria Criteria
 		{
 			get
 			{
-				return this._Group.Entity;
+				return this._Criteria.Entity;
 			}
 			set
 			{
-				Group previousValue = this._Group.Entity;
+				Criteria previousValue = this._Criteria.Entity;
 				if (((previousValue != value) 
-							|| (this._Group.HasLoadedOrAssignedValue == false)))
+							|| (this._Criteria.HasLoadedOrAssignedValue == false)))
 				{
 					this.SendPropertyChanging();
 					if ((previousValue != null))
 					{
-						this._Group.Entity = null;
-						previousValue.Student.Remove(this);
+						this._Criteria.Entity = null;
+						previousValue.CriteriaMark.Remove(this);
 					}
-					this._Group.Entity = value;
+					this._Criteria.Entity = value;
 					if ((value != null))
 					{
-						value.Student.Add(this);
-						this._GroupId = value.GroupId;
+						value.CriteriaMark.Add(this);
+						this._CriteriaId = value.CriteriaId;
 					}
 					else
 					{
-						this._GroupId = default(int);
+						this._CriteriaId = default(int);
 					}
-					this.SendPropertyChanged("Group");
+					this.SendPropertyChanged("Criteria");
 				}
 			}
 		}
@@ -742,18 +722,6 @@ namespace ThesisProject.Modules.DatabaseAdapter
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_Mark(Mark entity)
-		{
-			this.SendPropertyChanging();
-			entity.Student = this;
-		}
-		
-		private void detach_Mark(Mark entity)
-		{
-			this.SendPropertyChanging();
-			entity.Student = null;
 		}
 	}
 	
@@ -773,11 +741,17 @@ namespace ThesisProject.Modules.DatabaseAdapter
 		
 		private string _Examiner;
 		
+		private EntitySet<Criteria> _Criteria;
+		
+		private EntitySet<ExamStatistics> _ExamStatistics;
+		
 		private EntitySet<Mark> _Mark;
 		
-		private EntityRef<ProModule> _ProModule;
+		private EntitySet<Report> _Report;
 		
 		private EntityRef<Group> _Group;
+		
+		private EntityRef<ProModule> _ProModule;
 		
     #region Определения метода расширяемости
     partial void OnLoaded();
@@ -797,9 +771,12 @@ namespace ThesisProject.Modules.DatabaseAdapter
 		
 		public Exam()
 		{
+			this._Criteria = new EntitySet<Criteria>(new Action<Criteria>(this.attach_Criteria), new Action<Criteria>(this.detach_Criteria));
+			this._ExamStatistics = new EntitySet<ExamStatistics>(new Action<ExamStatistics>(this.attach_ExamStatistics), new Action<ExamStatistics>(this.detach_ExamStatistics));
 			this._Mark = new EntitySet<Mark>(new Action<Mark>(this.attach_Mark), new Action<Mark>(this.detach_Mark));
-			this._ProModule = default(EntityRef<ProModule>);
+			this._Report = new EntitySet<Report>(new Action<Report>(this.attach_Report), new Action<Report>(this.detach_Report));
 			this._Group = default(EntityRef<Group>);
+			this._ProModule = default(EntityRef<ProModule>);
 			OnCreated();
 		}
 		
@@ -911,6 +888,32 @@ namespace ThesisProject.Modules.DatabaseAdapter
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Exam_Criteria", Storage="_Criteria", ThisKey="ExamId", OtherKey="ExamId")]
+		public EntitySet<Criteria> Criteria
+		{
+			get
+			{
+				return this._Criteria;
+			}
+			set
+			{
+				this._Criteria.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Exam_ExamStatistics", Storage="_ExamStatistics", ThisKey="ExamId", OtherKey="ExamId")]
+		public EntitySet<ExamStatistics> ExamStatistics
+		{
+			get
+			{
+				return this._ExamStatistics;
+			}
+			set
+			{
+				this._ExamStatistics.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Exam_Mark", Storage="_Mark", ThisKey="ExamId", OtherKey="ExamId")]
 		public EntitySet<Mark> Mark
 		{
@@ -924,37 +927,16 @@ namespace ThesisProject.Modules.DatabaseAdapter
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ProModule_Exam", Storage="_ProModule", ThisKey="ModuleId", OtherKey="ModuleId", IsForeignKey=true)]
-		public ProModule ProModule
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Exam_Report", Storage="_Report", ThisKey="ExamId", OtherKey="ExamId")]
+		public EntitySet<Report> Report
 		{
 			get
 			{
-				return this._ProModule.Entity;
+				return this._Report;
 			}
 			set
 			{
-				ProModule previousValue = this._ProModule.Entity;
-				if (((previousValue != value) 
-							|| (this._ProModule.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._ProModule.Entity = null;
-						previousValue.Exam.Remove(this);
-					}
-					this._ProModule.Entity = value;
-					if ((value != null))
-					{
-						value.Exam.Add(this);
-						this._ModuleId = value.ModuleId;
-					}
-					else
-					{
-						this._ModuleId = default(int);
-					}
-					this.SendPropertyChanged("ProModule");
-				}
+				this._Report.Assign(value);
 			}
 		}
 		
@@ -992,6 +974,40 @@ namespace ThesisProject.Modules.DatabaseAdapter
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ProModule_Exam", Storage="_ProModule", ThisKey="ModuleId", OtherKey="ModuleId", IsForeignKey=true)]
+		public ProModule ProModule
+		{
+			get
+			{
+				return this._ProModule.Entity;
+			}
+			set
+			{
+				ProModule previousValue = this._ProModule.Entity;
+				if (((previousValue != value) 
+							|| (this._ProModule.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._ProModule.Entity = null;
+						previousValue.Exam.Remove(this);
+					}
+					this._ProModule.Entity = value;
+					if ((value != null))
+					{
+						value.Exam.Add(this);
+						this._ModuleId = value.ModuleId;
+					}
+					else
+					{
+						this._ModuleId = default(int);
+					}
+					this.SendPropertyChanged("ProModule");
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1012,6 +1028,30 @@ namespace ThesisProject.Modules.DatabaseAdapter
 			}
 		}
 		
+		private void attach_Criteria(Criteria entity)
+		{
+			this.SendPropertyChanging();
+			entity.Exam = this;
+		}
+		
+		private void detach_Criteria(Criteria entity)
+		{
+			this.SendPropertyChanging();
+			entity.Exam = null;
+		}
+		
+		private void attach_ExamStatistics(ExamStatistics entity)
+		{
+			this.SendPropertyChanging();
+			entity.Exam = this;
+		}
+		
+		private void detach_ExamStatistics(ExamStatistics entity)
+		{
+			this.SendPropertyChanging();
+			entity.Exam = null;
+		}
+		
 		private void attach_Mark(Mark entity)
 		{
 			this.SendPropertyChanging();
@@ -1023,38 +1063,81 @@ namespace ThesisProject.Modules.DatabaseAdapter
 			this.SendPropertyChanging();
 			entity.Exam = null;
 		}
+		
+		private void attach_Report(Report entity)
+		{
+			this.SendPropertyChanging();
+			entity.Exam = this;
+		}
+		
+		private void detach_Report(Report entity)
+		{
+			this.SendPropertyChanging();
+			entity.Exam = null;
+		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ExamMark")]
-	public partial class ExamMark : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ExamStatistics")]
+	public partial class ExamStatistics : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
+		private int _StatId;
+		
 		private int _ExamId;
 		
-		private int _MarkId;
+		private int _Passed;
 		
-		private int _StudentId;
+		private int _Failed;
+		
+		private int _NotComing;
+		
+		private EntityRef<Exam> _Exam;
 		
     #region Определения метода расширяемости
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
+    partial void OnStatIdChanging(int value);
+    partial void OnStatIdChanged();
     partial void OnExamIdChanging(int value);
     partial void OnExamIdChanged();
-    partial void OnMarkIdChanging(int value);
-    partial void OnMarkIdChanged();
-    partial void OnStudentIdChanging(int value);
-    partial void OnStudentIdChanged();
+    partial void OnPassedChanging(int value);
+    partial void OnPassedChanged();
+    partial void OnFailedChanging(int value);
+    partial void OnFailedChanged();
+    partial void OnNotComingChanging(int value);
+    partial void OnNotComingChanged();
     #endregion
 		
-		public ExamMark()
+		public ExamStatistics()
 		{
+			this._Exam = default(EntityRef<Exam>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ExamId", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StatId", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int StatId
+		{
+			get
+			{
+				return this._StatId;
+			}
+			set
+			{
+				if ((this._StatId != value))
+				{
+					this.OnStatIdChanging(value);
+					this.SendPropertyChanging();
+					this._StatId = value;
+					this.SendPropertyChanged("StatId");
+					this.OnStatIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ExamId", DbType="Int NOT NULL")]
 		public int ExamId
 		{
 			get
@@ -1065,6 +1148,10 @@ namespace ThesisProject.Modules.DatabaseAdapter
 			{
 				if ((this._ExamId != value))
 				{
+					if (this._Exam.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnExamIdChanging(value);
 					this.SendPropertyChanging();
 					this._ExamId = value;
@@ -1074,42 +1161,96 @@ namespace ThesisProject.Modules.DatabaseAdapter
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MarkId", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int MarkId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Passed", DbType="Int NOT NULL")]
+		public int Passed
 		{
 			get
 			{
-				return this._MarkId;
+				return this._Passed;
 			}
 			set
 			{
-				if ((this._MarkId != value))
+				if ((this._Passed != value))
 				{
-					this.OnMarkIdChanging(value);
+					this.OnPassedChanging(value);
 					this.SendPropertyChanging();
-					this._MarkId = value;
-					this.SendPropertyChanged("MarkId");
-					this.OnMarkIdChanged();
+					this._Passed = value;
+					this.SendPropertyChanged("Passed");
+					this.OnPassedChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StudentId", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int StudentId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Failed", DbType="Int NOT NULL")]
+		public int Failed
 		{
 			get
 			{
-				return this._StudentId;
+				return this._Failed;
 			}
 			set
 			{
-				if ((this._StudentId != value))
+				if ((this._Failed != value))
 				{
-					this.OnStudentIdChanging(value);
+					this.OnFailedChanging(value);
 					this.SendPropertyChanging();
-					this._StudentId = value;
-					this.SendPropertyChanged("StudentId");
-					this.OnStudentIdChanged();
+					this._Failed = value;
+					this.SendPropertyChanged("Failed");
+					this.OnFailedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NotComing", DbType="Int NOT NULL")]
+		public int NotComing
+		{
+			get
+			{
+				return this._NotComing;
+			}
+			set
+			{
+				if ((this._NotComing != value))
+				{
+					this.OnNotComingChanging(value);
+					this.SendPropertyChanging();
+					this._NotComing = value;
+					this.SendPropertyChanged("NotComing");
+					this.OnNotComingChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Exam_ExamStatistics", Storage="_Exam", ThisKey="ExamId", OtherKey="ExamId", IsForeignKey=true)]
+		public Exam Exam
+		{
+			get
+			{
+				return this._Exam.Entity;
+			}
+			set
+			{
+				Exam previousValue = this._Exam.Entity;
+				if (((previousValue != value) 
+							|| (this._Exam.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Exam.Entity = null;
+						previousValue.ExamStatistics.Remove(this);
+					}
+					this._Exam.Entity = value;
+					if ((value != null))
+					{
+						value.ExamStatistics.Add(this);
+						this._ExamId = value.ExamId;
+					}
+					else
+					{
+						this._ExamId = default(int);
+					}
+					this.SendPropertyChanged("Exam");
 				}
 			}
 		}
@@ -1145,9 +1286,9 @@ namespace ThesisProject.Modules.DatabaseAdapter
 		
 		private string _Title;
 		
-		private EntitySet<Student> _Student;
-		
 		private EntitySet<Exam> _Exam;
+		
+		private EntitySet<Student> _Student;
 		
     #region Определения метода расширяемости
     partial void OnLoaded();
@@ -1161,8 +1302,8 @@ namespace ThesisProject.Modules.DatabaseAdapter
 		
 		public Group()
 		{
-			this._Student = new EntitySet<Student>(new Action<Student>(this.attach_Student), new Action<Student>(this.detach_Student));
 			this._Exam = new EntitySet<Exam>(new Action<Exam>(this.attach_Exam), new Action<Exam>(this.detach_Exam));
+			this._Student = new EntitySet<Student>(new Action<Student>(this.attach_Student), new Action<Student>(this.detach_Student));
 			OnCreated();
 		}
 		
@@ -1206,19 +1347,6 @@ namespace ThesisProject.Modules.DatabaseAdapter
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Group_Student", Storage="_Student", ThisKey="GroupId", OtherKey="GroupId")]
-		public EntitySet<Student> Student
-		{
-			get
-			{
-				return this._Student;
-			}
-			set
-			{
-				this._Student.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Group_Exam", Storage="_Exam", ThisKey="GroupId", OtherKey="GroupId")]
 		public EntitySet<Exam> Exam
 		{
@@ -1229,6 +1357,19 @@ namespace ThesisProject.Modules.DatabaseAdapter
 			set
 			{
 				this._Exam.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Group_Student", Storage="_Student", ThisKey="GroupId", OtherKey="GroupId")]
+		public EntitySet<Student> Student
+		{
+			get
+			{
+				return this._Student;
+			}
+			set
+			{
+				this._Student.Assign(value);
 			}
 		}
 		
@@ -1252,18 +1393,6 @@ namespace ThesisProject.Modules.DatabaseAdapter
 			}
 		}
 		
-		private void attach_Student(Student entity)
-		{
-			this.SendPropertyChanging();
-			entity.Group = this;
-		}
-		
-		private void detach_Student(Student entity)
-		{
-			this.SendPropertyChanging();
-			entity.Group = null;
-		}
-		
 		private void attach_Exam(Exam entity)
 		{
 			this.SendPropertyChanging();
@@ -1271,6 +1400,18 @@ namespace ThesisProject.Modules.DatabaseAdapter
 		}
 		
 		private void detach_Exam(Exam entity)
+		{
+			this.SendPropertyChanging();
+			entity.Group = null;
+		}
+		
+		private void attach_Student(Student entity)
+		{
+			this.SendPropertyChanging();
+			entity.Group = this;
+		}
+		
+		private void detach_Student(Student entity)
 		{
 			this.SendPropertyChanging();
 			entity.Group = null;
@@ -1489,6 +1630,648 @@ namespace ThesisProject.Modules.DatabaseAdapter
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ProModule")]
+	public partial class ProModule : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ModuleId;
+		
+		private string _Title;
+		
+		private EntitySet<Exam> _Exam;
+		
+    #region Определения метода расширяемости
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnModuleIdChanging(int value);
+    partial void OnModuleIdChanged();
+    partial void OnTitleChanging(string value);
+    partial void OnTitleChanged();
+    #endregion
+		
+		public ProModule()
+		{
+			this._Exam = new EntitySet<Exam>(new Action<Exam>(this.attach_Exam), new Action<Exam>(this.detach_Exam));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModuleId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ModuleId
+		{
+			get
+			{
+				return this._ModuleId;
+			}
+			set
+			{
+				if ((this._ModuleId != value))
+				{
+					this.OnModuleIdChanging(value);
+					this.SendPropertyChanging();
+					this._ModuleId = value;
+					this.SendPropertyChanged("ModuleId");
+					this.OnModuleIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Title", DbType="NChar(10) NOT NULL", CanBeNull=false)]
+		public string Title
+		{
+			get
+			{
+				return this._Title;
+			}
+			set
+			{
+				if ((this._Title != value))
+				{
+					this.OnTitleChanging(value);
+					this.SendPropertyChanging();
+					this._Title = value;
+					this.SendPropertyChanged("Title");
+					this.OnTitleChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ProModule_Exam", Storage="_Exam", ThisKey="ModuleId", OtherKey="ModuleId")]
+		public EntitySet<Exam> Exam
+		{
+			get
+			{
+				return this._Exam;
+			}
+			set
+			{
+				this._Exam.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Exam(Exam entity)
+		{
+			this.SendPropertyChanging();
+			entity.ProModule = this;
+		}
+		
+		private void detach_Exam(Exam entity)
+		{
+			this.SendPropertyChanging();
+			entity.ProModule = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Report")]
+	public partial class Report : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ReportId;
+		
+		private System.Nullable<int> _ExamId;
+		
+		private System.Nullable<System.DateTime> _CreationDate;
+		
+		private System.Data.Linq.Binary _ReportFile;
+		
+		private EntityRef<Exam> _Exam;
+		
+    #region Определения метода расширяемости
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnReportIdChanging(int value);
+    partial void OnReportIdChanged();
+    partial void OnExamIdChanging(System.Nullable<int> value);
+    partial void OnExamIdChanged();
+    partial void OnCreationDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreationDateChanged();
+    partial void OnReportFileChanging(System.Data.Linq.Binary value);
+    partial void OnReportFileChanged();
+    #endregion
+		
+		public Report()
+		{
+			this._Exam = default(EntityRef<Exam>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReportId", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ReportId
+		{
+			get
+			{
+				return this._ReportId;
+			}
+			set
+			{
+				if ((this._ReportId != value))
+				{
+					this.OnReportIdChanging(value);
+					this.SendPropertyChanging();
+					this._ReportId = value;
+					this.SendPropertyChanged("ReportId");
+					this.OnReportIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ExamId", DbType="Int")]
+		public System.Nullable<int> ExamId
+		{
+			get
+			{
+				return this._ExamId;
+			}
+			set
+			{
+				if ((this._ExamId != value))
+				{
+					if (this._Exam.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnExamIdChanging(value);
+					this.SendPropertyChanging();
+					this._ExamId = value;
+					this.SendPropertyChanged("ExamId");
+					this.OnExamIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreationDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreationDate
+		{
+			get
+			{
+				return this._CreationDate;
+			}
+			set
+			{
+				if ((this._CreationDate != value))
+				{
+					this.OnCreationDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreationDate = value;
+					this.SendPropertyChanged("CreationDate");
+					this.OnCreationDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReportFile", DbType="Binary(1024)", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary ReportFile
+		{
+			get
+			{
+				return this._ReportFile;
+			}
+			set
+			{
+				if ((this._ReportFile != value))
+				{
+					this.OnReportFileChanging(value);
+					this.SendPropertyChanging();
+					this._ReportFile = value;
+					this.SendPropertyChanged("ReportFile");
+					this.OnReportFileChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Exam_Report", Storage="_Exam", ThisKey="ExamId", OtherKey="ExamId", IsForeignKey=true)]
+		public Exam Exam
+		{
+			get
+			{
+				return this._Exam.Entity;
+			}
+			set
+			{
+				Exam previousValue = this._Exam.Entity;
+				if (((previousValue != value) 
+							|| (this._Exam.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Exam.Entity = null;
+						previousValue.Report.Remove(this);
+					}
+					this._Exam.Entity = value;
+					if ((value != null))
+					{
+						value.Report.Add(this);
+						this._ExamId = value.ExamId;
+					}
+					else
+					{
+						this._ExamId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Exam");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Student")]
+	public partial class Student : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _StudentId;
+		
+		private string _FirstName;
+		
+		private string _MiddleName;
+		
+		private string _LastName;
+		
+		private int _GroupId;
+		
+		private EntitySet<Mark> _Mark;
+		
+		private EntityRef<Group> _Group;
+		
+    #region Определения метода расширяемости
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnStudentIdChanging(int value);
+    partial void OnStudentIdChanged();
+    partial void OnFirstNameChanging(string value);
+    partial void OnFirstNameChanged();
+    partial void OnMiddleNameChanging(string value);
+    partial void OnMiddleNameChanged();
+    partial void OnLastNameChanging(string value);
+    partial void OnLastNameChanged();
+    partial void OnGroupIdChanging(int value);
+    partial void OnGroupIdChanged();
+    #endregion
+		
+		public Student()
+		{
+			this._Mark = new EntitySet<Mark>(new Action<Mark>(this.attach_Mark), new Action<Mark>(this.detach_Mark));
+			this._Group = default(EntityRef<Group>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StudentId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int StudentId
+		{
+			get
+			{
+				return this._StudentId;
+			}
+			set
+			{
+				if ((this._StudentId != value))
+				{
+					this.OnStudentIdChanging(value);
+					this.SendPropertyChanging();
+					this._StudentId = value;
+					this.SendPropertyChanged("StudentId");
+					this.OnStudentIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string FirstName
+		{
+			get
+			{
+				return this._FirstName;
+			}
+			set
+			{
+				if ((this._FirstName != value))
+				{
+					this.OnFirstNameChanging(value);
+					this.SendPropertyChanging();
+					this._FirstName = value;
+					this.SendPropertyChanged("FirstName");
+					this.OnFirstNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MiddleName", DbType="NVarChar(100)")]
+		public string MiddleName
+		{
+			get
+			{
+				return this._MiddleName;
+			}
+			set
+			{
+				if ((this._MiddleName != value))
+				{
+					this.OnMiddleNameChanging(value);
+					this.SendPropertyChanging();
+					this._MiddleName = value;
+					this.SendPropertyChanged("MiddleName");
+					this.OnMiddleNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastName", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string LastName
+		{
+			get
+			{
+				return this._LastName;
+			}
+			set
+			{
+				if ((this._LastName != value))
+				{
+					this.OnLastNameChanging(value);
+					this.SendPropertyChanging();
+					this._LastName = value;
+					this.SendPropertyChanged("LastName");
+					this.OnLastNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GroupId", DbType="Int NOT NULL")]
+		public int GroupId
+		{
+			get
+			{
+				return this._GroupId;
+			}
+			set
+			{
+				if ((this._GroupId != value))
+				{
+					if (this._Group.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnGroupIdChanging(value);
+					this.SendPropertyChanging();
+					this._GroupId = value;
+					this.SendPropertyChanged("GroupId");
+					this.OnGroupIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Student_Mark", Storage="_Mark", ThisKey="StudentId", OtherKey="StudentId")]
+		public EntitySet<Mark> Mark
+		{
+			get
+			{
+				return this._Mark;
+			}
+			set
+			{
+				this._Mark.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Group_Student", Storage="_Group", ThisKey="GroupId", OtherKey="GroupId", IsForeignKey=true)]
+		public Group Group
+		{
+			get
+			{
+				return this._Group.Entity;
+			}
+			set
+			{
+				Group previousValue = this._Group.Entity;
+				if (((previousValue != value) 
+							|| (this._Group.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Group.Entity = null;
+						previousValue.Student.Remove(this);
+					}
+					this._Group.Entity = value;
+					if ((value != null))
+					{
+						value.Student.Add(this);
+						this._GroupId = value.GroupId;
+					}
+					else
+					{
+						this._GroupId = default(int);
+					}
+					this.SendPropertyChanged("Group");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Mark(Mark entity)
+		{
+			this.SendPropertyChanging();
+			entity.Student = this;
+		}
+		
+		private void detach_Mark(Mark entity)
+		{
+			this.SendPropertyChanging();
+			entity.Student = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ExamView")]
+	public partial class ExamView
+	{
+		
+		private string _Группа;
+		
+		private string _Модуль;
+		
+		private string _Состав_комиссии;
+		
+		private System.DateTime _Дата;
+		
+		public ExamView()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Группа", DbType="NVarChar(20) NOT NULL", CanBeNull=false)]
+		public string Группа
+		{
+			get
+			{
+				return this._Группа;
+			}
+			set
+			{
+				if ((this._Группа != value))
+				{
+					this._Группа = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Модуль", DbType="NChar(10) NOT NULL", CanBeNull=false)]
+		public string Модуль
+		{
+			get
+			{
+				return this._Модуль;
+			}
+			set
+			{
+				if ((this._Модуль != value))
+				{
+					this._Модуль = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Состав комиссии]", Storage="_Состав_комиссии", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string Состав_комиссии
+		{
+			get
+			{
+				return this._Состав_комиссии;
+			}
+			set
+			{
+				if ((this._Состав_комиссии != value))
+				{
+					this._Состав_комиссии = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Дата", DbType="DateTime NOT NULL")]
+		public System.DateTime Дата
+		{
+			get
+			{
+				return this._Дата;
+			}
+			set
+			{
+				if ((this._Дата != value))
+				{
+					this._Дата = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.StudentGroup")]
+	public partial class StudentGroup
+	{
+		
+		private string _Student;
+		
+		private string _Group;
+		
+		public StudentGroup()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Student", DbType="NVarChar(117)")]
+		public string Student
+		{
+			get
+			{
+				return this._Student;
+			}
+			set
+			{
+				if ((this._Student != value))
+				{
+					this._Student = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Group]", Storage="_Group", DbType="NVarChar(20) NOT NULL", CanBeNull=false)]
+		public string Group
+		{
+			get
+			{
+				return this._Group;
+			}
+			set
+			{
+				if ((this._Group != value))
+				{
+					this._Group = value;
+				}
 			}
 		}
 	}

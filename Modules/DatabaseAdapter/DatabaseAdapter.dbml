@@ -1,5 +1,103 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ktkCis" Class="DatabaseAdapterDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=term4;Initial Catalog=ktkCis;Integrated Security=True" SettingsObjectName="ThesisProject.Properties.Settings" SettingsPropertyName="ktkCisConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=term4;Initial Catalog=ktkCis;Persist Security Info=True;User ID=GeorgeFloyd" SettingsObjectName="ThesisProject.Properties.Settings" SettingsPropertyName="ktkCisConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Criteria" Member="Criteria">
+    <Type Name="Criteria">
+      <Column Name="CriteriaId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ExamId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CriteriaBody" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="MaxMark" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Step" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Association Name="Criteria_CriteriaMark" Member="CriteriaMark" ThisKey="CriteriaId" OtherKey="CriteriaId" Type="CriteriaMark" />
+      <Association Name="Exam_Criteria" Member="Exam" ThisKey="ExamId" OtherKey="ExamId" Type="Exam" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[User]" Member="User">
+    <Type Name="User">
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Username" Type="System.String" DbType="NVarChar(16) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(32) NOT NULL" CanBeNull="false" />
+      <Column Name="Role" Type="System.String" DbType="NVarChar(16) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CriteriaMark" Member="CriteriaMark">
+    <Type Name="CriteriaMark">
+      <Column Name="CriteriaMarkId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CriteriaId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StudentId" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Mark" Type="System.Decimal" DbType="Decimal(2,0) NOT NULL" CanBeNull="false" />
+      <Association Name="Criteria_CriteriaMark" Member="Criteria" ThisKey="CriteriaId" OtherKey="CriteriaId" Type="Criteria" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Exam" Member="Exam">
+    <Type Name="Exam">
+      <Column Name="ExamId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="GroupId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModuleId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Examiner" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Exam_Criteria" Member="Criteria" ThisKey="ExamId" OtherKey="ExamId" Type="Criteria" />
+      <Association Name="Exam_ExamStatistics" Member="ExamStatistics" ThisKey="ExamId" OtherKey="ExamId" Type="ExamStatistics" />
+      <Association Name="Exam_Mark" Member="Mark" ThisKey="ExamId" OtherKey="ExamId" Type="Mark" />
+      <Association Name="Exam_Report" Member="Report" ThisKey="ExamId" OtherKey="ExamId" Type="Report" />
+      <Association Name="Group_Exam" Member="Group" ThisKey="GroupId" OtherKey="GroupId" Type="Group" IsForeignKey="true" />
+      <Association Name="ProModule_Exam" Member="ProModule" ThisKey="ModuleId" OtherKey="ModuleId" Type="ProModule" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ExamStatistics" Member="ExamStatistics">
+    <Type Name="ExamStatistics">
+      <Column Name="StatId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ExamId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Passed" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Failed" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NotComing" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Exam_ExamStatistics" Member="Exam" ThisKey="ExamId" OtherKey="ExamId" Type="Exam" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[Group]" Member="Group">
+    <Type Name="Group">
+      <Column Name="GroupId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Association Name="Group_Exam" Member="Exam" ThisKey="GroupId" OtherKey="GroupId" Type="Exam" />
+      <Association Name="Group_Student" Member="Student" ThisKey="GroupId" OtherKey="GroupId" Type="Student" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Mark" Member="Mark">
+    <Type Name="Mark">
+      <Column Name="MarkId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ExamId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StudentId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Mark" Member="Mark1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Exam_Mark" Member="Exam" ThisKey="ExamId" OtherKey="ExamId" Type="Exam" IsForeignKey="true" />
+      <Association Name="Student_Mark" Member="Student" ThisKey="StudentId" OtherKey="StudentId" Type="Student" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProModule" Member="ProModule">
+    <Type Name="ProModule">
+      <Column Name="ModuleId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Association Name="ProModule_Exam" Member="Exam" ThisKey="ModuleId" OtherKey="ModuleId" Type="Exam" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Report" Member="Report">
+    <Type Name="Report">
+      <Column Name="ReportId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ExamId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreationDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ReportFile" Type="System.Data.Linq.Binary" DbType="Binary(1024)" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Exam_Report" Member="Exam" ThisKey="ExamId" OtherKey="ExamId" Type="Exam" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Student" Member="Student">
+    <Type Name="Student">
+      <Column Name="StudentId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="MiddleName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="GroupId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Student_Mark" Member="Mark" ThisKey="StudentId" OtherKey="StudentId" Type="Mark" />
+      <Association Name="Group_Student" Member="Group" ThisKey="GroupId" OtherKey="GroupId" Type="Group" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.ExamView" Member="ExamView">
     <Type Name="ExamView">
       <Column Name="Группа" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
@@ -12,69 +110,6 @@
     <Type Name="StudentGroup">
       <Column Name="Student" Type="System.String" DbType="NVarChar(117)" CanBeNull="true" />
       <Column Name="[Group]" Member="Group" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
-  <Table Name="dbo.[User]" Member="User">
-    <Type Name="User">
-      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Username" Type="System.String" DbType="NVarChar(16) NOT NULL" CanBeNull="false" />
-      <Column Name="Password" Type="System.String" DbType="NVarChar(32) NOT NULL" CanBeNull="false" />
-      <Column Name="Role" Type="System.String" DbType="NVarChar(16) NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
-  <Table Name="dbo.ProModule" Member="ProModule">
-    <Type Name="ProModule">
-      <Column Name="ModuleId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Title" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
-      <Association Name="ProModule_Exam" Member="Exam" ThisKey="ModuleId" OtherKey="ModuleId" Type="Exam" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Student" Member="Student">
-    <Type Name="Student">
-      <Column Name="StudentId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="FirstName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="MiddleName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="LastName" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
-      <Column Name="GroupId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Student_Mark" Member="Mark" ThisKey="StudentId" OtherKey="StudentId" Type="Mark" />
-      <Association Name="Group_Student" Member="Group" ThisKey="GroupId" OtherKey="GroupId" Type="Group" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Exam" Member="Exam">
-    <Type Name="Exam">
-      <Column Name="ExamId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="GroupId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ModuleId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="Examiner" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
-      <Association Name="Exam_Mark" Member="Mark" ThisKey="ExamId" OtherKey="ExamId" Type="Mark" />
-      <Association Name="ProModule_Exam" Member="ProModule" ThisKey="ModuleId" OtherKey="ModuleId" Type="ProModule" IsForeignKey="true" />
-      <Association Name="Group_Exam" Member="Group" ThisKey="GroupId" OtherKey="GroupId" Type="Group" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.ExamMark" Member="ExamMark">
-    <Type Name="ExamMark">
-      <Column Name="ExamId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="MarkId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="StudentId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-    </Type>
-  </Table>
-  <Table Name="dbo.[Group]" Member="Group">
-    <Type Name="Group">
-      <Column Name="GroupId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Title" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
-      <Association Name="Group_Student" Member="Student" ThisKey="GroupId" OtherKey="GroupId" Type="Student" />
-      <Association Name="Group_Exam" Member="Exam" ThisKey="GroupId" OtherKey="GroupId" Type="Exam" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Mark" Member="Mark">
-    <Type Name="Mark">
-      <Column Name="MarkId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="ExamId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="StudentId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Mark" Member="Mark1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Exam_Mark" Member="Exam" ThisKey="ExamId" OtherKey="ExamId" Type="Exam" IsForeignKey="true" />
-      <Association Name="Student_Mark" Member="Student" ThisKey="StudentId" OtherKey="StudentId" Type="Student" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

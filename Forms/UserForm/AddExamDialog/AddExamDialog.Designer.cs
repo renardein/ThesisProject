@@ -100,6 +100,7 @@
             this.label1.Size = new System.Drawing.Size(178, 24);
             this.label1.TabIndex = 11;
             this.label1.Text = "Добавить экзамен";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label6
             // 

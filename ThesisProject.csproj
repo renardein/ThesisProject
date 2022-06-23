@@ -68,6 +68,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\UserForm\Actions\CriteriaAct.cs" />
     <Compile Include="Forms\UserForm\Actions\ExamAct.cs" />
     <Compile Include="Forms\UserForm\Actions\GroupAct.cs" />
     <Compile Include="Forms\UserForm\Actions\MarkingAct.cs" />
@@ -123,6 +124,12 @@
     <Compile Include="Forms\UserForm\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\UserForm\ReportSettingsDialog\ReportSettingsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UserForm\ReportSettingsDialog\ReportSettingsDialog.Designer.cs">
+      <DependentUpon>ReportSettingsDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modules\Crypto\Crypto.cs" />
     <Compile Include="Modules\DatabaseAdapter\DatabaseAdapter.designer.cs">
       <AutoGen>True</AutoGen>
@@ -156,6 +163,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\UserForm\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserForm\ReportSettingsDialog\ReportSettingsDialog.resx">
+      <DependentUpon>ReportSettingsDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -214,6 +224,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ReportTemplates\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

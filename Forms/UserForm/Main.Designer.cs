@@ -30,11 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserForm));
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.currentUserStrip = new System.Windows.Forms.ToolStripSplitButton();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.studentsPage = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -60,27 +55,28 @@
             this.examGrid = new System.Windows.Forms.DataGridView();
             this.label7 = new System.Windows.Forms.Label();
             this.marksPage = new System.Windows.Forms.TabPage();
-            this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.markingArea = new System.Windows.Forms.DataGridView();
+            this.comboMarkingStudent = new System.Windows.Forms.ComboBox();
+            this.comboMarkingExam = new System.Windows.Forms.ComboBox();
+            this.comboMarkingGroup = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.reportsPage = new System.Windows.Forms.TabPage();
             this.aboutPage = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.debugPage = new System.Windows.Forms.TabPage();
             this.txtFileOpenDialog = new System.Windows.Forms.OpenFileDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.toolStrip1.SuspendLayout();
+            this.button2 = new System.Windows.Forms.Button();
+            this.currentUserStrip = new System.Windows.Forms.ToolStripSplitButton();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tabControl1.SuspendLayout();
             this.studentsPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -97,68 +93,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.pmGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.examGrid)).BeginInit();
             this.marksPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.markingArea)).BeginInit();
             this.aboutPage.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.currentUserStrip,
-            this.toolStripLabel1,
-            this.toolStripLabel2});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1181, 26);
-            this.toolStrip1.TabIndex = 0;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // currentUserStrip
-            // 
-            this.currentUserStrip.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.currentUserStrip.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.currentUserStrip.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exitToolStripMenuItem});
-            this.currentUserStrip.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.currentUserStrip.Image = ((System.Drawing.Image)(resources.GetObject("currentUserStrip.Image")));
-            this.currentUserStrip.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.currentUserStrip.Name = "currentUserStrip";
-            this.currentUserStrip.Size = new System.Drawing.Size(51, 23);
-            this.currentUserStrip.Text = "user";
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(118, 24);
-            this.exitToolStripMenuItem.Text = "Выход";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
-            // 
-            // toolStripLabel1
-            // 
-            this.toolStripLabel1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.toolStripLabel1.Image = global::ThesisProject.Properties.Resources.ktc_logo;
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(312, 23);
-            this.toolStripLabel1.Text = "КГБПОУ \"Канский технологический колледж\"";
-            // 
-            // toolStripLabel2
-            // 
-            this.toolStripLabel2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripLabel2.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(100, 23);
-            this.toolStripLabel2.Text = "Вы вошли как:";
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.studentsPage);
             this.tabControl1.Controls.Add(this.examsPage);
             this.tabControl1.Controls.Add(this.marksPage);
-            this.tabControl1.Controls.Add(this.reportsPage);
             this.tabControl1.Controls.Add(this.aboutPage);
-            this.tabControl1.Controls.Add(this.debugPage);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 26);
             this.tabControl1.Name = "tabControl1";
@@ -435,10 +382,10 @@
             // 
             this.marksPage.Controls.Add(this.button2);
             this.marksPage.Controls.Add(this.button1);
-            this.marksPage.Controls.Add(this.dataGridView1);
-            this.marksPage.Controls.Add(this.comboBox3);
-            this.marksPage.Controls.Add(this.comboBox2);
-            this.marksPage.Controls.Add(this.comboBox1);
+            this.marksPage.Controls.Add(this.markingArea);
+            this.marksPage.Controls.Add(this.comboMarkingStudent);
+            this.marksPage.Controls.Add(this.comboMarkingExam);
+            this.marksPage.Controls.Add(this.comboMarkingGroup);
             this.marksPage.Controls.Add(this.label10);
             this.marksPage.Controls.Add(this.label9);
             this.marksPage.Controls.Add(this.label8);
@@ -448,59 +395,63 @@
             this.marksPage.Padding = new System.Windows.Forms.Padding(3);
             this.marksPage.Size = new System.Drawing.Size(1173, 623);
             this.marksPage.TabIndex = 2;
-            this.marksPage.Text = "Оценки";
+            this.marksPage.Text = "Оценивание";
             this.marksPage.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(922, 40);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(1003, 40);
+            this.button1.Location = new System.Drawing.Point(1050, 40);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "button1";
+            this.button1.Size = new System.Drawing.Size(115, 23);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "Печать отчета";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // dataGridView1
+            // markingArea
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(11, 69);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1154, 524);
-            this.dataGridView1.TabIndex = 8;
+            this.markingArea.AllowUserToAddRows = false;
+            this.markingArea.AllowUserToDeleteRows = false;
+            this.markingArea.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.markingArea.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.markingArea.Location = new System.Drawing.Point(11, 69);
+            this.markingArea.Name = "markingArea";
+            this.markingArea.RowHeadersVisible = false;
+            this.markingArea.Size = new System.Drawing.Size(1154, 546);
+            this.markingArea.TabIndex = 8;
+            this.markingArea.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.markingArea_CellContentClick);
             // 
-            // comboBox3
+            // comboMarkingStudent
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(672, 42);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(244, 21);
-            this.comboBox3.TabIndex = 7;
+            this.comboMarkingStudent.DisplayMember = "Группа";
+            this.comboMarkingStudent.Enabled = false;
+            this.comboMarkingStudent.FormattingEnabled = true;
+            this.comboMarkingStudent.Location = new System.Drawing.Point(672, 42);
+            this.comboMarkingStudent.Name = "comboMarkingStudent";
+            this.comboMarkingStudent.Size = new System.Drawing.Size(244, 21);
+            this.comboMarkingStudent.TabIndex = 7;
+            this.comboMarkingStudent.SelectedIndexChanged += new System.EventHandler(this.comboMarkingStudent_SelectedIndexChanged);
             // 
-            // comboBox2
+            // comboMarkingExam
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(364, 42);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(244, 21);
-            this.comboBox2.TabIndex = 6;
+            this.comboMarkingExam.DisplayMember = "Группа";
+            this.comboMarkingExam.Enabled = false;
+            this.comboMarkingExam.FormattingEnabled = true;
+            this.comboMarkingExam.Location = new System.Drawing.Point(364, 42);
+            this.comboMarkingExam.Name = "comboMarkingExam";
+            this.comboMarkingExam.Size = new System.Drawing.Size(244, 21);
+            this.comboMarkingExam.TabIndex = 6;
+            this.comboMarkingExam.SelectedIndexChanged += new System.EventHandler(this.comboMarkingExam_SelectedIndexChanged);
             // 
-            // comboBox1
+            // comboMarkingGroup
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(56, 42);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(244, 21);
-            this.comboBox1.TabIndex = 5;
+            this.comboMarkingGroup.DisplayMember = "Группа";
+            this.comboMarkingGroup.FormattingEnabled = true;
+            this.comboMarkingGroup.Location = new System.Drawing.Point(56, 42);
+            this.comboMarkingGroup.Name = "comboMarkingGroup";
+            this.comboMarkingGroup.Size = new System.Drawing.Size(244, 21);
+            this.comboMarkingGroup.TabIndex = 5;
+            this.comboMarkingGroup.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label10
             // 
@@ -539,16 +490,6 @@
             this.label6.TabIndex = 1;
             this.label6.Text = "Система оценивания";
             // 
-            // reportsPage
-            // 
-            this.reportsPage.Location = new System.Drawing.Point(4, 22);
-            this.reportsPage.Name = "reportsPage";
-            this.reportsPage.Padding = new System.Windows.Forms.Padding(3);
-            this.reportsPage.Size = new System.Drawing.Size(1173, 623);
-            this.reportsPage.TabIndex = 3;
-            this.reportsPage.Text = "Отчеты";
-            this.reportsPage.UseVisualStyleBackColor = true;
-            // 
             // aboutPage
             // 
             this.aboutPage.Controls.Add(this.panel1);
@@ -565,7 +506,6 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.linkLabel1);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label4);
@@ -574,22 +514,11 @@
             this.panel1.Size = new System.Drawing.Size(1170, 620);
             this.panel1.TabIndex = 0;
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(567, 367);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(100, 20);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "(Ethosa лох)";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.linkLabel1.Location = new System.Drawing.Point(504, 367);
+            this.linkLabel1.Location = new System.Drawing.Point(544, 366);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(60, 20);
             this.linkLabel1.TabIndex = 2;
@@ -620,15 +549,63 @@
     "ls";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // debugPage
+            // button2
             // 
-            this.debugPage.Location = new System.Drawing.Point(4, 22);
-            this.debugPage.Name = "debugPage";
-            this.debugPage.Padding = new System.Windows.Forms.Padding(3);
-            this.debugPage.Size = new System.Drawing.Size(1173, 623);
-            this.debugPage.TabIndex = 5;
-            this.debugPage.Text = "Отладка";
-            this.debugPage.UseVisualStyleBackColor = true;
+            this.button2.Location = new System.Drawing.Point(929, 40);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(115, 23);
+            this.button2.TabIndex = 12;
+            this.button2.Text = "Cохранить";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // currentUserStrip
+            // 
+            this.currentUserStrip.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.currentUserStrip.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.currentUserStrip.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exitToolStripMenuItem});
+            this.currentUserStrip.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.currentUserStrip.Image = ((System.Drawing.Image)(resources.GetObject("currentUserStrip.Image")));
+            this.currentUserStrip.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.currentUserStrip.Name = "currentUserStrip";
+            this.currentUserStrip.Size = new System.Drawing.Size(51, 23);
+            this.currentUserStrip.Text = "user";
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(118, 24);
+            this.exitToolStripMenuItem.Text = "Выход";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.toolStripLabel1.Image = global::ThesisProject.Properties.Resources.ktc_logo;
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(312, 23);
+            this.toolStripLabel1.Text = "КГБПОУ \"Канский технологический колледж\"";
+            // 
+            // toolStripLabel2
+            // 
+            this.toolStripLabel2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripLabel2.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.toolStripLabel2.Name = "toolStripLabel2";
+            this.toolStripLabel2.Size = new System.Drawing.Size(100, 23);
+            this.toolStripLabel2.Text = "Вы вошли как:";
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.currentUserStrip,
+            this.toolStripLabel1,
+            this.toolStripLabel2});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(1181, 26);
+            this.toolStrip1.TabIndex = 0;
+            this.toolStrip1.Text = "toolStrip1";
             // 
             // UserForm
             // 
@@ -643,8 +620,6 @@
             this.Text = "Панель управления";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.UserForm_FormClosed);
             this.Load += new System.EventHandler(this.UserForm_Load);
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.studentsPage.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -666,23 +641,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.examGrid)).EndInit();
             this.marksPage.ResumeLayout(false);
             this.marksPage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.markingArea)).EndInit();
             this.aboutPage.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripSplitButton currentUserStrip;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel2;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage examsPage;
         private System.Windows.Forms.TabPage studentsPage;
@@ -695,7 +666,6 @@
         private System.Windows.Forms.Button addGroupDialogOpen;
         private System.Windows.Forms.Button deleteGroupButton;
         private System.Windows.Forms.TabPage marksPage;
-        private System.Windows.Forms.TabPage reportsPage;
         private System.Windows.Forms.DataGridView studentGrid;
         private System.Windows.Forms.Button addStudentDialogOpen;
         private System.Windows.Forms.Button deleteStudentButton;
@@ -712,21 +682,24 @@
         private System.Windows.Forms.DataGridView examGrid;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TabPage aboutPage;
-        private System.Windows.Forms.TabPage debugPage;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.LinkLabel linkLabel1;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboMarkingStudent;
+        private System.Windows.Forms.ComboBox comboMarkingExam;
+        private System.Windows.Forms.ComboBox comboMarkingGroup;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DataGridView markingArea;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ToolStripSplitButton currentUserStrip;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel2;
+        private System.Windows.Forms.ToolStrip toolStrip1;
     }
 }

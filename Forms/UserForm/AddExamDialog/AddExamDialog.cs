@@ -7,8 +7,9 @@ namespace ThesisProject.Forms.UserForm.AddExamDialog
     {
         GroupAct ga = new GroupAct();
         ProModuleAct pa = new ProModuleAct();
-        internal string DateTime, Examiner,Group, Module;
-
+        internal string DateTime, Examiner, Group, Module;
+        string[] criteriaByLines;
+        internal string[] Criteria;
         public AddExamDialog()
         {
             InitializeComponent();
@@ -16,28 +17,35 @@ namespace ThesisProject.Forms.UserForm.AddExamDialog
 
         private void button1_Click(object sender, EventArgs e)
         {
-        
-                Group = addExamGroupBox.Text;
-                Module = addExamProModuleBox.Text;
-                DateTime = examDatetime.Text;
-                Examiner = examinerBox.Text;
-            
+
+            Group = addExamGroupBox.Text;
+            Module = addExamProModuleBox.Text;
+            DateTime = examDatetime.Text;
+            Examiner = examinerBox.Text;
+            Criteria = criteriaByLines;
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void AddExamDialog_Load(object sender, EventArgs e)
         {
             addExamProModuleBox.DataSource = Modules.TempData.TempData.ProModulesList;
             addExamGroupBox.DataSource = Modules.TempData.TempData.GroupsList;
-            addExamProModuleBox.DisplayMember = "Модуль";
             addExamGroupBox.DisplayMember = "Группа";
+            addExamProModuleBox.DisplayMember = "Модуль";
 
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            openCriteriaFileDialog.Title = "Выберите файл критериев";
             if (openCriteriaFileDialog.ShowDialog() == DialogResult.Cancel)
                 return;
-            string[] criteriaByLines = System.IO.File.ReadAllLines(openCriteriaFileDialog.FileName);
+            criteriaByLines = System.IO.File.ReadAllLines(openCriteriaFileDialog.FileName);
             criteriaFilenameBox.Text = openCriteriaFileDialog.FileName;
 
         }

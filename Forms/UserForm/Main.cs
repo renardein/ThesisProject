@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 using ThesisProject.Forms.UserForm.Actions;
@@ -14,7 +15,8 @@ namespace ThesisProject.Forms.UserForm
         internal ExamAct ea = new ExamAct();
         internal ReportingAct ReportingAct = new ReportingAct();
         internal MarkingAct ma = new MarkingAct();
-
+        internal CriteriaAct ca = new CriteriaAct();
+        string[] importdata;
         public UserForm()
         {
             InitializeComponent();
@@ -22,13 +24,15 @@ namespace ThesisProject.Forms.UserForm
 
         private void UserForm_Load(object sender, System.EventArgs e)
         {
-            this.examGrid.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            currentUserStrip.Text = TempData.CurrentUser;
-            txtFileOpenDialog.Filter = "Текстовые файлы (*.txt)|*.txt";
             UpdateGroupsList();
             UpdateStudentsList();
             UpdatePmList();
             UpdateExamList();
+            this.examGrid.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            currentUserStrip.Text = TempData.CurrentUser;
+            txtFileOpenDialog.Filter = "Текстовые файлы (*.txt)|*.txt";
+            comboMarkingGroup.DataSource = TempData.GroupsList;
+
 
         }
 
@@ -215,7 +219,31 @@ namespace ThesisProject.Forms.UserForm
             DialogResult res = aed.ShowDialog();
             if (res == DialogResult.OK)
             {
-                ea.addExam(aed.Group, aed.Module, aed.DateTime, aed.Examiner);
+
+                NumberStyles style;
+                style = NumberStyles.Number;
+
+
+                try
+{
+                    ea.addExam(aed.Group, aed.Module, aed.DateTime, aed.Examiner);
+                    foreach (string c in aed.Criteria)
+                    {
+                        string[] importdata = c.Split('\u2028');
+                        int proModuleId = pa.getProModuleId(aed.Module);
+                        string date = aed.DateTime;
+                        int GroupId = ga.getGroupId(aed.Group);
+                        int examId = ea.getExamId(date, proModuleId, GroupId);
+                        decimal
+                            c2 = Decimal.Parse(importdata[1], style),
+                            c3 = Decimal.Parse(importdata[2], style);
+                        ca.addCriteria(examId, importdata[0], c2, c3);
+                    }
+                }
+                catch (System.IndexOutOfRangeException)
+                {
+                    MessageBox.Show("Ошибка обработки файла");
+                }
 
             }
             UpdateExamList();
@@ -236,7 +264,7 @@ namespace ThesisProject.Forms.UserForm
                     sa.deleteStudent(name, group);
                 }
             }
-            catch (System.InvalidOperationException err)
+            catch (InvalidOperationException err)
             {
                 MessageBox.Show(err.Message);
             }
@@ -266,12 +294,70 @@ namespace ThesisProject.Forms.UserForm
         }
         private void UpdateExamList()
         {
-           examGrid.DataSource = ea.UpdateExams();
+            examGrid.DataSource = ea.UpdateExams();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            markingArea.Rows.Clear();
+            comboMarkingExam.Enabled = true;
+            comboMarkingExam.DataSource = null;
+            comboMarkingExam.DisplayMember = "Экзамен";
+            comboMarkingExam.DataSource = ea.getExamTitle(comboMarkingGroup.Text);
+            
+        }
+
+        private void comboMarkingStudent_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //  markingArea.DataSource = ca.
+        }
+
+        private void comboMarkingExam_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            markingArea.Rows.Clear();
+            comboMarkingStudent.Enabled = true;
+            comboMarkingStudent.DataSource = null;
+            comboMarkingStudent.DisplayMember = "Студент";
+            comboMarkingStudent.DataSource = sa.SortStudentsByGroup(comboMarkingGroup.Text);
+            var data = ea.getExam(comboMarkingGroup.Text);
+            try
+            {
+                var criterias = ca.getCriteriaByExam(data.examId.ElementAt(comboMarkingExam.SelectedIndex));
+                markingArea.DataSource = criterias;
+                if (markingArea.Columns.Count == 3)
+                    markingArea.Columns.Add("enteredMark", "Введенный балл");
+
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+
+            }
+        }
+
+        private void markingArea_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            ReportSettingsDialog.ReportSettingsDialog rp = new ReportSettingsDialog.ReportSettingsDialog();
+            rp.Owner = this;
+            DialogResult res = rp.ShowDialog();
+            if (res == DialogResult.OK)
+            {
+
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DialogResult saveResults = MessageBox.Show("Вы уверены что хотите сохранить результаты?", "Системное сообщение", MessageBoxButtons.YesNo);
         }
     }
 }
