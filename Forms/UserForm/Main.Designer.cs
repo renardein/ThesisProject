@@ -55,6 +55,7 @@
             this.examGrid = new System.Windows.Forms.DataGridView();
             this.label7 = new System.Windows.Forms.Label();
             this.marksPage = new System.Windows.Forms.TabPage();
+            this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.markingArea = new System.Windows.Forms.DataGridView();
             this.comboMarkingStudent = new System.Windows.Forms.ComboBox();
@@ -71,12 +72,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtFileOpenDialog = new System.Windows.Forms.OpenFileDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.button2 = new System.Windows.Forms.Button();
             this.currentUserStrip = new System.Windows.Forms.ToolStripSplitButton();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.totalMarkLabel = new System.Windows.Forms.Label();
+            this.totalMarkStudent = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.studentsPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -380,6 +383,9 @@
             // 
             // marksPage
             // 
+            this.marksPage.Controls.Add(this.label11);
+            this.marksPage.Controls.Add(this.totalMarkStudent);
+            this.marksPage.Controls.Add(this.totalMarkLabel);
             this.marksPage.Controls.Add(this.button2);
             this.marksPage.Controls.Add(this.button1);
             this.marksPage.Controls.Add(this.markingArea);
@@ -397,6 +403,17 @@
             this.marksPage.TabIndex = 2;
             this.marksPage.Text = "Оценивание";
             this.marksPage.UseVisualStyleBackColor = true;
+          //  this.marksPage.Click += new System.EventHandler(this.marksPage_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(929, 40);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(115, 23);
+            this.button2.TabIndex = 12;
+            this.button2.Text = "Cохранить";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -417,7 +434,7 @@
             this.markingArea.Location = new System.Drawing.Point(11, 69);
             this.markingArea.Name = "markingArea";
             this.markingArea.RowHeadersVisible = false;
-            this.markingArea.Size = new System.Drawing.Size(1154, 546);
+            this.markingArea.Size = new System.Drawing.Size(1154, 522);
             this.markingArea.TabIndex = 8;
             this.markingArea.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.markingArea_CellContentClick);
             // 
@@ -549,16 +566,6 @@
     "ls";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(929, 40);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(115, 23);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "Cохранить";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // currentUserStrip
             // 
             this.currentUserStrip.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -607,6 +614,37 @@
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // totalMarkLabel
+            // 
+            this.totalMarkLabel.AutoSize = true;
+            this.totalMarkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.totalMarkLabel.Location = new System.Drawing.Point(3, 594);
+            this.totalMarkLabel.Name = "totalMarkLabel";
+            this.totalMarkLabel.Size = new System.Drawing.Size(178, 24);
+            this.totalMarkLabel.TabIndex = 13;
+            this.totalMarkLabel.Text = "Итого за экзамен: ";
+            // 
+            // totalMarkStudent
+            // 
+            this.totalMarkStudent.AutoSize = true;
+            this.totalMarkStudent.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.totalMarkStudent.Location = new System.Drawing.Point(291, 594);
+            this.totalMarkStudent.Name = "totalMarkStudent";
+            this.totalMarkStudent.Size = new System.Drawing.Size(188, 24);
+            this.totalMarkStudent.TabIndex = 14;
+            this.totalMarkStudent.Text = "Итого по студенту: ";
+         //   this.totalMarkStudent.Click += new System.EventHandler(this.totalMarkStudent_Click);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label11.Location = new System.Drawing.Point(577, 594);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(82, 24);
+            this.label11.TabIndex = 15;
+            this.label11.Text = "Оценка:";
+            // 
             // UserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -615,6 +653,10 @@
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.toolStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(1197, 714);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(1197, 714);
             this.Name = "UserForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Панель управления";
@@ -701,5 +743,8 @@
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripLabel toolStripLabel2;
         private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.Label totalMarkLabel;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label totalMarkStudent;
     }
 }

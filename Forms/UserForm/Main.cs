@@ -142,11 +142,11 @@ namespace ThesisProject.Forms.UserForm
                 if (!ga.isGroupExists(group))
                 {
                     ga.addGroup(group);
-                    sa.addStudent(splitname[1], getMiddleName, splitname[0], group);
+                    sa.addStudent(splitname[0], splitname[1], getMiddleName, group);
                 }
                 else
                 {
-                    sa.addStudent(splitname[1], getMiddleName, splitname[0], group);
+                    sa.addStudent(splitname[0], splitname[1], getMiddleName, group);
                 }
                 UpdateGroupsList();
                 UpdateStudentsList();
@@ -225,7 +225,7 @@ namespace ThesisProject.Forms.UserForm
 
 
                 try
-{
+                {
                     ea.addExam(aed.Group, aed.Module, aed.DateTime, aed.Examiner);
                     foreach (string c in aed.Criteria)
                     {
@@ -309,7 +309,7 @@ namespace ThesisProject.Forms.UserForm
             comboMarkingExam.DataSource = null;
             comboMarkingExam.DisplayMember = "Экзамен";
             comboMarkingExam.DataSource = ea.getExamTitle(comboMarkingGroup.Text);
-            
+
         }
 
         private void comboMarkingStudent_SelectedIndexChanged(object sender, EventArgs e)
@@ -327,10 +327,20 @@ namespace ThesisProject.Forms.UserForm
             var data = ea.getExam(comboMarkingGroup.Text);
             try
             {
+                markingArea.Rows.Clear();
                 var criterias = ca.getCriteriaByExam(data.examId.ElementAt(comboMarkingExam.SelectedIndex));
                 markingArea.DataSource = criterias;
                 if (markingArea.Columns.Count == 3)
                     markingArea.Columns.Add("enteredMark", "Введенный балл");
+                //markingArea.Rows.Clear();
+                double MarkTotal = 0;
+                foreach (DataGridViewRow row in markingArea.Rows)
+                {
+                    double incom;
+                    double.TryParse((row.Cells[2].Value ?? "0").ToString().Replace(".", ","), out incom);
+                    MarkTotal += incom;
+                }
+                totalMarkLabel.Text = "Итого за экзамен: " + MarkTotal.ToString();
 
             }
             catch (ArgumentOutOfRangeException)
@@ -358,6 +368,19 @@ namespace ThesisProject.Forms.UserForm
         private void button2_Click(object sender, EventArgs e)
         {
             DialogResult saveResults = MessageBox.Show("Вы уверены что хотите сохранить результаты?", "Системное сообщение", MessageBoxButtons.YesNo);
+            if (DialogResult.Yes == saveResults)
+            {
+                double StudentMarkTotal = 0;
+                foreach (DataGridViewRow row in markingArea.Rows)
+                {
+                    double marks;
+                    double.TryParse((row.Cells["enteredMark"].Value ?? "0").ToString().Replace(".", ","), out marks);
+                    StudentMarkTotal += marks;
+                }
+                totalMarkStudent.Text = "Итого по студенту: " + StudentMarkTotal.ToString();
+            }
+
+
         }
     }
 }

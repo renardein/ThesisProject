@@ -51,7 +51,7 @@ namespace ThesisProject.Forms.UserForm
         /// <param name="EnteredGroup">Наименование группы</param>
         /// <param name="FirstName">Имя студента</param>
         /// <param name="LastName">Фамилия студента</param>
-        internal void addStudent(string FirstName, string LastName, string MiddleName, string EnteredGroup)
+        internal void addStudent(string FirstName, string MiddleName, string LastName, string EnteredGroup)
         {
             var addStudent = new Student
             {
